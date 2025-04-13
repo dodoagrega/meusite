@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DodoAgrega - Vida Saudável</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                <span class="text-indigo-600">Dodo</span>Agrega
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#inicio" class="text-gray-800 hover:text-indigo-600 transition">Início</a>
+                <a href="#universo" class="text-gray-800 hover:text-indigo-600 transition">Universo</a>
+                <a href="#transformacao" class="text-gray-800 hover:text-indigo-600 transition">Transformação</a>
+                <a href="#redes" class="text-gray-800 hover:text-indigo-600 transition">Redes</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero-image flex items-center justify-center text-center text-white">
+        <div class="px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Transforme seu corpo e mente</h1>
+            <p class="text-xl md:text-2xl mb-8">Junte-se a mim na jornada para uma vida mais saudável e feliz</p>
+            <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition">
+                Comece Agora
+            </button>
+        </div>
+    </header>
+
+    <!-- Universo DodoAgrega -->
+    <section id="universo" class="bg-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Conheça o Universo DodoAgrega</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="w-60">
+                    <img src="/img/dodoagrega.png" alt="DodoAgrega" class="rounded-full mb-4">
+                    <h3 class="text-xl font-semibold">DodoAgrega</h3>
+                    <p class="text-gray-600">O super tio das ideias boas!</p>
+                </div>
+                <div class="w-60">
+                    <img src="/img/guizinho.png" alt="Guizinho" class="rounded-full mb-4">
+                    <h3 class="text-xl font-semibold">Guizinho</h3>
+                    <p class="text-gray-600">O sobrinho que topa tudo!</p>
+                </div>
+                <div class="w-60">
+                    <img src="/img/queque.png" alt="Quequé" class="rounded-full mb-4">
+                    <h3 class="text-xl font-semibold">Quequé</h3>
+                    <p class="text-gray-600">A que sempre quer mais!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformação -->
+    <section id="transformacao" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Minha Transformação</h2>
+            <div class="max-w-4xl mx-auto">
+                <img src="https://images.unsplash.com/photo-1581009131179-5d5b8b0b9b0a?ixlib=rb-4.0.3" alt="Transformação" class="rounded-lg shadow-lg">
+                <p class="text-lg text-gray-600 mt-6">
+                    Quando comecei minha transformação, nunca imaginei que chegaria onde estou hoje. Foi um caminho desafiador, mas cada gota de suor valeu a pena. Se eu consegui, você também pode!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mensagem Final -->
+    <section class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4 text-center max-w-2xl">
+            <h2 class="text-2xl font-bold mb-4">Mensagem do DodoAgrega</h2>
+            <p class="text-lg">A saúde é como uma plantinha: se você cuida todo dia, ela cresce forte!</p>
+        </div>
+    </section>
+
+    <!-- Redes Sociais -->
+    <section id="redes" class="py-16 text-center">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">Me siga nas redes sociais</h2>
+        <div class="flex justify-center space-x-8">
+            <a href="javascript:void(0)" class="text-gray-700 text-4xl hover:text-pink-500">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="javascript:void(0)" class="text-gray-700 text-4xl hover:text-red-600">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <p class="text-gray-400">&copy; 2025 DodoAgrega. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
