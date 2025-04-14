@@ -87,7 +87,8 @@
     </section>
 
     <!-- Mensagem Final -->
-<section id="mensagem-dodoagrega">
+
+ <section id="mensagem-dodoagrega">
   <p id="frase-dia" class="mensagem-estilo">
     Carregando mensagem do dia...
   </p>
@@ -106,8 +107,13 @@
     ];
 
     try {
-      const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
-      const hoje = new Date(agora).getDay(); // Garante o fuso horário do Brasil
+      const agora = new Date();
+
+      // Ajuste simples para o fuso de São Paulo (UTC-3)
+      const utc = agora.getTime() + (agora.getTimezoneOffset() * 60000);
+      const brasilia = new Date(utc - (3 * 60 * 60 * 1000));
+      const hoje = brasilia.getDay();
+
       document.getElementById("frase-dia").innerText = frases[hoje];
     } catch (e) {
       document.getElementById("frase-dia").innerText = "Não foi possível carregar a mensagem do dia.";
