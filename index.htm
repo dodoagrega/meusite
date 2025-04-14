@@ -87,12 +87,24 @@
     </section>
 
     <!-- Mensagem Final -->
-    <section class="py-16 bg-indigo-600 text-white">
-        <div class="container mx-auto px-4 text-center max-w-2xl">
-            <h2 class="text-2xl font-bold mb-4">Mensagem do DodoAgrega</h2>
-            <p class="text-lg">A saúde é como uma plantinha: se você cuida todo dia, ela cresce forte!</p>
-        </div>
-    </section>
+   <section id="mensagem-dodoagrega">
+  <p id="frase-dia" style="font-size: 1.2em; font-weight: bold; color: #333;"></p>
+</section>
+
+<script>
+  const frases = [
+    "Segunda é dia de recomeçar com alegria! – DodoAgrega",
+    "Terça é dia de fazer diferente! – DodoAgrega",
+    "Quarta é metade do caminho: você consegue! – DodoAgrega",
+    "Quinta é quase sexta, mas foco no agora! – DodoAgrega",
+    "Sexta é dia de celebrar o que você construiu! – DodoAgrega",
+    "Sábado é tempo de brincar e renovar! – DodoAgrega",
+    "Domingo é dia de sonhar e descansar! – DodoAgrega"
+  ];
+
+  const hoje = new Date().getDay(); // 0 = Domingo, 1 = Segunda...
+  document.getElementById("frase-dia").innerText = frases[hoje];
+</script>
 
     <!-- Redes Sociais -->
     <section id="redes" class="py-16 text-center">
