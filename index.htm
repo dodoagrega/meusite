@@ -21,6 +21,46 @@
             height: 60vh;
         }
     </style>
+    <!-- Estilos para o balão de fala do DodoAgrega -->
+  <style>
+    .bloco-mensagem {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 10px;
+    }
+
+    .dodo-avatar {
+      width: 80px;
+      height: auto;
+    }
+
+    .balão-fala {
+      position: relative;
+      background: #fff6d6;
+      border: 2px solid #ffd500;
+      border-radius: 20px;
+      padding: 15px 20px;
+      color: #444;
+      font-size: 1.2em;
+      line-height: 1.5;
+      font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive;
+    }
+
+    .balão-fala::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: -15px;
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-right: 15px solid #ffd500;
+      border-bottom: 15px solid transparent;
+    }
+  </style>
 </head>
 <body class="min-h-screen flex flex-col">
     <!-- Navigation -->
