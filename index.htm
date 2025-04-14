@@ -89,28 +89,31 @@
     <!-- Mensagem Final -->
 <section id="mensagem-dodoagrega">
   <p id="frase-dia" class="mensagem-estilo">
-    <!-- A frase do dia será inserida aqui -->
+    Carregando mensagem do dia...
   </p>
 </section>
 
 <script>
-  // Frases por dia da semana (0 = Domingo, 6 = Sábado)
-  const frases = [
-    "Domingo é dia de sonhar e descansar! – DodoAgrega",
-    "Segunda é dia de recomeçar com alegria! – DodoAgrega",
-    "Terça é dia de fazer diferente! – DodoAgrega",
-    "Quarta é metade do caminho: você consegue! – DodoAgrega",
-    "Quinta é quase sexta, mas foco no agora! – DodoAgrega",
-    "Sexta é dia de celebrar o que você construiu! – DodoAgrega",
-    "Sábado é tempo de brincar e renovar! – DodoAgrega"
-  ];
+  document.addEventListener("DOMContentLoaded", function () {
+    const frases = [
+      "Domingo é dia de sonhar e descansar! – DodoAgrega",
+      "Segunda é dia de recomeçar com alegria! – DodoAgrega",
+      "Terça é dia de fazer diferente! – DodoAgrega",
+      "Quarta é metade do caminho: você consegue! – DodoAgrega",
+      "Quinta é quase sexta, mas foco no agora! – DodoAgrega",
+      "Sexta é dia de celebrar o que você construiu! – DodoAgrega",
+      "Sábado é tempo de brincar e renovar! – DodoAgrega"
+    ];
 
-  // Corrigir o fuso horário para garantir o dia certo
-  const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
-  const hoje = new Date(agora).getDay();
-
-  // Inserir a frase do dia na página
-  document.getElementById("frase-dia").innerText = frases[hoje];
+    try {
+      const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+      const hoje = new Date(agora).getDay(); // Garante o fuso horário do Brasil
+      document.getElementById("frase-dia").innerText = frases[hoje];
+    } catch (e) {
+      document.getElementById("frase-dia").innerText = "Não foi possível carregar a mensagem do dia.";
+      console.error("Erro ao definir a frase do dia:", e);
+    }
+  });
 </script>
 
     <!-- Redes Sociais -->
