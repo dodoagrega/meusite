@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Escala de Trabalho - Semana</title>
   <style>
     body {
@@ -24,11 +24,29 @@
     .legend {
       margin-top: 10px;
     }
-  </style>
+    
+  .tabela-responsiva {
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabela-responsiva table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* você pode ajustar esse valor conforme o tamanho da sua tabela */
+  }
+
+  @media (max-width: 600px) {
+    .tabela-responsiva {
+      margin-bottom: 16px;
+    }
+  }
+</style>
 </head>
 <body>
 
   <h2>Escala Semanal de Trabalho</h2>
+<div class="tabela-responsiva">
 
   <table>
     <tr>
@@ -80,6 +98,7 @@
       <td>Lucas Prado (F), Thiago (P)</td>
     </tr>
   </table>
+    </div>
 
   <div class="legend">
     <strong>Legenda:</strong><br>
