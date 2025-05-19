@@ -33,7 +33,14 @@
 .tabela-responsiva table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 100%;
+  table-layout: fixed; /* força distribuição proporcional das colunas */
+  word-wrap: break-word; /* quebra palavras muito longas */
+}
+.tabela-responsiva th,
+.tabela-responsiva td {
+  word-break: break-word;
+  font-size: 12px; /* reduz o texto para caber melhor */
+  padding: 6px 4px; /* reduz o espaço interno */
 }
   }
 
