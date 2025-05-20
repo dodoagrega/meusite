@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala de Trabalho - Semana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .tabela-responsiva {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f2f2f2;
+      z-index: 1;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .legend {
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .tabela-responsiva {
+        margin-bottom: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Escala Semanal de Trabalho</h2>
+
+  <div class="tabela-responsiva">
+    <table>
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Carro 1</th>
+          <th>Carro 2</th>
+          <th>Carro 3</th>
+          <th>Carro 4</th>
+          <th>Carro 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Segunda</td>
+          <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
+          <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
+          <td>Hércules (F), Sérgio (P), Cal (B)</td>
+          <td>Dodô (F), Ivis (P)</td>
+          <td>Lucas Prado (F), Thiago (P)</td>
+        </tr>
+        <tr>
+          <td>Terça</td>
+          <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
+          <td>Hércules (B), Sérgio (F), Cal (P)</td>
+          <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
+          <td>Ivis (F), Dodô (P)</td>
+          <td>Thiago (F), Lucas Prado (P)</td>
+        </tr>
+        <tr>
+          <td>Quarta</td>
+          <td>Hércules (P), Sérgio (B), Cal (F)</td>
+          <td>Felipe (P), Rodrigo (B), Elizeu (F)</td>
+          <td>L. Ferreira (P), Willians (B), Fernando (F)</td>
+          <td>Dodô (F), Ivis (P)</td>
+          <td>Lucas Prado (F), Thiago (P)</td>
+        </tr>
+        <tr>
+          <td>Quinta</td>
+          <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
+          <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
+          <td>Hércules (F), Sérgio (P), Cal (B)</td>
+          <td>Ivis (F), Dodô (P)</td>
+          <td>Thiago (F), Lucas Prado (P)</td>
+        </tr>
+        <tr>
+          <td>Sexta</td>
+          <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
+          <td>Hércules (B), Sérgio (F), Cal (P)</td>
+          <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
+          <td>Dodô (F), Ivis (P)</td>
+          <td>Lucas Prado (F), Thiago (P)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <strong>Legenda:</strong><br>
+    <strong>(F)</strong> Front End<br>
+    <strong>(P)</strong> Portas<br>
+    <strong>(B)</strong> Back End
+  </div>
+
+  <div class="explicacao">
+    <h3>Critérios da Escala</h3>
+    <ul>
+      <li><strong>Equipes 1, 2 e 3</strong> formam trios e revezam entre os Carros 1, 2 e 3 a cada dia útil.</li>
+      <li><strong>Rodízio dos carros:</strong> Segunda (1 → 2 → 3), Terça (2 → 3 → 1), Quarta (3 → 1 → 2), e assim por diante.</li>
+      <li>Cada trabalhador executa uma operação por hora, seguindo a ordem: <strong>F → B → P → F</strong>, durante 8 horas.</li>
+      <li>No dia seguinte, cada um inicia na operação em que parou no dia anterior.</li>
+      <li><strong>Equipes 4 e 5</strong> são fixas nos Carros 4 e 5 (duplas). Revezam entre <strong>F</strong> e <strong>P</strong> a cada hora.</li>
+      <li>No dia seguinte, invertem a ordem de início da operação.</li>
+    </ul>
+  </div>
+
+</body>
+</html>
