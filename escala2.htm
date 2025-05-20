@@ -10,8 +10,9 @@
     }
 
     .tabela-responsiva {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      max-height: 70vh; /* altura máxima da tabela para forçar rolagem vertical */
+      overflow: auto;   /* rolagem tanto vertical quanto horizontal */
+      border: 1px solid #ccc;
     }
 
     table {
@@ -24,7 +25,7 @@
       position: sticky;
       top: 0;
       background-color: #f2f2f2;
-      z-index: 1;
+      z-index: 2;
     }
 
     th, td {
@@ -130,3 +131,4 @@
 
 </body>
 </html>
+
