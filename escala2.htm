@@ -10,32 +10,32 @@
     }
 
     .tabela-responsiva {
-      max-height: 70vh; /* altura máxima da tabela para forçar rolagem vertical */
-      overflow: auto;   /* rolagem tanto vertical quanto horizontal */
+      max-height: 400px; /* Altura máxima para permitir rolagem */
+      overflow-y: auto;
       border: 1px solid #ccc;
     }
 
-    table {
+    .tabela-responsiva table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 800px;
+      table-layout: fixed; /* Distribuição proporcional das colunas */
+      word-wrap: break-word;
     }
 
-    thead th {
+    .tabela-responsiva th,
+    .tabela-responsiva td {
+      border: 1px solid #333;
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 12px;
+      word-break: break-word;
+    }
+
+    .tabela-responsiva th {
       position: sticky;
       top: 0;
       background-color: #f2f2f2;
       z-index: 2;
-    }
-
-    th, td {
-      border: 1px solid #333;
-      padding: 8px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f2f2f2;
     }
 
     .legend {
@@ -53,64 +53,65 @@
 
   <h2>Escala Semanal de Trabalho</h2>
 
-<div style="overflow-x: auto;">
-  <div style="max-height: 60vh; overflow-y: auto;">
-    <table style="border-collapse: collapse; width: 100%;">
-      <thead>
-        <tr>
-          <th style="position: sticky; top: 0; background: #f2f2f2; z-index: 1;">Dia</th>
-          <th style="position: sticky; top: 0; background: #f2f2f2; z-index: 1;">Carro 1</th>
-          <th style="position: sticky; top: 0; background: #f2f2f2; z-index: 1;">Carro 2</th>
-          <th style="position: sticky; top: 0; background: #f2f2f2; z-index: 1;">Carro 3</th>
-          <th style="position: sticky; top: 0; background: #f2f2f2; z-index: 1;">Carro 4</th>
-          <th style="position: sticky; top: 0; background: #f2f2f2; z-index: 1;">Carro 5</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Segunda</td>
-          <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
-          <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
-          <td>Hércules (F), Sérgio (P), Cal (B)</td>
-          <td>Dodô (F), Ivis (P)</td>
-          <td>Lucas Prado (F), Thiago (P)</td>
-        </tr>
-        <tr>
-          <td>Terça</td>
-          <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
-          <td>Hércules (B), Sérgio (F), Cal (P)</td>
-          <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
-          <td>Ivis (F), Dodô (P)</td>
-          <td>Thiago (F), Lucas Prado (P)</td>
-        </tr>
-        <tr>
-          <td>Quarta</td>
-          <td>Hércules (P), Sérgio (B), Cal (F)</td>
-          <td>Felipe (P), Rodrigo (B), Elizeu (F)</td>
-          <td>L. Ferreira (P), Willians (B), Fernando (F)</td>
-          <td>Dodô (F), Ivis (P)</td>
-          <td>Lucas Prado (F), Thiago (P)</td>
-        </tr>
-        <tr>
-          <td>Quinta</td>
-          <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
-          <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
-          <td>Hércules (F), Sérgio (P), Cal (B)</td>
-          <td>Ivis (F), Dodô (P)</td>
-          <td>Thiago (F), Lucas Prado (P)</td>
-        </tr>
-        <tr>
-          <td>Sexta</td>
-          <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
-          <td>Hércules (B), Sérgio (F), Cal (P)</td>
-          <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
-          <td>Dodô (F), Ivis (P)</td>
-          <td>Lucas Prado (F), Thiago (P)</td>
-        </tr>
-      </tbody>
+  <div class="tabela-responsiva">
+    <table>
+      <tr>
+        <th>Dia</th>
+        <th>Carro 1</th>
+        <th>Carro 2</th>
+        <th>Carro 3</th>
+        <th>Carro 4</th>
+        <th>Carro 5</th>
+      </tr>
+      <tr>
+        <td>Segunda</td>
+        <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
+        <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
+        <td>Hércules (F), Sérgio (P), Cal (B)</td>
+        <td>Dodô (F), Ivis (P)</td>
+        <td>Lucas Prado (F), Thiago (P)</td>
+      </tr>
+      <tr>
+        <td>Terça</td>
+        <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
+        <td>Hércules (B), Sérgio (F), Cal (P)</td>
+        <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
+        <td>Ivis (F), Dodô (P)</td>
+        <td>Thiago (F), Lucas Prado (P)</td>
+      </tr>
+      <tr>
+        <td>Quarta</td>
+        <td>Hércules (P), Sérgio (B), Cal (F)</td>
+        <td>Felipe (P), Rodrigo (B), Elizeu (F)</td>
+        <td>L. Ferreira (P), Willians (B), Fernando (F)</td>
+        <td>Dodô (F), Ivis (P)</td>
+        <td>Lucas Prado (F), Thiago (P)</td>
+      </tr>
+      <tr>
+        <td>Quinta</td>
+        <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
+        <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
+        <td>Hércules (F), Sérgio (P), Cal (B)</td>
+        <td>Ivis (F), Dodô (P)</td>
+        <td>Thiago (F), Lucas Prado (P)</td>
+      </tr>
+      <tr>
+        <td>Sexta</td>
+        <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
+        <td>Hércules (B), Sérgio (F), Cal (P)</td>
+        <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
+        <td>Dodô (F), Ivis (P)</td>
+        <td>Lucas Prado (F), Thiago (P)</td>
+      </tr>
     </table>
   </div>
-</div>
+
+  <div class="legend">
+    <strong>Legenda:</strong><br>
+    <strong>(F)</strong> Front End<br>
+    <strong>(P)</strong> Portas<br>
+    <strong>(B)</strong> Back End
+  </div>
 
   <div class="explicacao">
     <h3>Critérios da Escala</h3>
@@ -126,4 +127,3 @@
 
 </body>
 </html>
-
