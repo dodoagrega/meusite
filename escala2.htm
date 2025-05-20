@@ -8,29 +8,48 @@
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+
     .tabela-responsiva {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       max-height: 400px;
       position: relative;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      table-layout: fixed;
+      table-layout: auto; /* Permite que o navegador ajuste as larguras das colunas */
     }
+
     th, td {
       border: 1px solid #333;
       padding: 8px;
       text-align: center;
       font-size: 12px;
-      word-break: break-word;
+      white-space: nowrap; /* Impede quebras de linha dentro das células */
     }
+
     th {
       background-color: #f2f2f2;
       position: sticky;
       top: 0;
       z-index: 2;
+    }
+
+    .legend {
+      margin-top: 10px;
+    }
+
+    .explicacao {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        font-size: 10px;
+        padding: 6px 4px;
+      }
     }
   </style>
 </head>
@@ -49,43 +68,43 @@
       </tr>
       <tr>
         <td>Segunda</td>
-        <td>Felipe (<strong>F</strong>), Rodrigo (<strong>P</strong>), Elizeu (<strong>B</strong>)</td>
-        <td>L. Ferreira (<strong>F</strong>), Willians (<strong>P</strong>), Fernando (<strong>B</strong>)</td>
-        <td>Hércules (<strong>F</strong>), Sérgio (<strong>P</strong>), Cal (<strong>B</strong>)</td>
-        <td>Dodô (<strong>F</strong>), Ivis (<strong>P</strong>)</td>
-        <td>Lucas Prado (<strong>F</strong>), Thiago (<strong>P</strong>)</td>
+        <td>Felipe&nbsp;(<strong>F</strong>), Rodrigo&nbsp;(<strong>P</strong>), Elizeu&nbsp;(<strong>B</strong>)</td>
+        <td>L. Ferreira&nbsp;(<strong>F</strong>), Willians&nbsp;(<strong>P</strong>), Fernando&nbsp;(<strong>B</strong>)</td>
+        <td>Hércules&nbsp;(<strong>F</strong>), Sérgio&nbsp;(<strong>P</strong>), Cal&nbsp;(<strong>B</strong>)</td>
+        <td>Dodô&nbsp;(<strong>F</strong>), Ivis&nbsp;(<strong>P</strong>)</td>
+        <td>Lucas Prado&nbsp;(<strong>F</strong>), Thiago&nbsp;(<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Terça</td>
-        <td>L. Ferreira (<strong>B</strong>), Willians (<strong>F</strong>), Fernando (<strong>P</strong>)</td>
-        <td>Hércules (<strong>B</strong>), Sérgio (<strong>F</strong>), Cal (<strong>P</strong>)</td>
-        <td>Felipe (<strong>B</strong>), Rodrigo (<strong>F</strong>), Elizeu (<strong>P</strong>)</td>
-        <td>Ivis (<strong>F</strong>), Dodô (<strong>P</strong>)</td>
-        <td>Thiago (<strong>F</strong>), Lucas Prado (<strong>P</strong>)</td>
+        <td>L. Ferreira&nbsp;(<strong>B</strong>), Willians&nbsp;(<strong>F</strong>), Fernando&nbsp;(<strong>P</strong>)</td>
+        <td>Hércules&nbsp;(<strong>B</strong>), Sérgio&nbsp;(<strong>F</strong>), Cal&nbsp;(<strong>P</strong>)</td>
+        <td>Felipe&nbsp;(<strong>B</strong>), Rodrigo&nbsp;(<strong>F</strong>), Elizeu&nbsp;(<strong>P</strong>)</td>
+        <td>Ivis&nbsp;(<strong>F</strong>), Dodô&nbsp;(<strong>P</strong>)</td>
+        <td>Thiago&nbsp;(<strong>F</strong>), Lucas Prado&nbsp;(<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Quarta</td>
-        <td>Hércules (<strong>P</strong>), Sérgio (<strong>B</strong>), Cal (<strong>F</strong>)</td>
-        <td>Felipe (<strong>P</strong>), Rodrigo (<strong>B</strong>), Elizeu (<strong>F</strong>)</td>
-        <td>L. Ferreira (<strong>P</strong>), Willians (<strong>B</strong>), Fernando (<strong>F</strong>)</td>
-        <td>Dodô (<strong>F</strong>), Ivis (<strong>P</strong>)</td>
-        <td>Lucas Prado (<strong>F</strong>), Thiago (<strong>P</strong>)</td>
+        <td>Hércules&nbsp;(<strong>P</strong>), Sérgio&nbsp;(<strong>B</strong>), Cal&nbsp;(<strong>F</strong>)</td>
+        <td>Felipe&nbsp;(<strong>P</strong>), Rodrigo&nbsp;(<strong>B</strong>), Elizeu&nbsp;(<strong>F</strong>)</td>
+        <td>L. Ferreira&nbsp;(<strong>P</strong>), Willians&nbsp;(<strong>B</strong>), Fernando&nbsp;(<strong>F</strong>)</td>
+        <td>Dodô&nbsp;(<strong>F</strong>), Ivis&nbsp;(<strong>P</strong>)</td>
+        <td>Lucas Prado&nbsp;(<strong>F</strong>), Thiago&nbsp;(<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Quinta</td>
-        <td>Felipe (<strong>F</strong>), Rodrigo (<strong>P</strong>), Elizeu (<strong>B</strong>)</td>
-        <td>L. Ferreira (<strong>F</strong>), Willians (<strong>P</strong>), Fernando (<strong>B</strong>)</td>
-        <td>Hércules (<strong>F</strong>), Sérgio (<strong>P</strong>), Cal (<strong>B</strong>)</td>
-        <td>Ivis (<strong>F</strong>), Dodô (<strong>P</strong>)</td>
-        <td>Thiago (<strong>F</strong>), Lucas Prado (<strong>P</strong>)</td>
+        <td>Felipe&nbsp;(<strong>F</strong>), Rodrigo&nbsp;(<strong>P</strong>), Elizeu&nbsp;(<strong>B</strong>)</td>
+        <td>L. Ferreira&nbsp;(<strong>F</strong>), Willians&nbsp;(<strong>P</strong>), Fernando&nbsp;(<strong>B</strong>)</td>
+        <td>Hércules&nbsp;(<strong>F</strong>), Sérgio&nbsp;(<strong>P</strong>), Cal&nbsp;(<strong>B</strong>)</td>
+        <td>Ivis&nbsp;(<strong>F</strong>), Dodô&nbsp;(<strong>P</strong>)</td>
+        <td>Thiago&nbsp;(<strong>F</strong>), Lucas Prado&nbsp;(<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Sexta</td>
-        <td>L. Ferreira (<strong>B</strong>), Willians (<strong>F</strong>), Fernando (<strong>P</strong>)</td>
-        <td>Hércules (<strong>B</strong>), Sérgio (<strong>F</strong>), Cal (<strong>P</strong>)</td>
-        <td>Felipe (<strong>B</strong>), Rodrigo (<strong>F</strong>), Elizeu (<strong>P</strong>)</td>
-        <td>Dodô (<strong>F</strong>), Ivis (<strong>P</strong>)</td>
-        <td>Lucas Prado (<strong>F</strong>), Thiago (<strong>P</strong>)</td>
+        <td>L. Ferreira&nbsp;(<strong>B</strong>), Willians&nbsp;(<strong>F</strong>), Fernando&nbsp;(<strong>P</strong>)</td>
+        <td>Hércules&nbsp;(<strong>B</strong>), Sérgio&nbsp;(<strong>F</strong>), Cal&nbsp;(<strong>P</strong>)</td>
+        <td>Felipe&nbsp;(<strong>B</strong>), Rodrigo&nbsp;(<strong>F</strong>), Elizeu&nbsp;(<strong>P</strong>)</td>
+        <td>Dodô&nbsp;(<strong>F</strong>), Ivis&nbsp;(<strong>P</strong>)</td>
+        <td>Lucas Prado&nbsp;(<strong>F</strong>), Thiago&nbsp;(<strong>P</strong>)</td>
       </tr>
     </table>
   </div>
