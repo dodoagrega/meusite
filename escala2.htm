@@ -8,51 +8,35 @@
       font-family: Arial, sans-serif;
       margin: 20px;
     }
-
     .tabela-responsiva {
-      max-height: 400px; /* Altura máxima para permitir rolagem */
-      overflow-y: auto;
-      border: 1px solid #ccc;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-height: 400px;
+      position: relative;
     }
-
-    .tabela-responsiva table {
+    table {
       width: 100%;
       border-collapse: collapse;
-      table-layout: fixed; /* Distribuição proporcional das colunas */
-      word-wrap: break-word;
+      table-layout: fixed;
     }
-
-    .tabela-responsiva th,
-    .tabela-responsiva td {
+    th, td {
       border: 1px solid #333;
-      padding: 6px 4px;
+      padding: 8px;
       text-align: center;
       font-size: 12px;
       word-break: break-word;
     }
-
-    .tabela-responsiva th {
+    th {
+      background-color: #f2f2f2;
       position: sticky;
       top: 0;
-      background-color: #f2f2f2;
       z-index: 2;
-    }
-
-    .legend {
-      margin-top: 10px;
-    }
-
-    @media (max-width: 600px) {
-      .tabela-responsiva {
-        margin-bottom: 16px;
-      }
     }
   </style>
 </head>
 <body>
 
   <h2>Escala Semanal de Trabalho</h2>
-
   <div class="tabela-responsiva">
     <table>
       <tr>
@@ -65,52 +49,52 @@
       </tr>
       <tr>
         <td>Segunda</td>
-        <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
-        <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
-        <td>Hércules (F), Sérgio (P), Cal (B)</td>
-        <td>Dodô (F), Ivis (P)</td>
-        <td>Lucas Prado (F), Thiago (P)</td>
+        <td>Felipe (<strong>F</strong>), Rodrigo (<strong>P</strong>), Elizeu (<strong>B</strong>)</td>
+        <td>L. Ferreira (<strong>F</strong>), Willians (<strong>P</strong>), Fernando (<strong>B</strong>)</td>
+        <td>Hércules (<strong>F</strong>), Sérgio (<strong>P</strong>), Cal (<strong>B</strong>)</td>
+        <td>Dodô (<strong>F</strong>), Ivis (<strong>P</strong>)</td>
+        <td>Lucas Prado (<strong>F</strong>), Thiago (<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Terça</td>
-        <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
-        <td>Hércules (B), Sérgio (F), Cal (P)</td>
-        <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
-        <td>Ivis (F), Dodô (P)</td>
-        <td>Thiago (F), Lucas Prado (P)</td>
+        <td>L. Ferreira (<strong>B</strong>), Willians (<strong>F</strong>), Fernando (<strong>P</strong>)</td>
+        <td>Hércules (<strong>B</strong>), Sérgio (<strong>F</strong>), Cal (<strong>P</strong>)</td>
+        <td>Felipe (<strong>B</strong>), Rodrigo (<strong>F</strong>), Elizeu (<strong>P</strong>)</td>
+        <td>Ivis (<strong>F</strong>), Dodô (<strong>P</strong>)</td>
+        <td>Thiago (<strong>F</strong>), Lucas Prado (<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Quarta</td>
-        <td>Hércules (P), Sérgio (B), Cal (F)</td>
-        <td>Felipe (P), Rodrigo (B), Elizeu (F)</td>
-        <td>L. Ferreira (P), Willians (B), Fernando (F)</td>
-        <td>Dodô (F), Ivis (P)</td>
-        <td>Lucas Prado (F), Thiago (P)</td>
+        <td>Hércules (<strong>P</strong>), Sérgio (<strong>B</strong>), Cal (<strong>F</strong>)</td>
+        <td>Felipe (<strong>P</strong>), Rodrigo (<strong>B</strong>), Elizeu (<strong>F</strong>)</td>
+        <td>L. Ferreira (<strong>P</strong>), Willians (<strong>B</strong>), Fernando (<strong>F</strong>)</td>
+        <td>Dodô (<strong>F</strong>), Ivis (<strong>P</strong>)</td>
+        <td>Lucas Prado (<strong>F</strong>), Thiago (<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Quinta</td>
-        <td>Felipe (F), Rodrigo (P), Elizeu (B)</td>
-        <td>L. Ferreira (F), Willians (P), Fernando (B)</td>
-        <td>Hércules (F), Sérgio (P), Cal (B)</td>
-        <td>Ivis (F), Dodô (P)</td>
-        <td>Thiago (F), Lucas Prado (P)</td>
+        <td>Felipe (<strong>F</strong>), Rodrigo (<strong>P</strong>), Elizeu (<strong>B</strong>)</td>
+        <td>L. Ferreira (<strong>F</strong>), Willians (<strong>P</strong>), Fernando (<strong>B</strong>)</td>
+        <td>Hércules (<strong>F</strong>), Sérgio (<strong>P</strong>), Cal (<strong>B</strong>)</td>
+        <td>Ivis (<strong>F</strong>), Dodô (<strong>P</strong>)</td>
+        <td>Thiago (<strong>F</strong>), Lucas Prado (<strong>P</strong>)</td>
       </tr>
       <tr>
         <td>Sexta</td>
-        <td>L. Ferreira (B), Willians (F), Fernando (P)</td>
-        <td>Hércules (B), Sérgio (F), Cal (P)</td>
-        <td>Felipe (B), Rodrigo (F), Elizeu (P)</td>
-        <td>Dodô (F), Ivis (P)</td>
-        <td>Lucas Prado (F), Thiago (P)</td>
+        <td>L. Ferreira (<strong>B</strong>), Willians (<strong>F</strong>), Fernando (<strong>P</strong>)</td>
+        <td>Hércules (<strong>B</strong>), Sérgio (<strong>F</strong>), Cal (<strong>P</strong>)</td>
+        <td>Felipe (<strong>B</strong>), Rodrigo (<strong>F</strong>), Elizeu (<strong>P</strong>)</td>
+        <td>Dodô (<strong>F</strong>), Ivis (<strong>P</strong>)</td>
+        <td>Lucas Prado (<strong>F</strong>), Thiago (<strong>P</strong>)</td>
       </tr>
     </table>
   </div>
 
   <div class="legend">
     <strong>Legenda:</strong><br>
-    <strong>(F)</strong> Front End<br>
-    <strong>(P)</strong> Portas<br>
-    <strong>(B)</strong> Back End
+    <strong>F</strong>: Front End<br>
+    <strong>P</strong>: Portas<br>
+    <strong>B</strong>: Back End
   </div>
 
   <div class="explicacao">
