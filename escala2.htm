@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Escala Quinta e Sexta</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escala Semanal de Trabalho</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -13,29 +13,21 @@
       padding: 20px;
       color: #333;
     }
-
     h2 {
       text-align: center;
       color: #1a73e8;
-      margin-bottom: 20px;
     }
-
     .dia {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
-
     .dia h3 {
-      margin-bottom: 10px;
       color: #1a1a1a;
-      font-size: 20px;
     }
-
     .carros {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
     }
-
     .carro {
       background: #ffffff;
       border-radius: 10px;
@@ -44,106 +36,105 @@
       flex: 1 1 250px;
       min-width: 220px;
     }
-
     .carro h4 {
       margin: 0 0 8px;
       color: #1a73e8;
-      font-size: 16px;
     }
-
     .carro p {
       margin: 4px 0;
-      font-size: 14px;
     }
-
-    .operacao {
-      font-weight: bold;
+    .regras {
+      background: #ffffff;
+      border-left: 6px solid #1a73e8;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .regras h3 {
+      margin-top: 0;
+    }
+    .regras ul {
+      padding-left: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h2>Escala de Quinta e Sexta</h2>
+<h2>Escala Semanal de Trabalho</h2>
 
-  <!-- Quinta-feira -->
-  <div class="dia">
-    <h3>Quinta-feira</h3>
-    <div class="carros">
-      <div class="carro">
-        <h4>Carro 1</h4>
-        <p>Cal (<span class="operacao">P</span>)</p>
-        <p>Hércules (<span class="operacao">B</span>)</p>
-        <p>Sérgio (<span class="operacao">F</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 2</h4>
-        <p>Elizeu (<span class="operacao">P</span>)</p>
-        <p>Felipe (<span class="operacao">B</span>)</p>
-        <p>Rodrigo (<span class="operacao">F</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 3</h4>
-        <p>Fernando (<span class="operacao">P</span>)</p>
-        <p>L. Ferreira (<span class="operacao">B</span>)</p>
-        <p>Willians (<span class="operacao">F</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 4</h4>
-        <p>Ivis (<span class="operacao">F</span>)</p>
-        <p>Dodô (<span class="operacao">P</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 5</h4>
-        <p>Thiago (<span class="operacao">F</span>)</p>
-        <p>Lucas Prado (<span class="operacao">P</span>)</p>
-      </div>
-    </div>
+<!-- Segunda -->
+<div class="dia">
+  <h3>Segunda-feira</h3>
+  <div class="carros">
+    <div class="carro"><h4>Carro 1</h4><p>Felipe (Front End)</p><p>Marcus Vinicius (Portas)</p><p>Elizeu (Back End)</p></div>
+    <div class="carro"><h4>Carro 2</h4><p>L. Ferreira (Front End)</p><p>Willians (Portas)</p><p>Fernando (Back End)</p></div>
+    <div class="carro"><h4>Carro 3</h4><p>Hércules (Front End)</p><p>Sérgio (Portas)</p><p>Cal (Back End)</p></div>
+    <div class="carro"><h4>Carro 4</h4><p>Ivis (Front End)</p><p>Dodô (Portas)</p></div>
+    <div class="carro"><h4>Carro 5</h4><p>Lucas Prado (Front End)</p><p>Thiago (Portas)</p></div>
   </div>
+</div>
 
-  <!-- Sexta-feira -->
-  <div class="dia">
-    <h3>Sexta-feira</h3>
-    <div class="carros">
-      <div class="carro">
-        <h4>Carro 1</h4>
-        <p>Sérgio (<span class="operacao">P</span>)</p>
-        <p>Cal (<span class="operacao">B</span>)</p>
-        <p>Hércules (<span class="operacao">F</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 2</h4>
-        <p>Rodrigo (<span class="operacao">P</span>)</p>
-        <p>Elizeu (<span class="operacao">B</span>)</p>
-        <p>Felipe (<span class="operacao">F</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 3</h4>
-        <p>Willians (<span class="operacao">P</span>)</p>
-        <p>Fernando (<span class="operacao">B</span>)</p>
-        <p>L. Ferreira (<span class="operacao">F</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 4</h4>
-        <p>Dodô (<span class="operacao">F</span>)</p>
-        <p>Ivis (<span class="operacao">P</span>)</p>
-      </div>
-      <div class="carro">
-        <h4>Carro 5</h4>
-        <p>Lucas Prado (<span class="operacao">F</span>)</p>
-        <p>Thiago (<span class="operacao">P</span>)</p>
-      </div>
-    </div>
+<!-- Terça -->
+<div class="dia">
+  <h3>Terça-feira</h3>
+  <div class="carros">
+    <div class="carro"><h4>Carro 1</h4><p>L. Ferreira (Portas)</p><p>Willians (Back End)</p><p>Fernando (Front End)</p></div>
+    <div class="carro"><h4>Carro 2</h4><p>Hércules (Portas)</p><p>Sérgio (Back End)</p><p>Cal (Front End)</p></div>
+    <div class="carro"><h4>Carro 3</h4><p>Felipe (Portas)</p><p>Marcus Vinicius (Back End)</p><p>Elizeu (Front End)</p></div>
+    <div class="carro"><h4>Carro 4</h4><p>Dodô (Front End)</p><p>Ivis (Portas)</p></div>
+    <div class="carro"><h4>Carro 5</h4><p>Thiago (Front End)</p><p>Lucas Prado (Portas)</p></div>
   </div>
-<div class="legend">
+</div>
+
+<!-- Quarta -->
+<div class="dia">
+  <h3>Quarta-feira</h3>
+  <div class="carros">
+    <div class="carro"><h4>Carro 1</h4><p>Hércules (Back End)</p><p>Sérgio (Front End)</p><p>Cal (Portas)</p></div>
+    <div class="carro"><h4>Carro 2</h4><p>Felipe (Back End)</p><p>Marcus Vinicius (Front End)</p><p>Elizeu (Portas)</p></div>
+    <div class="carro"><h4>Carro 3</h4><p>L. Ferreira (Back End)</p><p>Willians (Front End)</p><p>Fernando (Portas)</p></div>
+    <div class="carro"><h4>Carro 4</h4><p>Ivis (Front End)</p><p>Dodô (Portas)</p></div>
+    <div class="carro"><h4>Carro 5</h4><p>Lucas Prado (Front End)</p><p>Thiago (Portas)</p></div>
+  </div>
+</div>
+
+<!-- Quinta -->
+<div class="dia">
+  <h3>Quinta-feira</h3>
+  <div class="carros">
+    <div class="carro"><h4>Carro 1</h4><p>Felipe (Front End)</p><p>Marcus Vinicius (Portas)</p><p>Elizeu (Back End)</p></div>
+    <div class="carro"><h4>Carro 2</h4><p>L. Ferreira (Front End)</p><p>Willians (Portas)</p><p>Fernando (Back End)</p></div>
+    <div class="carro"><h4>Carro 3</h4><p>Hércules (Front End)</p><p>Sérgio (Portas)</p><p>Cal (Back End)</p></div>
+    <div class="carro"><h4>Carro 4</h4><p>Dodô (Front End)</p><p>Ivis (Portas)</p></div>
+    <div class="carro"><h4>Carro 5</h4><p>Thiago (Front End)</p><p>Lucas Prado (Portas)</p></div>
+  </div>
+</div>
+
+<!-- Sexta -->
+<div class="dia">
+  <h3>Sexta-feira</h3>
+  <div class="carros">
+    <div class="carro"><h4>Carro 1</h4><p>L. Ferreira (Portas)</p><p>Willians (Back End)</p><p>Fernando (Front End)</p></div>
+    <div class="carro"><h4>Carro 2</h4><p>Hércules (Portas)</p><p>Sérgio (Back End)</p><p>Cal (Front End)</p></div>
+    <div class="carro"><h4>Carro 3</h4><p>Felipe (Portas)</p><p>Marcus Vinicius (Back End)</p><p>Elizeu (Front End)</p></div>
+    <div class="carro"><h4>Carro 4</h4><p>Ivis (Front End)</p><p>Dodô (Portas)</p></div>
+    <div class="carro"><h4>Carro 5</h4><p>Lucas Prado (Front End)</p><p>Thiago (Portas)</p></div>
+  </div>
+</div>
+
+<!-- Regras -->
+<div class="regras">
   <h3>Critérios da Escala</h3>
   <ul>
-    <li><strong>Equipes 1, 2 e 3:</strong> Formam trios e revezam entre os Carros 1, 2 e 3 a cada dia útil.</li>
-    <li><strong>Rodízio dos carros:</strong> Segunda (1 → 2 → 3), Terça (2 → 3 → 1), Quarta (3 → 1 → 2), e assim por diante.</li>
-    <li><strong>Ordem do revezamento nas operações:</strong> Front End → Back End → Portas → Front End, a cada hora.</li>
-    <li><strong>Continuidade:</strong> No dia seguinte, cada trabalhador inicia na operação em que parou no dia anterior.</li>
-    <li><strong>Equipes 4 e 5:</strong> Duplas fixas nos Carros 4 e 5, revezam entre Front End e Portas a cada hora.</li>
-    <li><strong>Revezamento diário:</strong> No dia seguinte, iniciam na operação em que terminaram.</li>
+    <li>Equipes 1, 2 e 3: Formam trios e revezam entre os Carros 1, 2 e 3 a cada dia útil.</li>
+    <li>Rodízio dos carros: Segunda (1 → 2 → 3), Terça (2 → 3 → 1), Quarta (3 → 1 → 2), etc.</li>
+    <li>Ordem do revezamento nas operações: Front End → Back End → Portas → Front End (a cada hora).</li>
+    <li>Continuidade: No dia seguinte, cada trabalhador inicia na operação em que parou no dia anterior.</li>
+    <li>Equipes 4 e 5: Duplas fixas nos Carros 4 e 5, revezam entre Front End e Portas a cada hora.</li>
+    <li>Revezamento diário: No dia seguinte, iniciam na operação em que terminaram.</li>
   </ul>
 </div>
+
 </body>
 </html>
