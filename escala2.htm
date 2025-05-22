@@ -1,91 +1,200 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
-.dia {
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #004080;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-}
-.cartao-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-.cartao {
-    background-color: white;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    width: 200px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-.cartao h3 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    color: #004080;
-}
-.linha {
-    margin-bottom: 6px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Escala Semanal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .dia {
+      margin: 20px auto;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .dia h2 {
+      background: #007BFF;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .carro {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 5px solid #007BFF;
+      background: #f0f8ff;
+      border-radius: 5px;
+    }
+    .carro strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .linha {
+      margin-left: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<div class='dia'>Segunda</div>
-<div class='cartao-container'>
-  <div class='cartao'><h3>Carro 1</h3><div class='linha'><strong>Felipe</strong>: Front End</div><div class='linha'><strong>Rodrigo</strong>: Portas</div><div class='linha'><strong>Elizeu</strong>: Back End</div></div>
-  <div class='cartao'><h3>Carro 2</h3><div class='linha'><strong>L. Ferreira</strong>: Front End</div><div class='linha'><strong>Willians</strong>: Portas</div><div class='linha'><strong>Fernando</strong>: Back End</div></div>
-  <div class='cartao'><h3>Carro 3</h3><div class='linha'><strong>Hércules</strong>: Front End</div><div class='linha'><strong>Sérgio</strong>: Portas</div><div class='linha'><strong>Cal</strong>: Back End</div></div>
-  <div class='cartao'><h3>Carro 4</h3><div class='linha'><strong>Ivis</strong>: Front End</div><div class='linha'><strong>Dodô</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 5</h3><div class='linha'><strong>Thiago</strong>: Front End</div><div class='linha'><strong>Lucas Prado</strong>: Portas</div></div>
-  <div class='cartao'><h3>Morto/Refino</h3><div class='linha'><strong>Régis</strong></div></div>
+<!-- SEGUNDA -->
+<div class="dia">
+  <h2>Segunda-feira</h2>
+  <div class="carro"><strong>Carro 1</strong>
+    <div class="linha">Felipe - Front End</div>
+    <div class="linha">Rodrigo - Portas</div>
+    <div class="linha">Elizeu - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 2</strong>
+    <div class="linha">Lucas Ferreira - Front End</div>
+    <div class="linha">Willians - Portas</div>
+    <div class="linha">Fernando - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 3</strong>
+    <div class="linha">Hércules - Front End</div>
+    <div class="linha">Sérgio - Portas</div>
+    <div class="linha">Cal - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 4</strong>
+    <div class="linha">Ivis - Front End</div>
+    <div class="linha">Dodô - Portas</div>
+  </div>
+  <div class="carro"><strong>Carro 5</strong>
+    <div class="linha">Thiago - Front End</div>
+    <div class="linha">Lucas Prado - Portas</div>
+  </div>
+  <div class="carro"><strong>Morto/Refino</strong>
+    <div class="linha">Régis</div>
+  </div>
 </div>
 
-<div class='dia'>Terça</div>
-<div class='cartao-container'>
-  <div class='cartao'><h3>Carro 1</h3><div class='linha'><strong>Rodrigo</strong>: Front End</div><div class='linha'><strong>Elizeu</strong>: Back End</div><div class='linha'><strong>Felipe</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 2</h3><div class='linha'><strong>Willians</strong>: Front End</div><div class='linha'><strong>Fernando</strong>: Back End</div><div class='linha'><strong>Régis</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 3</h3><div class='linha'><strong>Sérgio</strong>: Front End</div><div class='linha'><strong>Cal</strong>: Back End</div><div class='linha'><strong>Hércules</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 4</h3><div class='linha'><strong>Dodô</strong>: Front End</div><div class='linha'><strong>Ivis</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 5</h3><div class='linha'><strong>Lucas Prado</strong>: Front End</div><div class='linha'><strong>Thiago</strong>: Portas</div></div>
-  <div class='cartao'><h3>Morto/Refino</h3><div class='linha'><strong>Tiago</strong></div></div>
+<!-- TERÇA -->
+<div class="dia">
+  <h2>Terça-feira</h2>
+  <div class="carro"><strong>Carro 1</strong>
+    <div class="linha">Lucas Ferreira - Front End</div>
+    <div class="linha">Willians - Portas</div>
+    <div class="linha">Fernando - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 2</strong>
+    <div class="linha">Hércules - Front End</div>
+    <div class="linha">Sérgio - Portas</div>
+    <div class="linha">Cal - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 3</strong>
+    <div class="linha">Felipe - Front End</div>
+    <div class="linha">Rodrigo - Portas</div>
+    <div class="linha">Elizeu - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 4</strong>
+    <div class="linha">Ivis - Portas</div>
+    <div class="linha">Régis - Front End</div>
+  </div>
+  <div class="carro"><strong>Carro 5</strong>
+    <div class="linha">Thiago - Portas</div>
+    <div class="linha">Lucas Prado - Front End</div>
+  </div>
+  <div class="carro"><strong>Morto/Refino</strong>
+    <div class="linha">Tiago</div>
+  </div>
 </div>
 
-<div class='dia'>Quarta</div>
-<div class='cartao-container'>
-  <div class='cartao'><h3>Carro 1</h3><div class='linha'><strong>Elizeu</strong>: Front End</div><div class='linha'><strong>Felipe</strong>: Back End</div><div class='linha'><strong>Rodrigo</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 2</h3><div class='linha'><strong>Fernando</strong>: Front End</div><div class='linha'><strong>Régis</strong>: Back End</div><div class='linha'><strong>Willians</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 3</h3><div class='linha'><strong>Cal</strong>: Front End</div><div class='linha'><strong>Hércules</strong>: Back End</div><div class='linha'><strong>Sérgio</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 4</h3><div class='linha'><strong>Ivis</strong>: Front End</div><div class='linha'><strong>Dodô</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 5</h3><div class='linha'><strong>Thiago</strong>: Front End</div><div class='linha'><strong>Lucas Prado</strong>: Portas</div></div>
-  <div class='cartao'><h3>Morto/Refino</h3><div class='linha'><strong>L. Ferreira</strong></div></div>
+<!-- QUARTA -->
+<div class="dia">
+  <h2>Quarta-feira</h2>
+  <div class="carro"><strong>Carro 1</strong>
+    <div class="linha">Hércules - Front End</div>
+    <div class="linha">Sérgio - Portas</div>
+    <div class="linha">Cal - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 2</strong>
+    <div class="linha">Felipe - Front End</div>
+    <div class="linha">Rodrigo - Portas</div>
+    <div class="linha">Elizeu - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 3</strong>
+    <div class="linha">Régis - Front End</div>
+    <div class="linha">Willians - Portas</div>
+    <div class="linha">Fernando - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 4</strong>
+    <div class="linha">Ivis - Front End</div>
+    <div class="linha">Dodô - Portas</div>
+  </div>
+  <div class="carro"><strong>Carro 5</strong>
+    <div class="linha">Lucas Prado - Front End</div>
+    <div class="linha">Tiago - Portas</div>
+  </div>
+  <div class="carro"><strong>Morto/Refino</strong>
+    <div class="linha">Lucas Ferreira</div>
+  </div>
 </div>
 
-<div class='dia'>Quinta</div>
-<div class='cartao-container'>
-  <div class='cartao'><h3>Carro 1</h3><div class='linha'><strong>Felipe</strong>: Front End</div><div class='linha'><strong>Rodrigo</strong>: Back End</div><div class='linha'><strong>Elizeu</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 2</h3><div class='linha'><strong>Régis</strong>: Front End</div><div class='linha'><strong>Willians</strong>: Back End</div><div class='linha'><strong>Fernando</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 3</h3><div class='linha'><strong>Hércules</strong>: Front End</div><div class='linha'><strong>Sérgio</strong>: Back End</div><div class='linha'><strong>Cal</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 4</h3><div class='linha'><strong>L. Ferreira</strong>: Front End</div><div class='linha'><strong>Ivis</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 5</h3><div class='linha'><strong>Lucas Prado</strong>: Front End</div><div class='linha'><strong>Thiago</strong>: Portas</div></div>
-  <div class='cartao'><h3>Morto/Refino</h3><div class='linha'><strong>Dodô</strong></div></div>
+<!-- QUINTA -->
+<div class="dia">
+  <h2>Quinta-feira</h2>
+  <div class="carro"><strong>Carro 1</strong>
+    <div class="linha">Felipe - Front End</div>
+    <div class="linha">Rodrigo - Portas</div>
+    <div class="linha">Elizeu - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 2</strong>
+    <div class="linha">Régis - Front End</div>
+    <div class="linha">Willians - Portas</div>
+    <div class="linha">Fernando - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 3</strong>
+    <div class="linha">Hércules - Front End</div>
+    <div class="linha">Sérgio - Portas</div>
+    <div class="linha">Cal - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 4</strong>
+    <div class="linha">Ivis - Front End</div>
+    <div class="linha">Lucas Ferreira - Portas</div>
+  </div>
+  <div class="carro"><strong>Carro 5</strong>
+    <div class="linha">Thiago - Front End</div>
+    <div class="linha">Lucas Prado - Portas</div>
+  </div>
+  <div class="carro"><strong>Morto/Refino</strong>
+    <div class="linha">Dodô</div>
+  </div>
 </div>
 
-<div class='dia'>Sexta</div>
-<div class='cartao-container'>
-  <div class='cartao'><h3>Carro 1</h3><div class='linha'><strong>Rodrigo</strong>: Front End</div><div class='linha'><strong>Elizeu</strong>: Back End</div><div class='linha'><strong>Felipe</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 2</h3><div class='linha'><strong>Willians</strong>: Front End</div><div class='linha'><strong>Fernando</strong>: Back End</div><div class='linha'><strong>Régis</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 3</h3><div class='linha'><strong>Sérgio</strong>: Front End</div><div class='linha'><strong>Cal</strong>: Back End</div><div class='linha'><strong>Hércules</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 4</h3><div class='linha'><strong>Ivis</strong>: Front End</div><div class='linha'><strong>Dodô</strong>: Portas</div></div>
-  <div class='cartao'><h3>Carro 5</h3><div class='linha'><strong>Dodo</strong>: Front End</div><div class='linha'><strong>Thiago</strong>: Portas</div></div>
-  <div class='cartao'><h3>Morto/Refino</h3><div class='linha'><strong>L. Prado</strong></div></div>
+<!-- SEXTA -->
+<div class="dia">
+  <h2>Sexta-feira</h2>
+  <div class="carro"><strong>Carro 1</strong>
+    <div class="linha">Régis - Front End</div>
+    <div class="linha">Willians - Portas</div>
+    <div class="linha">Fernando - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 2</strong>
+    <div class="linha">Hércules - Front End</div>
+    <div class="linha">Sérgio - Portas</div>
+    <div class="linha">Cal - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 3</strong>
+    <div class="linha">Felipe - Front End</div>
+    <div class="linha">Rodrigo - Portas</div>
+    <div class="linha">Elizeu - Back End</div>
+  </div>
+  <div class="carro"><strong>Carro 4</strong>
+    <div class="linha">Ivis - Front End</div>
+    <div class="linha">Lucas Ferreira - Portas</div>
+  </div>
+  <div class="carro"><strong>Carro 5</strong>
+    <div class="linha">Thiago - Front End</div>
+    <div class="linha">Dodô - Portas</div>
+  </div>
+  <div class="carro"><strong>Morto/Refino</strong>
+    <div class="linha">Lucas Prado</div>
+  </div>
 </div>
 
 </body>
