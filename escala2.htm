@@ -1,201 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Escala Semanal</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #f4f4f4;
+      padding: 20px;
     }
     .dia {
-      margin: 20px auto;
-      padding: 15px;
+      margin-bottom: 40px;
+    }
+    h2 {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+    .carros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .card {
       background: white;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 800px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .dia h2 {
-      background: #007BFF;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-    }
-    .carro {
-      margin: 10px 0;
-      padding: 10px;
-      border-left: 5px solid #007BFF;
-      background: #f0f8ff;
       border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      padding: 10px;
+      flex: 1 1 200px;
     }
-    .carro strong {
-      display: block;
-      margin-bottom: 5px;
+    .card h3 {
+      margin-top: 0;
       color: #333;
     }
-    .linha {
+    .op {
       margin-left: 10px;
     }
   </style>
 </head>
 <body>
 
-<!-- SEGUNDA -->
-<div class="dia">
-  <h2>Segunda-feira</h2>
-  <div class="carro"><strong>Carro 1</strong>
-    <div class="linha">Felipe - Front End</div>
-    <div class="linha">Rodrigo - Portas</div>
-    <div class="linha">Elizeu - Back End</div>
+  <div class="dia">
+    <h2>Segunda-feira</h2>
+    <div class="carros">
+      <div class="card"><h3>Carro 1</h3>Felipe - Front End<br>Rodrigo - Portas<br>Elizeu - Back End</div>
+      <div class="card"><h3>Carro 2</h3>Lucas Ferreira - Front End<br>Willians - Portas<br>Fernando - Back End</div>
+      <div class="card"><h3>Carro 3</h3>Hércules - Front End<br>Sérgio - Portas<br>Cal - Back End</div>
+      <div class="card"><h3>Carro 4</h3>Ivis - Front End<br>Dodô - Portas</div>
+      <div class="card"><h3>Carro 5</h3>Tiago - Front End<br>Lucas Prado - Portas</div>
+      <div class="card"><h3>Morto/Refino</h3>Régis</div>
+    </div>
   </div>
-  <div class="carro"><strong>Carro 2</strong>
-    <div class="linha">Lucas Ferreira - Front End</div>
-    <div class="linha">Willians - Portas</div>
-    <div class="linha">Fernando - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 3</strong>
-    <div class="linha">Hércules - Front End</div>
-    <div class="linha">Sérgio - Portas</div>
-    <div class="linha">Cal - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 4</strong>
-    <div class="linha">Ivis - Front End</div>
-    <div class="linha">Dodô - Portas</div>
-  </div>
-  <div class="carro"><strong>Carro 5</strong>
-    <div class="linha">Thiago - Front End</div>
-    <div class="linha">Lucas Prado - Portas</div>
-  </div>
-  <div class="carro"><strong>Morto/Refino</strong>
-    <div class="linha">Régis</div>
-  </div>
-</div>
 
-<!-- TERÇA -->
-<div class="dia">
-  <h2>Terça-feira</h2>
-  <div class="carro"><strong>Carro 1</strong>
-    <div class="linha">Lucas Ferreira - Front End</div>
-    <div class="linha">Willians - Portas</div>
-    <div class="linha">Fernando - Back End</div>
+  <div class="dia">
+    <h2>Terça-feira</h2>
+    <div class="carros">
+      <div class="card"><h3>Carro 1</h3>Régis - Front End<br>Rodrigo - Portas<br>Elizeu - Back End</div>
+      <div class="card"><h3>Carro 2</h3>Felipe - Front End<br>Willians - Portas<br>Fernando - Back End</div>
+      <div class="card"><h3>Carro 3</h3>Lucas Ferreira - Front End<br>Sérgio - Portas<br>Cal - Back End</div>
+      <div class="card"><h3>Carro 4</h3>Ivis - Front End<br>Dodô - Portas</div>
+      <div class="card"><h3>Carro 5</h3>Tiago - Morto/Refino<br>Lucas Prado - Portas</div>
+      <div class="card"><h3>Morto/Refino</h3>Tiago</div>
+    </div>
   </div>
-  <div class="carro"><strong>Carro 2</strong>
-    <div class="linha">Hércules - Front End</div>
-    <div class="linha">Sérgio - Portas</div>
-    <div class="linha">Cal - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 3</strong>
-    <div class="linha">Felipe - Front End</div>
-    <div class="linha">Rodrigo - Portas</div>
-    <div class="linha">Elizeu - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 4</strong>
-    <div class="linha">Ivis - Portas</div>
-    <div class="linha">Régis - Front End</div>
-  </div>
-  <div class="carro"><strong>Carro 5</strong>
-    <div class="linha">Thiago - Portas</div>
-    <div class="linha">Lucas Prado - Front End</div>
-  </div>
-  <div class="carro"><strong>Morto/Refino</strong>
-    <div class="linha">Tiago</div>
-  </div>
-</div>
 
-<!-- QUARTA -->
-<div class="dia">
-  <h2>Quarta-feira</h2>
-  <div class="carro"><strong>Carro 1</strong>
-    <div class="linha">Hércules - Front End</div>
-    <div class="linha">Sérgio - Portas</div>
-    <div class="linha">Cal - Back End</div>
+  <div class="dia">
+    <h2>Quarta-feira</h2>
+    <div class="carros">
+      <div class="card"><h3>Carro 1</h3>Régis - Front End<br>Rodrigo - Portas<br>Elizeu - Back End</div>
+      <div class="card"><h3>Carro 2</h3>Tiago - Front End<br>Willians - Portas<br>Fernando - Back End</div>
+      <div class="card"><h3>Carro 3</h3>Felipe - Front End<br>Sérgio - Portas<br>Cal - Back End</div>
+      <div class="card"><h3>Carro 4</h3>Ivis - Front End<br>Dodô - Portas</div>
+      <div class="card"><h3>Carro 5</h3>Lucas Ferreira - Morto/Refino<br>Lucas Prado - Portas</div>
+      <div class="card"><h3>Morto/Refino</h3>Lucas Ferreira</div>
+    </div>
   </div>
-  <div class="carro"><strong>Carro 2</strong>
-    <div class="linha">Felipe - Front End</div>
-    <div class="linha">Rodrigo - Portas</div>
-    <div class="linha">Elizeu - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 3</strong>
-    <div class="linha">Régis - Front End</div>
-    <div class="linha">Willians - Portas</div>
-    <div class="linha">Fernando - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 4</strong>
-    <div class="linha">Ivis - Front End</div>
-    <div class="linha">Dodô - Portas</div>
-  </div>
-  <div class="carro"><strong>Carro 5</strong>
-    <div class="linha">Lucas Prado - Front End</div>
-    <div class="linha">Tiago - Portas</div>
-  </div>
-  <div class="carro"><strong>Morto/Refino</strong>
-    <div class="linha">Lucas Ferreira</div>
-  </div>
-</div>
 
-<!-- QUINTA -->
-<div class="dia">
-  <h2>Quinta-feira</h2>
-  <div class="carro"><strong>Carro 1</strong>
-    <div class="linha">Felipe - Front End</div>
-    <div class="linha">Rodrigo - Portas</div>
-    <div class="linha">Elizeu - Back End</div>
+  <div class="dia">
+    <h2>Quinta-feira</h2>
+    <div class="carros">
+      <div class="card"><h3>Carro 1</h3>Régis - Front End<br>Rodrigo - Portas<br>Elizeu - Back End</div>
+      <div class="card"><h3>Carro 2</h3>Tiago - Front End<br>Lucas Ferreira - Portas<br>Fernando - Back End</div>
+      <div class="card"><h3>Carro 3</h3>Felipe - Front End<br>Sérgio - Portas<br>Cal - Back End</div>
+      <div class="card"><h3>Carro 4</h3>Ivis - Front End<br>Lucas Ferreira - Portas</div>
+      <div class="card"><h3>Carro 5</h3>Dodô - Morto/Refino<br>Lucas Prado - Portas</div>
+      <div class="card"><h3>Morto/Refino</h3>Dodô</div>
+    </div>
   </div>
-  <div class="carro"><strong>Carro 2</strong>
-    <div class="linha">Régis - Front End</div>
-    <div class="linha">Willians - Portas</div>
-    <div class="linha">Fernando - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 3</strong>
-    <div class="linha">Hércules - Front End</div>
-    <div class="linha">Sérgio - Portas</div>
-    <div class="linha">Cal - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 4</strong>
-    <div class="linha">Ivis - Front End</div>
-    <div class="linha">Lucas Ferreira - Portas</div>
-  </div>
-  <div class="carro"><strong>Carro 5</strong>
-    <div class="linha">Thiago - Front End</div>
-    <div class="linha">Lucas Prado - Portas</div>
-  </div>
-  <div class="carro"><strong>Morto/Refino</strong>
-    <div class="linha">Dodô</div>
-  </div>
-</div>
 
-<!-- SEXTA -->
-<div class="dia">
-  <h2>Sexta-feira</h2>
-  <div class="carro"><strong>Carro 1</strong>
-    <div class="linha">Régis - Front End</div>
-    <div class="linha">Willians - Portas</div>
-    <div class="linha">Fernando - Back End</div>
+  <div class="dia">
+    <h2>Sexta-feira</h2>
+    <div class="carros">
+      <div class="card"><h3>Carro 1</h3>Régis - Front End<br>Rodrigo - Portas<br>Elizeu - Back End</div>
+      <div class="card"><h3>Carro 2</h3>Tiago - Front End<br>Lucas Ferreira - Portas<br>Fernando - Back End</div>
+      <div class="card"><h3>Carro 3</h3>Felipe - Front End<br>Sérgio - Portas<br>Cal - Back End</div>
+      <div class="card"><h3>Carro 4</h3>Ivis - Front End<br>Lucas Ferreira - Portas</div>
+      <div class="card"><h3>Carro 5</h3>Dodô - Front End<br>Lucas Prado - Morto/Refino</div>
+      <div class="card"><h3>Morto/Refino</h3>Lucas Prado</div>
+    </div>
   </div>
-  <div class="carro"><strong>Carro 2</strong>
-    <div class="linha">Hércules - Front End</div>
-    <div class="linha">Sérgio - Portas</div>
-    <div class="linha">Cal - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 3</strong>
-    <div class="linha">Felipe - Front End</div>
-    <div class="linha">Rodrigo - Portas</div>
-    <div class="linha">Elizeu - Back End</div>
-  </div>
-  <div class="carro"><strong>Carro 4</strong>
-    <div class="linha">Ivis - Front End</div>
-    <div class="linha">Lucas Ferreira - Portas</div>
-  </div>
-  <div class="carro"><strong>Carro 5</strong>
-    <div class="linha">Thiago - Front End</div>
-    <div class="linha">Dodô - Portas</div>
-  </div>
-  <div class="carro"><strong>Morto/Refino</strong>
-    <div class="linha">Lucas Prado</div>
-  </div>
-</div>
 
 </body>
 </html>
