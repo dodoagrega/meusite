@@ -1,58 +1,169 @@
-<div style="font-family: Arial;">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Escala Semanal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .dia {
+      margin-bottom: 30px;
+    }
+    h2 {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .carro {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      display: inline-block;
+      vertical-align: top;
+      width: 200px;
+      margin-right: 10px;
+    }
+    .carro h3 {
+      margin-top: 0;
+      background: #ddd;
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .pessoa {
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
 
-  <!-- Segunda-feira -->
-  <h2>Segunda-feira</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 1</h3><p><strong>Felipe</strong> – Front End</p><p><strong>Rodrigo</strong> – Portas</p><p><strong>Elizeu</strong> – Back End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 2</h3><p><strong>Lucas Ferreira</strong> – Front End</p><p><strong>Willians</strong> – Portas</p><p><strong>Fernando</strong> – Back End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 3</h3><p><strong>Hércules</strong> – Front End</p><p><strong>Sérgio</strong> – Portas</p><p><strong>Cal</strong> – Back End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 4</h3><p><strong>Ivis</strong> – Front End</p><p><strong>Dodô</strong> – Portas</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 5</h3><p><strong>Tiago</strong> – Front End</p><p><strong>Lucas Prado</strong> – Portas</p></div>
-    <div style="border: 2px solid #000; padding: 10px; width: 200px; background-color: #f2f2f2;"><h3>Morto/Refino</h3><p><strong>Régis</strong></p></div>
-  </div>
+<div id="escala"></div>
 
-  <!-- Terça-feira -->
-  <h2>Terça-feira</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 1</h3><p><strong>Hércules</strong> – Back End</p><p><strong>Sérgio</strong> – Front End</p><p><strong>Cal</strong> – Portas</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 2</h3><p><strong>Felipe</strong> – Back End</p><p><strong>Rodrigo</strong> – Front End</p><p><strong>Elizeu</strong> – Portas</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 3</h3><p><strong>Lucas Ferreira</strong> – Back End</p><p><strong>Willians</strong> – Front End</p><p><strong>Fernando</strong> – Portas</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 4</h3><p><strong>Ivis</strong> – Portas</p><p><strong>Dodô</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 5</h3><p><strong>Régis</strong> – Back End</p><p><strong>Lucas Prado</strong> – Front End</p></div>
-    <div style="border: 2px solid #000; padding: 10px; width: 200px; background-color: #f2f2f2;"><h3>Morto/Refino</h3><p><strong>Tiago</strong></p></div>
-  </div>
+<script>
+const equipes = {
+  1: ["Felipe", "Marcus Vinicius", "Elizeu"],
+  2: ["L. Ferreira", "Willians", "Fernando"],
+  3: ["Hércules", "Sérgio", "Cal"],
+  4: ["Ives", "Dodô"],
+  5: ["L. Prado", "Tiago"]
+};
 
-  <!-- Quarta-feira -->
-  <h2>Quarta-feira</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 1</h3><p><strong>Tiago</strong> – Portas</p><p><strong>Rodrigo</strong> – Back End</p><p><strong>Elizeu</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 2</h3><p><strong>Willians</strong> – Portas</p><p><strong>Fernando</strong> – Back End</p><p><strong>Lucas Ferreira</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 3</h3><p><strong>Sérgio</strong> – Portas</p><p><strong>Cal</strong> – Back End</p><p><strong>Felipe</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 4</h3><p><strong>Dodô</strong> – Portas</p><p><strong>Ivis</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 5</h3><p><strong>Lucas Prado</strong> – Portas</p><p><strong>Régis</strong> – Front End</p></div>
-    <div style="border: 2px solid #000; padding: 10px; width: 200px; background-color: #f2f2f2;"><h3>Morto/Refino</h3><p><strong>Lucas Ferreira</strong></p></div>
-  </div>
+const equipe6Semana = {
+  segunda: "Régis",
+  terca: "Tiago",
+  quarta: "L. Ferreira",
+  quinta: "Dodô",
+  sexta: "L. Prado"
+};
 
-  <!-- Quinta-feira -->
-  <h2>Quinta-feira</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 1</h3><p><strong>Elizeu</strong> – Portas</p><p><strong>Felipe</strong> – Back End</p><p><strong>Rodrigo</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 2</h3><p><strong>Fernando</strong> – Portas</p><p><strong>Lucas Ferreira</strong> – Back End</p><p><strong>Willians</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 3</h3><p><strong>Cal</strong> – Portas</p><p><strong>Hércules</strong> – Back End</p><p><strong>Sérgio</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 4</h3><p><strong>Ivis</strong> – Portas</p><p><strong>Lucas Ferreira</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 5</h3><p><strong>Régis</strong> – Portas</p><p><strong>Lucas Prado</strong> – Back End</p></div>
-    <div style="border: 2px solid #000; padding: 10px; width: 200px; background-color: #f2f2f2;"><h3>Morto/Refino</h3><p><strong>Dodô</strong></p></div>
-  </div>
+const dias = ["segunda", "terca", "quarta", "quinta", "sexta"];
+const operacoes = ["F", "B", "P"];
 
-  <!-- Sexta-feira -->
-  <h2>Sexta-feira</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 1</h3><p><strong>Rodrigo</strong> – Portas</p><p><strong>Elizeu</strong> – Back End</p><p><strong>Felipe</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 2</h3><p><strong>Willians</strong> – Portas</p><p><strong>Fernando</strong> – Back End</p><p><strong>Lucas Ferreira</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 3</h3><p><strong>Sérgio</strong> – Portas</p><p><strong>Cal</strong> – Back End</p><p><strong>Hércules</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 4</h3><p><strong>Lucas Ferreira</strong> – Portas</p><p><strong>Ivis</strong> – Front End</p></div>
-    <div style="border: 1px solid #ccc; padding: 10px; width: 200px;"><h3>Carro 5</h3><p><strong>Dodô</strong> – Front End</p><p><strong>Régis</strong> – Portas</p></div>
-    <div style="border: 2px solid #000; padding: 10px; width: 200px; background-color: #f2f2f2;"><h3>Morto/Refino</h3><p><strong>Lucas Prado</strong></p></div>
-  </div>
+function rotaciona(lista) {
+  return [...lista.slice(1), lista[0]];
+}
 
-</div>
+function proximaOperacao(op) {
+  const idx = operacoes.indexOf(op);
+  return operacoes[(idx + 1) % operacoes.length];
+}
+
+function geraEscala() {
+  let carros = [1, 2, 3];
+  let operacoesAtual = {
+    "Felipe": "F", "Marcus Vinicius": "P", "Elizeu": "B",
+    "L. Ferreira": "F", "Willians": "P", "Fernando": "B",
+    "Hércules": "F", "Sérgio": "P", "Cal": "B",
+    "Ives": "F", "Dodô": "P",
+    "L. Prado": "F", "Tiago": "P"
+  };
+
+  let equipe6DiaAnterior = null;
+  const escala = {};
+
+  dias.forEach((dia, i) => {
+    escala[dia] = {};
+    let e1 = equipes[1].map(nome => ({ nome, op: operacoesAtual[nome] }));
+    let e2 = equipes[2].map(nome => ({ nome, op: operacoesAtual[nome] }));
+    let e3 = equipes[3].map(nome => ({ nome, op: operacoesAtual[nome] }));
+
+    escala[dia]["Carro " + carros[0]] = e1;
+    escala[dia]["Carro " + carros[1]] = e2;
+    escala[dia]["Carro " + carros[2]] = e3;
+
+    escala[dia]["Carro 4"] = equipes[4].map(nome => ({ nome, op: operacoesAtual[nome] }));
+    escala[dia]["Carro 5"] = equipes[5].map(nome => ({ nome, op: operacoesAtual[nome] }));
+
+    escala[dia]["Morto/Refino"] = equipe6Semana[dia];
+
+    if (i > 0) {
+      let substituido = equipe6Semana[dia];
+      let substituto = equipe6DiaAnterior;
+
+      for (let carro in escala[dia]) {
+        let pos = escala[dia][carro].find(p => p.nome === substituido);
+        if (pos) {
+          pos.nome = substituto;
+          operacoesAtual[substituto] = pos.op;
+          break;
+        }
+      }
+      delete operacoesAtual[substituido];
+      operacoesAtual[substituido] = "M";
+    }
+
+    equipe6DiaAnterior = equipe6Semana[dia];
+
+    Object.keys(operacoesAtual).forEach(nome => {
+      if (operacoesAtual[nome] !== "M") {
+        operacoesAtual[nome] = proximaOperacao(operacoesAtual[nome]);
+      }
+    });
+
+    carros = rotaciona(carros);
+  });
+
+  return escala;
+}
+
+function renderEscala() {
+  const escala = geraEscala();
+  const container = document.getElementById("escala");
+
+  for (let dia in escala) {
+    const diaDiv = document.createElement("div");
+    diaDiv.className = "dia";
+    diaDiv.innerHTML = `<h2>${dia.toUpperCase()}</h2>`;
+
+    for (let carro in escala[dia]) {
+      const card = document.createElement("div");
+      card.className = "carro";
+      card.innerHTML = `<h3>${carro}</h3>`;
+
+      if (carro === "Morto/Refino") {
+        card.innerHTML += `<div class="pessoa">${escala[dia][carro]}</div>`;
+      } else {
+        escala[dia][carro].forEach(p => {
+          card.innerHTML += `<div class="pessoa"><strong>${p.op}</strong>: ${p.nome}</div>`;
+        });
+      }
+
+      diaDiv.appendChild(card);
+    }
+
+    container.appendChild(diaDiv);
+  }
+}
+
+renderEscala();
+</script>
+
+</body>
+</html>
