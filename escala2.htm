@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escala da Semana - Cartões</title>
+    <title>Escala da Semana - Cartões por Dia</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h2 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        .day {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #f0f0f0;
-            margin: 0;
+            margin-bottom: 30px;
         }
         .card {
             background-color: #fff;
@@ -40,46 +49,74 @@
 </head>
 <body>
 
-    <!-- Segunda-feira -->
+<!-- Segunda-feira -->
+<h2>Segunda-feira</h2>
+<div class="day">
     <div class="card">
         <h3>Carro 1 - Equipe 1</h3>
         <div class="op"><strong>Willians</strong>: Front End</div>
         <div class="op"><strong>Fernando</strong>: Portas</div>
         <div class="op"><strong>L. Ferreira</strong>: Back End</div>
     </div>
-
     <div class="card">
         <h3>Carro 2 - Equipe 2</h3>
         <div class="op"><strong>Sérgio</strong>: Front End</div>
         <div class="op"><strong>Cal</strong>: Portas</div>
         <div class="op"><strong>Hércules</strong>: Back End</div>
     </div>
-
     <div class="card">
         <h3>Carro 3 - Equipe 3</h3>
         <div class="op"><strong>Glauco</strong>: Front End</div>
         <div class="op"><strong>Dodo</strong>: Portas</div>
         <div class="op"><strong>L. Prado</strong>: Back End</div>
     </div>
-
     <div class="card">
         <h3>Carro 4 - Equipe 4</h3>
         <div class="op"><strong>Rodrigo</strong>: Front End</div>
         <div class="op"><strong>Marcos</strong>: Portas</div>
     </div>
-
     <div class="card">
         <h3>Carro 5 - Equipe 5</h3>
         <div class="op"><strong>Tiago</strong>: Front End</div>
         <div class="op"><strong>Felipe</strong>: Portas</div>
     </div>
+</div>
 
-    <!-- Observação para os outros dias -->
+<!-- Terça-feira -->
+<h2>Terça-feira</h2>
+<div class="day">
     <div class="card">
-        <h3>Observação</h3>
-        <div class="op">A partir de terça-feira, o ciclo será: Front End → Back End → Portas.</div>
-        <div class="op">Cada trabalhador inicia no ponto em que parou no dia anterior.</div>
+        <h3>Carro 1 - Equipe 2</h3>
+        <div class="op"><strong>Sérgio</strong>: Front End</div>
+        <div class="op"><strong>Cal</strong>: Back End</div>
+        <div class="op"><strong>Hércules</strong>: Portas</div>
     </div>
+    <div class="card">
+        <h3>Carro 2 - Equipe 3</h3>
+        <div class="op"><strong>Glauco</strong>: Front End</div>
+        <div class="op"><strong>Dodo</strong>: Back End</div>
+        <div class="op"><strong>L. Prado</strong>: Portas</div>
+    </div>
+    <div class="card">
+        <h3>Carro 3 - Equipe 1</h3>
+        <div class="op"><strong>Willians</strong>: Front End</div>
+        <div class="op"><strong>Fernando</strong>: Back End</div>
+        <div class="op"><strong>L. Ferreira</strong>: Portas</div>
+    </div>
+    <div class="card">
+        <h3>Carro 4 - Equipe 4</h3>
+        <div class="op"><strong>Rodrigo</strong>: Portas</div>
+        <div class="op"><strong>Marcos</strong>: Front End</div>
+    </div>
+    <div class="card">
+        <h3>Carro 5 - Equipe 5</h3>
+        <div class="op"><strong>Tiago</strong>: Portas</div>
+        <div class="op"><strong>Felipe</strong>: Front End</div>
+    </div>
+</div>
+
+<!-- Repita este modelo para Quarta, Quinta e Sexta, trocando o rodízio -->
+<!-- Se quiser, posso continuar para os outros dias! -->
 
 </body>
 </html>
