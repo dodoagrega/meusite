@@ -1,155 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Escala Semanal – Cartões com Operação Inicial</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 10px;
-    }
-    h2, h3 {
-      text-align: center;
-    }
-    .container-dia {
-      margin-bottom: 20px;
-    }
-    .cartoes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .cartao {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 10px;
-      width: 90%;
-      max-width: 250px;
-      box-sizing: border-box;
-    }
-    .cartao h4 {
-      background-color: #4f81bd;
-      color: white;
-      margin: -10px -10px 10px -10px;
-      padding: 5px;
-      border-radius: 8px 8px 0 0;
-      text-align: center;
-    }
-    .equipe-header {
-      font-weight: bold;
-      color: #2e75b6;
-      margin-bottom: 5px;
-      text-align: center;
-    }
-    .membro {
-      font-size: 0.9em;
-      text-align: center;
-    }
-    .operacoes {
-      font-size: 0.85em;
-      background-color: #e9ebf7;
-      padding: 5px;
-      border-radius: 4px;
-      margin-top: 5px;
-      text-align: center;
-    }
-    .inicio-dia {
-      font-size: 0.9em;
-      font-weight: bold;
-      color: #d9534f;
-      background-color: #fbe6e6;
-      padding: 5px;
-      border-radius: 4px;
-      text-align: center;
-      margin-top: 5px;
-    }
-    @media (max-width: 600px) {
-      .cartoes {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala da Semana - Cartões</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .card {
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+        .card h3 {
+            margin-top: 0;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .op {
+            background-color: #ddd;
+            padding: 5px;
+            margin: 3px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <h2>Escala Semanal – Cartões com Operação Inicial</h2>
 
-  <script>
-    const equipes = {
-      "Equipe 1": ["WILLIANS", "FERNANDO", "L. FERREIRA"],
-      "Equipe 2": ["SÉRGIO", "CAL", "HÉRCULES"],
-      "Equipe 3": ["GLAUCO", "DODO", "L. PRADO"],
-      "Equipe 4": ["RODRIGO", "MARCOS"],
-      "Equipe 5": ["TIAGO", "FELIPE"]
-    };
+    <!-- Segunda-feira -->
+    <div class="card">
+        <h3>Carro 1 - Equipe 1</h3>
+        <div class="op"><strong>Willians</strong>: Front End</div>
+        <div class="op"><strong>Fernando</strong>: Portas</div>
+        <div class="op"><strong>L. Ferreira</strong>: Back End</div>
+    </div>
 
-    const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-    const operacoesTrio = ["Front End", "Back End", "Portas"];
-    const operacoesDupla = ["Front End", "Portas"];
+    <div class="card">
+        <h3>Carro 2 - Equipe 2</h3>
+        <div class="op"><strong>Sérgio</strong>: Front End</div>
+        <div class="op"><strong>Cal</strong>: Portas</div>
+        <div class="op"><strong>Hércules</strong>: Back End</div>
+    </div>
 
-    function rotacionar(arr, n) {
-      return arr.slice(n).concat(arr.slice(0, n));
-    }
+    <div class="card">
+        <h3>Carro 3 - Equipe 3</h3>
+        <div class="op"><strong>Glauco</strong>: Front End</div>
+        <div class="op"><strong>Dodo</strong>: Portas</div>
+        <div class="op"><strong>L. Prado</strong>: Back End</div>
+    </div>
 
-    let ultimaOperacaoEquipe = {
-      "Equipe 1": 0,  // Segunda-feira inicial: Willians - Front End, Fernando - Portas, L. Ferreira - Back End
-      "Equipe 2": 0,  // Segunda-feira inicial: Sérgio - Front End, Cal - Portas, Hércules - Back End
-      "Equipe 3": 0,  // Segunda-feira inicial: Glauco - Front End, Dodo - Portas, L. Prado - Back End
-      "Equipe 4": 0,  // Duplas revezando Front End e Portas
-      "Equipe 5": 0
-    };
+    <div class="card">
+        <h3>Carro 4 - Equipe 4</h3>
+        <div class="op"><strong>Rodrigo</strong>: Front End</div>
+        <div class="op"><strong>Marcos</strong>: Portas</div>
+    </div>
 
-    const rodizioBase = [0, 1, 2]; // Para Carros 1, 2, 3
+    <div class="card">
+        <h3>Carro 5 - Equipe 5</h3>
+        <div class="op"><strong>Tiago</strong>: Front End</div>
+        <div class="op"><strong>Felipe</strong>: Portas</div>
+    </div>
 
-    dias.forEach((dia, indexDia) => {
-      document.write(`<div class="container-dia"><h3>${dia}</h3><div class="cartoes">`);
+    <!-- Observação para os outros dias -->
+    <div class="card">
+        <h3>Observação</h3>
+        <div class="op">A partir de terça-feira, o ciclo será: Front End → Back End → Portas.</div>
+        <div class="op">Cada trabalhador inicia no ponto em que parou no dia anterior.</div>
+    </div>
 
-      const rodizioHoje = rotacionar(rodizioBase, indexDia % 3);
-
-      for (let carro = 0; carro < 5; carro++) {
-        let equipeNome, membros, operacoes;
-
-        if (carro < 3) {
-          equipeNome = `Equipe ${rodizioHoje[carro] + 1}`;
-          membros = equipes[equipeNome];
-          operacoes = operacoesTrio;
-        } else if (carro === 3) {
-          equipeNome = "Equipe 4";
-          membros = equipes[equipeNome];
-          operacoes = operacoesDupla;
-        } else {
-          equipeNome = "Equipe 5";
-          membros = equipes[equipeNome];
-          operacoes = operacoesDupla;
-        }
-
-        document.write(`<div class="cartao">`);
-        document.write(`<h4>Carro ${carro + 1}</h4>`);
-        document.write(`<div class="equipe-header">${equipeNome}</div>`);
-        membros.forEach((m, i) => {
-          let operacaoInicial = operacoes[(ultimaOperacaoEquipe[equipeNome] + i) % operacoes.length];
-          document.write(`<div class="membro">${m}<div class="inicio-dia">Início: ${operacaoInicial}</div></div>`);
-        });
-        document.write(`<div class="operacoes"><strong>Rodízio 8h:</strong><br>`);
-        for (let h = 0; h < 8; h++) {
-          let opIndex = (ultimaOperacaoEquipe[equipeNome] + h) % operacoes.length;
-          document.write(`${operacoes[opIndex]}${h < 7 ? ", " : ""}`);
-        }
-        document.write(`</div></div>`);
-      }
-
-      document.write(`</div></div>`);
-
-      Object.keys(ultimaOperacaoEquipe).forEach(e => {
-        let base = (e.startsWith("Equipe 1") || e.startsWith("Equipe 2") || e.startsWith("Equipe 3")) ? 3 : 2;
-        ultimaOperacaoEquipe[e] = (ultimaOperacaoEquipe[e] + 8) % base;
-      });
-    });
-  </script>
 </body>
 </html>
