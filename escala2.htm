@@ -2,39 +2,72 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Escala Semanal de Produção</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escala Semanal – Cartões Mobile</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 10px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th, td {
-      border: 1px solid #888;
-      padding: 8px;
+    h2, h3 {
       text-align: center;
     }
-    th {
-      background-color: #d9e1f2;
+    .container-dia {
+      margin-bottom: 20px;
     }
-    .carro-header {
+    .cartoes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .cartao {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px;
+      width: 90%;
+      max-width: 250px;
+      box-sizing: border-box;
+    }
+    .cartao h4 {
       background-color: #4f81bd;
       color: white;
+      margin: -10px -10px 10px -10px;
+      padding: 5px;
+      border-radius: 8px 8px 0 0;
+      text-align: center;
     }
     .equipe-header {
-      background-color: #c6d9f1;
       font-weight: bold;
+      color: #2e75b6;
+      margin-bottom: 5px;
+      text-align: center;
     }
-    .operacao {
-      background-color: #f2f2f2;
+    .membro {
+      font-size: 0.9em;
+      text-align: center;
+    }
+    .operacoes {
+      font-size: 0.85em;
+      background-color: #e9ebf7;
+      padding: 5px;
+      border-radius: 4px;
+      margin-top: 5px;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .cartoes {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Escala Semanal – Equipes & Operações</h2>
+  <h2>Escala Semanal – Cartões</h2>
 
   <script>
     const equipes = {
@@ -46,18 +79,14 @@
     };
 
     const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-    const carros = ["Carro 1", "Carro 2", "Carro 3"];
     const operacoesTrio = ["Front End", "Back End", "Portas"];
     const operacoesDupla = ["Front End", "Portas"];
 
-    // Função de rotação para o rodízio de carros
     function rotacionar(arr, n) {
       return arr.slice(n).concat(arr.slice(0, n));
     }
 
-    // Define a posição inicial de cada equipe no 1º dia
-    let rodizioBase = [0, 1, 2]; // Equipes 1, 2, 3
-
+    let rodizioBase = [0, 1, 2];
     let ultimaOperacaoEquipe = {
       "Equipe 1": 0,
       "Equipe 2": 0,
@@ -67,22 +96,12 @@
     };
 
     dias.forEach((dia, indexDia) => {
-      document.write(`<h3>${dia}</h3>`);
-      document.write("<table><tr>");
-      for (let i = 0; i < 5; i++) {
-        document.write(`<th class="carro-header">Carro ${i + 1}</th>`);
-      }
-      document.write("</tr><tr>");
+      document.write(`<div class="container-dia"><h3>${dia}</h3><div class="cartoes">`);
 
-      // Define posição das equipes 1–3 nos carros 1–3
       const rodizioHoje = rotacionar(rodizioBase, indexDia % 3);
 
       for (let carro = 0; carro < 5; carro++) {
-        document.write("<td>");
-
-        let equipeNome;
-        let membros;
-        let operacoes;
+        let equipeNome, membros, operacoes;
 
         if (carro < 3) {
           equipeNome = `Equipe ${rodizioHoje[carro] + 1}`;
@@ -98,26 +117,22 @@
           operacoes = operacoesDupla;
         }
 
+        document.write(`<div class="cartao">`);
+        document.write(`<h4>Carro ${carro + 1}</h4>`);
         document.write(`<div class="equipe-header">${equipeNome}</div>`);
-        document.write("<table>");
-        membros.forEach((membro, i) => {
-          document.write("<tr>");
-          let turno = "";
-          for (let h = 0; h < 8; h++) {
-            let opIndex = (ultimaOperacaoEquipe[equipeNome] + h) % operacoes.length;
-            turno += `<td class="operacao">${operacoes[opIndex]}</td>`;
-          }
-          document.write(`<td>${membro}</td>${turno}`);
-          document.write("</tr>");
-        });
-        document.write("</table>");
-        document.write("</td>");
+        membros.forEach(m => document.write(`<div class="membro">${m}</div>`));
+        document.write(`<div class="operacoes"><strong>Operações:</strong><br>`);
+        for (let h = 0; h < 8; h++) {
+          let opIndex = (ultimaOperacaoEquipe[equipeNome] + h) % operacoes.length;
+          document.write(`${operacoes[opIndex]}${h < 7 ? ", " : ""}`);
+        }
+        document.write(`</div></div>`);
       }
-      document.write("</tr></table>");
 
-      // Atualiza operação de início para o próximo dia
+      document.write(`</div></div>`);
+
       Object.keys(ultimaOperacaoEquipe).forEach(e => {
-        let base = (e === "Equipe 1" || e === "Equipe 2" || e === "Equipe 3") ? 3 : 2;
+        let base = (e.startsWith("Equipe 1") || e.startsWith("Equipe 2") || e.startsWith("Equipe 3")) ? 3 : 2;
         ultimaOperacaoEquipe[e] = (ultimaOperacaoEquipe[e] + 8) % base;
       });
     });
