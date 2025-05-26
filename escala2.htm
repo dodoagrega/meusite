@@ -2,106 +2,125 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Escala Semanal - Rodízio</title>
+  <title>Escala Semanal de Produção</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 20px;
     }
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-    .dia {
-      background-color: #ffffff;
-      border: 2px solid #2980b9;
-      border-radius: 10px;
-      padding: 15px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
       margin-bottom: 20px;
     }
-    .dia h2 {
-      margin-top: 0;
-      color: #2980b9;
+    th, td {
+      border: 1px solid #888;
+      padding: 8px;
+      text-align: center;
     }
-    .carro {
-      margin-bottom: 10px;
-      background-color: #ecf0f1;
-      border: 1px solid #bdc3c7;
-      border-radius: 5px;
-      padding: 10px;
+    th {
+      background-color: #d9e1f2;
     }
-    .carro h3 {
-      margin: 0 0 5px 0;
-      color: #34495e;
+    .carro-header {
+      background-color: #4f81bd;
+      color: white;
     }
-    .op {
-      margin: 3px 0;
-      padding-left: 10px;
-    }
-    .morto {
+    .equipe-header {
+      background-color: #c6d9f1;
       font-weight: bold;
-      color: #c0392b;
+    }
+    .operacao {
+      background-color: #f2f2f2;
     }
   </style>
 </head>
 <body>
-  <h1>Escala Semanal com Rodízio</h1>
+  <h2>Escala Semanal – Equipes & Operações</h2>
 
-  <!-- Segunda-feira -->
-  <div class="dia">
-    <h2>Segunda-feira</h2>
-    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
-    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
-    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
-    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div></div>
-    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
-    <div class="op morto">Morto/Refino: Elizeu</div>
-  </div>
+  <script>
+    const equipes = {
+      "Equipe 1": ["WILLIANS", "FERNANDO", "L. FERREIRA"],
+      "Equipe 2": ["SÉRGIO", "CAL", "HÉRCULES"],
+      "Equipe 3": ["GLAUCO", "DODO", "L. PRADO"],
+      "Equipe 4": ["RODRIGO", "ANDRÉ MARCUS"],
+      "Equipe 5": ["TIAGO", "FELIPE"]
+    };
 
-  <!-- Terça-feira (rodízio) -->
-  <div class="dia">
-    <h2>Terça-feira</h2>
-    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
-    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
-    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
-    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
-    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
-    <div class="op morto">Morto/Refino: Elizeu</div>
-  </div>
+    const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+    const carros = ["Carro 1", "Carro 2", "Carro 3"];
+    const operacoesTrio = ["Front End", "Back End", "Portas"];
+    const operacoesDupla = ["Front End", "Portas"];
 
-  <!-- Quarta-feira (rodízio) -->
-  <div class="dia">
-    <h2>Quarta-feira</h2>
-    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
-    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
-    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
-    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
-    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
-    <div class="op morto">(a definir)</div>
-  </div>
+    // Função de rotação para o rodízio de carros
+    function rotacionar(arr, n) {
+      return arr.slice(n).concat(arr.slice(0, n));
+    }
 
-  <!-- Quinta-feira (rodízio) -->
-  <div class="dia">
-    <h2>Quinta-feira</h2>
-    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
-    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
-    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
-    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
-    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
-    <div class="op morto">(a definir)</div>
-  </div>
+    // Define a posição inicial de cada equipe no 1º dia
+    let rodizioBase = [0, 1, 2]; // Equipes 1, 2, 3
 
-  <!-- Sexta-feira (rodízio) -->
-  <div class="dia">
-    <h2>Sexta-feira</h2>
-    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
-    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
-    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
-    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
-    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
-    <div class="op morto">(a definir)</div>
-  </div>
+    let ultimaOperacaoEquipe = {
+      "Equipe 1": 0,
+      "Equipe 2": 0,
+      "Equipe 3": 0,
+      "Equipe 4": 0,
+      "Equipe 5": 0
+    };
 
+    dias.forEach((dia, indexDia) => {
+      document.write(`<h3>${dia}</h3>`);
+      document.write("<table><tr>");
+      for (let i = 0; i < 5; i++) {
+        document.write(`<th class="carro-header">Carro ${i + 1}</th>`);
+      }
+      document.write("</tr><tr>");
+
+      // Define posição das equipes 1–3 nos carros 1–3
+      const rodizioHoje = rotacionar(rodizioBase, indexDia % 3);
+
+      for (let carro = 0; carro < 5; carro++) {
+        document.write("<td>");
+
+        let equipeNome;
+        let membros;
+        let operacoes;
+
+        if (carro < 3) {
+          equipeNome = `Equipe ${rodizioHoje[carro] + 1}`;
+          membros = equipes[equipeNome];
+          operacoes = operacoesTrio;
+        } else if (carro === 3) {
+          equipeNome = "Equipe 4";
+          membros = equipes[equipeNome];
+          operacoes = operacoesDupla;
+        } else {
+          equipeNome = "Equipe 5";
+          membros = equipes[equipeNome];
+          operacoes = operacoesDupla;
+        }
+
+        document.write(`<div class="equipe-header">${equipeNome}</div>`);
+        document.write("<table>");
+        membros.forEach((membro, i) => {
+          document.write("<tr>");
+          let turno = "";
+          for (let h = 0; h < 8; h++) {
+            let opIndex = (ultimaOperacaoEquipe[equipeNome] + h) % operacoes.length;
+            turno += `<td class="operacao">${operacoes[opIndex]}</td>`;
+          }
+          document.write(`<td>${membro}</td>${turno}`);
+          document.write("</tr>");
+        });
+        document.write("</table>");
+        document.write("</td>");
+      }
+      document.write("</tr></table>");
+
+      // Atualiza operação de início para o próximo dia
+      Object.keys(ultimaOperacaoEquipe).forEach(e => {
+        let base = (e === "Equipe 1" || e === "Equipe 2" || e === "Equipe 3") ? 3 : 2;
+        ultimaOperacaoEquipe[e] = (ultimaOperacaoEquipe[e] + 8) % base;
+      });
+    });
+  </script>
 </body>
 </html>
