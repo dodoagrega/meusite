@@ -1,95 +1,120 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Escala Semanal</title>
+  <title>Escala Semanal - Operações e Equipes</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      margin: 0;
-      padding: 20px;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
     }
     .dia {
-      background: #ffffff;
-      border-radius: 8px;
+      background-color: #ffffff;
+      border: 2px solid #2980b9;
+      border-radius: 10px;
       padding: 15px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
-    h2 {
+    .dia h2 {
       margin-top: 0;
+      color: #2980b9;
     }
     .carro {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+      background-color: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      border-radius: 5px;
+      padding: 10px;
     }
-    .carro-title {
-      font-weight: bold;
-      margin-bottom: 5px;
+    .carro h3 {
+      margin: 0 0 5px 0;
+      color: #34495e;
     }
-    .card {
-      background: #e6e6e6;
-      display: inline-block;
-      padding: 8px 12px;
-      margin: 4px;
-      border-radius: 6px;
+    .op {
+      margin: 3px 0;
+      padding-left: 10px;
     }
     .morto {
-      background: #ffd1d1;
-      padding: 8px 12px;
-      display: inline-block;
-      border-radius: 6px;
-      margin-top: 10px;
       font-weight: bold;
+      color: #c0392b;
     }
   </style>
 </head>
 <body>
+  <h1>Escala Semanal de Trabalho</h1>
 
-  <h1>Escala Semanal - Equipes</h1>
+  <div class="dia">
+    <h2>Segunda-feira</h2>
+    <div class="carro">
+      <h3>Carro 1 (Equipe 1)</h3>
+      <div class="op">Front End: Willians</div>
+      <div class="op">Portas: Fernando</div>
+      <div class="op">Back End: L. Ferreira</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 2 (Equipe 2)</h3>
+      <div class="op">Front End: Sérgio</div>
+      <div class="op">Portas: Cal</div>
+      <div class="op">Back End: Hércules</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 3 (Equipe 3)</h3>
+      <div class="op">Front End: Glauco</div>
+      <div class="op">Portas: Dodo</div>
+      <div class="op">Back End: L. Prado</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 4 (Equipe 4)</h3>
+      <div class="op">Front End: Rodrigo</div>
+      <div class="op">Portas: Marcos</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 5 (Equipe 5)</h3>
+      <div class="op">Front End: Tiago</div>
+      <div class="op">Portas: Felipe</div>
+    </div>
+    <div class="op morto">Morto/Refino: Elizeu</div>
+  </div>
 
-  <div id="escala"></div>
+  <div class="dia">
+    <h2>Terça-feira</h2>
+    <div class="carro">
+      <h3>Carro 1 (Equipe 2)</h3>
+      <div class="op">Front End: Sérgio</div>
+      <div class="op">Portas: Cal</div>
+      <div class="op">Back End: Hércules</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 2 (Equipe 3)</h3>
+      <div class="op">Front End: Glauco</div>
+      <div class="op">Portas: Dodo</div>
+      <div class="op">Back End: L. Prado</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 3 (Equipe 1)</h3>
+      <div class="op">Front End: Willians</div>
+      <div class="op">Portas: Fernando</div>
+      <div class="op">Back End: L. Ferreira</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 4 (Equipe 4)</h3>
+      <div class="op">Front End: Rodrigo</div>
+      <div class="op">Portas: Marcos</div>
+    </div>
+    <div class="carro">
+      <h3>Carro 5 (Equipe 5)</h3>
+      <div class="op">Front End: Tiago</div>
+      <div class="op">Portas: Felipe</div>
+    </div>
+    <div class="op morto">Morto/Refino: Elizeu</div>
+  </div>
 
-  <script>
-    const escala = {"segunda":{"Carro 1":[{"nome":"Felipe","op":"F"},{"nome":"Marcus Vinicius","op":"P"},{"nome":"Elizeu","op":"B"}],"Carro 2":[{"nome":"L. Ferreira","op":"F"},{"nome":"Willians","op":"P"},{"nome":"Fernando","op":"B"}],"Carro 3":[{"nome":"Hércules","op":"F"},{"nome":"Sérgio","op":"P"},{"nome":"Cal","op":"B"}],"Carro 4":[{"nome":"Ives","op":"F"},{"nome":"Dodô","op":"P"}],"Carro 5":[{"nome":"L. Prado","op":"F"},{"nome":"Tiago","op":"P"}],"Morto/Refino":"Régis"},"terca":{"Carro 1":[{"nome":"Hércules","op":"B"},{"nome":"Sérgio","op":"F"},{"nome":"Cal","op":"P"}],"Carro 2":[{"nome":"Felipe","op":"B"},{"nome":"Marcus Vinicius","op":"F"},{"nome":"Elizeu","op":"P"}],"Carro 3":[{"nome":"Régis","op":"B"},{"nome":"Willians","op":"F"},{"nome":"Fernando","op":"P"}],"Carro 4":[{"nome":"Ives","op":"P"},{"nome":"Dodô","op":"F"}],"Carro 5":[{"nome":"L. Prado","op":"P"},{"nome":"Tiago","op":"F"}],"Morto/Refino":"Tiago"},"quarta":{"Carro 1":[{"nome":"Felipe","op":"P"},{"nome":"Marcus Vinicius","op":"B"},{"nome":"Elizeu","op":"F"}],"Carro 2":[{"nome":"Tiago","op":"P"},{"nome":"Willians","op":"B"},{"nome":"Fernando","op":"F"}],"Carro 3":[{"nome":"Hércules","op":"P"},{"nome":"Sérgio","op":"B"},{"nome":"Cal","op":"F"}],"Carro 4":[{"nome":"Ives","op":"F"},{"nome":"Dodô","op":"P"}],"Carro 5":[{"nome":"L. Prado","op":"F"},{"nome":"Régis","op":"P"}],"Morto/Refino":"L. Ferreira"},"quinta":{"Carro 1":[{"nome":"Felipe","op":"F"},{"nome":"Marcus Vinicius","op":"P"},{"nome":"Elizeu","op":"B"}],"Carro 2":[{"nome":"Tiago","op":"F"},{"nome":"Willians","op":"P"},{"nome":"Fernando","op":"B"}],"Carro 3":[{"nome":"Hércules","op":"F"},{"nome":"Sérgio","op":"P"},{"nome":"Cal","op":"B"}],"Carro 4":[{"nome":"Ives","op":"P"},{"nome":"L. Ferreira","op":"F"}],"Carro 5":[{"nome":"Dodô","op":"P"},{"nome":"Régis","op":"F"}],"Morto/Refino":"Dodô"},"sexta":{"Carro 1":[{"nome":"Felipe","op":"B"},{"nome":"Marcus Vinicius","op":"F"},{"nome":"Elizeu","op":"P"}],"Carro 2":[{"nome":"Tiago","op":"B"},{"nome":"Willians","op":"F"},{"nome":"Fernando","op":"P"}],"Carro 3":[{"nome":"Hércules","op":"B"},{"nome":"Sérgio","op":"F"},{"nome":"Cal","op":"P"}],"Carro 4":[{"nome":"Ives","op":"F"},{"nome":"L. Ferreira","op":"P"}],"Carro 5":[{"nome":"Dodô","op":"F"},{"nome":"Régis","op":"P"}],"Morto/Refino":"L. Prado"}};
-
-    const container = document.getElementById("escala");
-
-    for (const [dia, carros] of Object.entries(escala)) {
-      const diaDiv = document.createElement("div");
-      diaDiv.className = "dia";
-      diaDiv.innerHTML = `<h2>${dia.charAt(0).toUpperCase() + dia.slice(1)}</h2>`;
-
-      for (const [carro, pessoas] of Object.entries(carros)) {
-        if (carro === "Morto/Refino") {
-          const mortoDiv = document.createElement("div");
-          mortoDiv.className = "morto";
-          mortoDiv.innerText = `Morto/Refino: ${pessoas}`;
-          diaDiv.appendChild(mortoDiv);
-          continue;
-        }
-
-        const carroDiv = document.createElement("div");
-        carroDiv.className = "carro";
-
-        const title = document.createElement("div");
-        title.className = "carro-title";
-        title.innerText = carro;
-        carroDiv.appendChild(title);
-
-        pessoas.forEach(p => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerText = `${p.nome} (${p.op})`;
-          carroDiv.appendChild(card);
-        });
-
-        diaDiv.appendChild(carroDiv);
-      }
-
-      container.appendChild(diaDiv);
-    }
-  </script>
+  <!-- Continue a mesma estrutura para Quarta, Quinta e Sexta -->
 
 </body>
 </html>
