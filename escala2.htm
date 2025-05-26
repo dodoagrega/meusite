@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Escala Semanal – Cartões Mobile</title>
+  <title>Escala Semanal – Cartões com Operação Inicial</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -58,6 +58,16 @@
       margin-top: 5px;
       text-align: center;
     }
+    .inicio-dia {
+      font-size: 0.9em;
+      font-weight: bold;
+      color: #d9534f;
+      background-color: #fbe6e6;
+      padding: 5px;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 5px;
+    }
     @media (max-width: 600px) {
       .cartoes {
         flex-direction: column;
@@ -67,7 +77,7 @@
   </style>
 </head>
 <body>
-  <h2>Escala Semanal – Cartões</h2>
+  <h2>Escala Semanal – Cartões com Operação Inicial</h2>
 
   <script>
     const equipes = {
@@ -120,8 +130,11 @@
         document.write(`<div class="cartao">`);
         document.write(`<h4>Carro ${carro + 1}</h4>`);
         document.write(`<div class="equipe-header">${equipeNome}</div>`);
-        membros.forEach(m => document.write(`<div class="membro">${m}</div>`));
-        document.write(`<div class="operacoes"><strong>Operações:</strong><br>`);
+        membros.forEach((m, i) => {
+          let operacaoInicial = operacoes[(ultimaOperacaoEquipe[equipeNome] + i) % operacoes.length];
+          document.write(`<div class="membro">${m}<div class="inicio-dia">Início: ${operacaoInicial}</div></div>`);
+        });
+        document.write(`<div class="operacoes"><strong>Rodízio 8h:</strong><br>`);
         for (let h = 0; h < 8; h++) {
           let opIndex = (ultimaOperacaoEquipe[equipeNome] + h) % operacoes.length;
           document.write(`${operacoes[opIndex]}${h < 7 ? ", " : ""}`);
