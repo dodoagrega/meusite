@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Escala Semanal - Operações e Equipes</title>
+  <title>Escala Semanal - Rodízio</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -46,75 +46,62 @@
   </style>
 </head>
 <body>
-  <h1>Escala Semanal de Trabalho</h1>
+  <h1>Escala Semanal com Rodízio</h1>
 
+  <!-- Segunda-feira -->
   <div class="dia">
     <h2>Segunda-feira</h2>
-    <div class="carro">
-      <h3>Carro 1 (Equipe 1)</h3>
-      <div class="op">Front End: Willians</div>
-      <div class="op">Portas: Fernando</div>
-      <div class="op">Back End: L. Ferreira</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 2 (Equipe 2)</h3>
-      <div class="op">Front End: Sérgio</div>
-      <div class="op">Portas: Cal</div>
-      <div class="op">Back End: Hércules</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 3 (Equipe 3)</h3>
-      <div class="op">Front End: Glauco</div>
-      <div class="op">Portas: Dodo</div>
-      <div class="op">Back End: L. Prado</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 4 (Equipe 4)</h3>
-      <div class="op">Front End: Rodrigo</div>
-      <div class="op">Portas: Marcos</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 5 (Equipe 5)</h3>
-      <div class="op">Front End: Tiago</div>
-      <div class="op">Portas: Felipe</div>
-    </div>
+    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
+    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
+    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
+    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div></div>
+    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
     <div class="op morto">Morto/Refino: Elizeu</div>
   </div>
 
+  <!-- Terça-feira (rodízio) -->
   <div class="dia">
     <h2>Terça-feira</h2>
-    <div class="carro">
-      <h3>Carro 1 (Equipe 2)</h3>
-      <div class="op">Front End: Sérgio</div>
-      <div class="op">Portas: Cal</div>
-      <div class="op">Back End: Hércules</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 2 (Equipe 3)</h3>
-      <div class="op">Front End: Glauco</div>
-      <div class="op">Portas: Dodo</div>
-      <div class="op">Back End: L. Prado</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 3 (Equipe 1)</h3>
-      <div class="op">Front End: Willians</div>
-      <div class="op">Portas: Fernando</div>
-      <div class="op">Back End: L. Ferreira</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 4 (Equipe 4)</h3>
-      <div class="op">Front End: Rodrigo</div>
-      <div class="op">Portas: Marcos</div>
-    </div>
-    <div class="carro">
-      <h3>Carro 5 (Equipe 5)</h3>
-      <div class="op">Front End: Tiago</div>
-      <div class="op">Portas: Felipe</div>
-    </div>
+    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
+    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
+    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
+    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
+    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
     <div class="op morto">Morto/Refino: Elizeu</div>
   </div>
 
-  <!-- Continue a mesma estrutura para Quarta, Quinta e Sexta -->
+  <!-- Quarta-feira (rodízio) -->
+  <div class="dia">
+    <h2>Quarta-feira</h2>
+    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
+    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
+    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
+    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
+    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
+    <div class="op morto">(a definir)</div>
+  </div>
+
+  <!-- Quinta-feira (rodízio) -->
+  <div class="dia">
+    <h2>Quinta-feira</h2>
+    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
+    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
+    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
+    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
+    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
+    <div class="op morto">(a definir)</div>
+  </div>
+
+  <!-- Sexta-feira (rodízio) -->
+  <div class="dia">
+    <h2>Sexta-feira</h2>
+    <div class="carro"><h3>Carro 1</h3><div class="op">Front End: Tiago</div><div class="op">Portas: Felipe</div></div>
+    <div class="carro"><h3>Carro 2</h3><div class="op">Front End: Willians</div><div class="op">Portas: Fernando</div><div class="op">Back End: L. Ferreira</div></div>
+    <div class="carro"><h3>Carro 3</h3><div class="op">Front End: Sérgio</div><div class="op">Portas: Cal</div><div class="op">Back End: Hércules</div></div>
+    <div class="carro"><h3>Carro 4</h3><div class="op">Front End: Glauco</div><div class="op">Portas: Dodo</div><div class="op">Back End: L. Prado</div></div>
+    <div class="carro"><h3>Carro 5</h3><div class="op">Front End: Rodrigo</div><div class="op">Portas: Marcos</div><div class="op">Back End: (Sem)</div></div>
+    <div class="op morto">(a definir)</div>
+  </div>
 
 </body>
 </html>
