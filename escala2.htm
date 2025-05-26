@@ -84,7 +84,7 @@
       "Equipe 1": ["WILLIANS", "FERNANDO", "L. FERREIRA"],
       "Equipe 2": ["SÉRGIO", "CAL", "HÉRCULES"],
       "Equipe 3": ["GLAUCO", "DODO", "L. PRADO"],
-      "Equipe 4": ["RODRIGO", "ANDRÉ MARCUS"],
+      "Equipe 4": ["RODRIGO", "MARCOS"],
       "Equipe 5": ["TIAGO", "FELIPE"]
     };
 
@@ -96,14 +96,15 @@
       return arr.slice(n).concat(arr.slice(0, n));
     }
 
-    let rodizioBase = [0, 1, 2];
     let ultimaOperacaoEquipe = {
-      "Equipe 1": 0,
-      "Equipe 2": 0,
-      "Equipe 3": 0,
-      "Equipe 4": 0,
+      "Equipe 1": 0,  // Segunda-feira inicial: Willians - Front End, Fernando - Portas, L. Ferreira - Back End
+      "Equipe 2": 0,  // Segunda-feira inicial: Sérgio - Front End, Cal - Portas, Hércules - Back End
+      "Equipe 3": 0,  // Segunda-feira inicial: Glauco - Front End, Dodo - Portas, L. Prado - Back End
+      "Equipe 4": 0,  // Duplas revezando Front End e Portas
       "Equipe 5": 0
     };
+
+    const rodizioBase = [0, 1, 2]; // Para Carros 1, 2, 3
 
     dias.forEach((dia, indexDia) => {
       document.write(`<div class="container-dia"><h3>${dia}</h3><div class="cartoes">`);
