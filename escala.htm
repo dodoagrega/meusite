@@ -1,154 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escala de Trabalho - Semana</title>
+  <meta charset="UTF-8">
+  <title>Escala Semanal de Trabalho</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       margin: 20px;
     }
-
-    .tabela-responsiva {
-      overflow-x: auto;
-      max-width: 100%;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid #333;
-      padding: 8px;
+    h1 {
       text-align: center;
-      font-size: 12px;
     }
-
-    th {
-      background-color: #f2f2f2;
-      position: sticky;
-      top: 0;
-      z-index: 2;
+    .dia {
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
     }
-
-    .legend, .explicacao {
-      margin-top: 20px;
+    .dia h2 {
+      margin-top: 0;
+      color: #333333;
     }
-
-    /* --- MODO RESPONSIVO --- */
-    @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
-      tr {
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        padding: 10px;
-      }
-
-      td {
-        text-align: left;
-        padding-left: 50%;
-        position: relative;
-        border: none;
-        border-bottom: 1px solid #eee;
-      }
-
-      td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        top: 8px;
-        font-weight: bold;
-        white-space: nowrap;
-      }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 5px 0;
     }
   </style>
 </head>
 <body>
+  <h1>Escala Semanal de Trabalho</h1>
 
-  <h2>Escala Semanal de Trabalho</h2>
-
-  <div class="tabela-responsiva">
-    <table>
-      <thead>
-        <tr>
-          <th>Dia</th>
-          <th>Carro 1</th>
-          <th>Carro 2</th>
-          <th>Carro 3</th>
-          <th>Carro 4</th>
-          <th>Carro 5</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Dia">Segunda</td>
-          <td data-label="Carro 1">Felipe (F), Rodrigo (P), Elizeu (B)</td>
-          <td data-label="Carro 2">L. Ferreira (F), Willians (P), Fernando (B)</td>
-          <td data-label="Carro 3">Hércules (F), Sérgio (P), Cal (B)</td>
-          <td data-label="Carro 4">Dodô (F), Ivis (P)</td>
-          <td data-label="Carro 5">Lucas Prado (F), Thiago (P)</td>
-        </tr>
-        <tr>
-          <td data-label="Dia">Terça</td>
-          <td data-label="Carro 1">L. Ferreira (B), Willians (F), Fernando (P)</td>
-          <td data-label="Carro 2">Hércules (B), Sérgio (F), Cal (P)</td>
-          <td data-label="Carro 3">Felipe (B), Rodrigo (F), Elizeu (P)</td>
-          <td data-label="Carro 4">Ivis (F), Dodô (P)</td>
-          <td data-label="Carro 5">Thiago (F), Lucas Prado (P)</td>
-        </tr>
-        <tr>
-          <td data-label="Dia">Quarta</td>
-          <td data-label="Carro 1">Hércules (P), Sérgio (B), Cal (F)</td>
-          <td data-label="Carro 2">Felipe (P), Rodrigo (B), Elizeu (F)</td>
-          <td data-label="Carro 3">L. Ferreira (P), Willians (B), Fernando (F)</td>
-          <td data-label="Carro 4">Dodô (F), Ivis (P)</td>
-          <td data-label="Carro 5">Lucas Prado (F), Thiago (P)</td>
-        </tr>
-        <tr>
-          <td data-label="Dia">Quinta</td>
-          <td data-label="Carro 1">Felipe (F), Rodrigo (P), Elizeu (B)</td>
-          <td data-label="Carro 2">L. Ferreira (F), Willians (P), Fernando (B)</td>
-          <td data-label="Carro 3">Hércules (F), Sérgio (P), Cal (B)</td>
-          <td data-label="Carro 4">Ivis (F), Dodô (P)</td>
-          <td data-label="Carro 5">Thiago (F), Lucas Prado (P)</td>
-        </tr>
-        <tr>
-          <td data-label="Dia">Sexta</td>
-          <td data-label="Carro 1">L. Ferreira (B), Willians (F), Fernando (P)</td>
-          <td data-label="Carro 2">Hércules (B), Sérgio (F), Cal (P)</td>
-          <td data-label="Carro 3">Felipe (B), Rodrigo (F), Elizeu (P)</td>
-          <td data-label="Carro 4">Dodô (F), Ivis (P)</td>
-          <td data-label="Carro 5">Lucas Prado (F), Thiago (P)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="legend">
-    <strong>Legenda:</strong><br>
-    <strong>F</strong>: Front End<br>
-    <strong>P</strong>: Portas<br>
-    <strong>B</strong>: Back End
-  </div>
-
-  <div class="explicacao">
-    <h3>Critérios da Escala</h3>
+  <div class="dia">
+    <h2>Segunda-feira</h2>
     <ul>
-      <li><strong>Equipes 1, 2 e 3</strong> formam trios e revezam entre os Carros 1, 2 e 3 a cada dia útil.</li>
-      <li><strong>Rodízio dos carros:</strong> Segunda (1 → 2 → 3), Terça (2 → 3 → 1), Quarta (3 → 1 → 2), e assim por diante.</li>
-      <li>Cada trabalhador executa uma operação por hora, seguindo a ordem: <strong>F → B → P → F</strong>, durante 8 horas.</li>
-      <li>No dia seguinte, cada um inicia na operação em que parou no dia anterior.</li>
-      <li><strong>Equipes 4 e 5</strong> são fixas nos Carros 4 e 5 (duplas). Revezam entre <strong>F</strong> e <strong>P</strong> a cada hora.</li>
-      <li>No dia seguinte, invertem a ordem de início da operação.</li>
+      <li>Carro 1: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
+      <li>Carro 2: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
+      <li>Carro 3: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
+      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
+      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
+      <li>Morto/Refino: Elizeu</li>
+    </ul>
+  </div>
+
+  <div class="dia">
+    <h2>Terça-feira</h2>
+    <ul>
+      <li>Carro 1: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
+      <li>Carro 2: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
+      <li>Carro 3: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
+      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
+      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
+      <li>Morto/Refino: Elizeu</li>
+    </ul>
+  </div>
+
+  <div class="dia">
+    <h2>Quarta-feira</h2>
+    <ul>
+      <li>Carro 1: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
+      <li>Carro 2: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
+      <li>Carro 3: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
+      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
+      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
+      <li>Morto/Refino: (a definir)</li>
+    </ul>
+  </div>
+
+  <div class="dia">
+    <h2>Quinta-feira</h2>
+    <ul>
+      <li>Carro 1: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
+      <li>Carro 2: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
+      <li>Carro 3: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
+      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
+      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
+      <li>Morto/Refino: (a definir)</li>
+    </ul>
+  </div>
+
+  <div class="dia">
+    <h2>Sexta-feira</h2>
+    <ul>
+      <li>Carro 1: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
+      <li>Carro 2: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
+      <li>Carro 3: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
+      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
+      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
+      <li>Morto/Refino: (a definir)</li>
     </ul>
   </div>
 
