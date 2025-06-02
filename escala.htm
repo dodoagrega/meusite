@@ -3,97 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escala de Operações</title>
+  <title>Escala Operacional - Celular</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 10px; }
-    h1 { text-align: center; font-size: 1.5em; }
-    .dia { background: white; margin: 10px 0; padding: 10px; border-radius: 8px; box-shadow: 1px 1px 5px rgba(0,0,0,0.2); }
-    .carro, .morto { margin: 5px 0; }
-    .op { display: inline-block; margin-left: 5px; padding: 2px 6px; border-radius: 4px; color: white; }
-    .Front { background: #4caf50; }
-    .Back { background: #2196f3; }
-    .Portas { background: #ff9800; }
+    body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 10px; }
+    .dia { background: white; margin-bottom: 10px; padding: 10px; border-radius: 5px; }
+    h2 { margin-top: 0; font-size: 18px; }
+    .carro { margin-bottom: 5px; }
+    .op { display: inline-block; padding: 4px 8px; margin-right: 5px; border-radius: 4px; color: white; }
+    .front { background-color: green; }
+    .portas { background-color: orange; }
+    .back { background-color: blue; }
+    .morto { background-color: red; }
   </style>
 </head>
 <body>
 
-<h1>Escala de Operações - Semana</h1>
+<h1>Escala da Semana</h1>
+
 <div id="escala"></div>
 
 <script>
 const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
 const equipes = [
-  { nome: "Equipe 1", membros: ["Willians", "L. Ferreira", "Fernando"], operacoes: ["Front", "Back", "Portas"] },
-  { nome: "Equipe 2", membros: ["Sérgio", "Tiago", "Cal"], operacoes: ["Front", "Back", "Portas"] },
-  { nome: "Equipe 3", membros: ["Dodo", "Hércules", "Elizeu"], operacoes: ["Front", "Back", "Portas"] },
-  { nome: "Equipe 4", membros: ["Glauco", "Rodrigão"], operacoes: ["Front", "Portas"] },
-  { nome: "Equipe 5", membros: ["Felipe", "Marcus V."], operacoes: ["Front", "Portas"] }
+  { equipe: 1, nomes: ["Willians", "Fernando", "L. Ferreira"] },
+  { equipe: 2, nomes: ["Sérgio", "Cal", "Tiago"] },
+  { equipe: 3, nomes: ["Dodo", "Hércules", "Elizeu"] },
+  { equipe: 4, nomes: ["Glauco", "Rodrigão"] },
+  { equipe: 5, nomes: ["Felipe", "Marcus V."] }
 ];
+const operacoes = ["Front", "Portas", "Back"];
+const mortoSemana = ["L. Prado / Ives", "Elizeu", "Dodo", "Rodrigão", "Cal"];
 
-// Escalados para o morto/refino a cada dia
-const mortos = ["Elizeu", "Dodo", "Rodrigão", "Cal", "Tiago"];
-let mortoAnterior = null;
-
-const escalaDiv = document.getElementById("escala");
-
-for (let d = 0; d < dias.length; d++) {
-  const card = document.createElement("div");
-  card.className = "dia";
-  card.innerHTML = `<h2>${dias[d]}</h2>`;
-
-  // Configuração dos carros 1-3 com rotação
-  for (let c = 0; c < 3; c++) {
-    const equipeIdx = (c + d) % 3;
-    const equipe = equipes[equipeIdx];
-    const operacoesDia = equipe.operacoes.map((op, idx) => {
-      const rotacao = (idx + d) % equipe.operacoes.length;
-      return { membro: equipe.membros[idx], op: equipe.operacoes[rotacao] };
-    });
-
-    // Aplica a troca do morto, se não for segunda
-    if (d > 0) {
-      const mortoHoje = mortos[d];
-      if (operacoesDia.some(o => o.membro === mortoHoje)) {
-        const idxMorto = operacoesDia.findIndex(o => o.membro === mortoHoje);
-        operacoesDia[idxMorto].membro = mortoAnterior; // morto anterior assume a posição
+function gerarEscala() {
+  let html = "";
+  for (let d = 0; d < dias.length; d++) {
+    html += `<div class="dia"><h2>${dias[d]}</h2>`;
+    let mortos = mortoSemana[d];
+    for (let e = 0; e < equipes.length; e++) {
+      let nomes = equipes[e].nomes.slice(); 
+      // Se algum integrante for o morto, remove da lista e substitui pelo morto anterior
+      if (d > 0 && mortos.includes(nomes[0])) { nomes[0] = mortoSemana[d-1].split(" / ")[0]; }
+      html += `<div class="carro"><strong>Carro ${e+1}:</strong> `;
+      for (let n = 0; n < nomes.length; n++) {
+        let op = operacoes[n % operacoes.length].toLowerCase();
+        html += `<span class="op ${op}">${nomes[n]}</span>`;
       }
+      html += "</div>";
     }
-
-    const carroDiv = document.createElement("div");
-    carroDiv.className = "carro";
-    carroDiv.innerHTML = `<strong>Carro ${c+1}:</strong>`;
-    operacoesDia.forEach(o => {
-      carroDiv.innerHTML += `<div>- ${o.membro}: <span class="op ${o.op}">${o.op}</span></div>`;
-    });
-    card.appendChild(carroDiv);
+    html += `<div><span class="op morto">Morto/Refino: ${mortos}</span></div>`;
+    html += "</div>";
   }
-
-  // Carros 4 e 5 fixos
-  for (let c = 3; c < 5; c++) {
-    const equipe = equipes[c];
-    const operacoesDia = equipe.operacoes.map((op, idx) => {
-      const rotacao = (idx + d) % equipe.operacoes.length;
-      return { membro: equipe.membros[idx], op: equipe.operacoes[rotacao] };
-    });
-    const carroDiv = document.createElement("div");
-    carroDiv.className = "carro";
-    carroDiv.innerHTML = `<strong>Carro ${c+1}:</strong>`;
-    operacoesDia.forEach(o => {
-      carroDiv.innerHTML += `<div>- ${o.membro}: <span class="op ${o.op}">${o.op}</span></div>`;
-    });
-    card.appendChild(carroDiv);
-  }
-
-  // Morto/refino do dia
-  const mortoHoje = mortos[d];
-  const mortoDiv = document.createElement("div");
-  mortoDiv.className = "morto";
-  mortoDiv.textContent = `Morto/Refino: ${mortoHoje}`;
-  card.appendChild(mortoDiv);
-
-  escalaDiv.appendChild(card);
-  mortoAnterior = mortoHoje; // Atualiza para o próximo dia
+  document.getElementById("escala").innerHTML = html;
 }
+
+gerarEscala();
 </script>
 
 </body>
