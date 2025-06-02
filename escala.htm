@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escala da Semana</title>
+  <title>Escala Operacional - Celular</title>
   <style>
     body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 10px; }
     .dia { background: white; margin-bottom: 10px; padding: 10px; border-radius: 5px; }
-    h1 { font-size: 24px; }
     h2 { margin-top: 0; font-size: 18px; }
     .carro { margin-bottom: 5px; }
-    .op { display: inline-block; padding: 4px 8px; margin: 2px; border-radius: 4px; color: white; }
+    .op { display: inline-block; padding: 4px 8px; margin-right: 5px; border-radius: 4px; color: white; }
     .front { background-color: green; }
     .portas { background-color: orange; }
     .back { background-color: blue; }
-    .morto { background-color: red; font-weight: bold; }
+    .morto { background-color: red; }
   </style>
 </head>
 <body>
@@ -32,28 +31,26 @@ const equipes = [
   { equipe: 4, nomes: ["Glauco", "Rodrigão"] },
   { equipe: 5, nomes: ["Felipe", "Marcus V."] }
 ];
-const operacoes = ["Front End", "Portas", "Back End"];
+const operacoes = ["Front", "Portas", "Back"];
 const mortoSemana = ["L. Prado / Ives", "Elizeu", "Dodo", "Rodrigão", "Cal"];
 
 function gerarEscala() {
   let html = "";
   for (let d = 0; d < dias.length; d++) {
     html += `<div class="dia"><h2>${dias[d]}</h2>`;
+    let mortos = mortoSemana[d];
     for (let e = 0; e < equipes.length; e++) {
       let nomes = equipes[e].nomes.slice(); 
-      // Substitui operador morto/refino do dia anterior
-      if (d > 0 && mortoSemana[d].includes(nomes[0])) {
-        nomes[0] = mortoSemana[d-1].split(" / ")[0];
-      }
-      html += `<div class="carro"><strong>Carro ${e+1}:</strong><br>`;
+      // Se algum integrante for o morto, remove da lista e substitui pelo morto anterior
+      if (d > 0 && mortos.includes(nomes[0])) { nomes[0] = mortoSemana[d-1].split(" / ")[0]; }
+      html += `<div class="carro"><strong>Carro ${e+1}:</strong> `;
       for (let n = 0; n < nomes.length; n++) {
-        let op = operacoes[n % operacoes.length];
-        let cor = op.toLowerCase().replace(" ", "");
-        html += `<span class="op ${cor}">${op}: ${nomes[n]}</span>`;
+        let op = operacoes[n % operacoes.length].toLowerCase();
+        html += `<span class="op ${op}">${nomes[n]}</span>`;
       }
       html += "</div>";
     }
-    html += `<div><span class="op morto">Morto/Refino: ${mortoSemana[d]}</span></div>`;
+    html += `<div><span class="op morto">Morto/Refino: ${mortos}</span></div>`;
     html += "</div>";
   }
   document.getElementById("escala").innerHTML = html;
