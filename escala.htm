@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escala de Operações</title>
+    <title>Escala Corrigida</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f8f8f8; padding: 20px; }
-        h1 { text-align: center; color: #333; }
-        .card { background-color: #fff; border-radius: 8px; padding: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 20px; }
-        .op { margin: 5px; padding: 5px 10px; border-radius: 5px; color: white; }
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f0f0; }
+        .card { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .op { display: inline-block; padding: 5px 10px; border-radius: 5px; color: #fff; margin-left: 10px; }
         .Front { background-color: #4caf50; }
         .Back { background-color: #2196f3; }
         .Portas { background-color: #ff9800; }
-        .carro { margin-top: 10px; }
-        .refino { margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<h1>Escala de Operações da Semana ok </h1>
-
+<h1>Escala Corrigida 2</h1>
 <div id="escala"></div>
 
 <script>
-// Dados da escala
-const equipesBase = {
+const equipes = {
     "Equipe 1": ["Willians", "L. Ferreira", "Fernando"],
     "Equipe 2": ["Sérgio", "Tiago", "Cal"],
     "Equipe 3": ["Dodo", "Elizeu", "Hércules"],
@@ -32,7 +27,8 @@ const equipesBase = {
     "Equipe 5": ["Felipe", "Marcus V."]
 };
 
-const mortoInicial = ["Elizeu", "Dodo", "Rodrigão", "Cal", "Fernando"]; // Escalados para o Morto
+const mortoInicial = ["Elizeu", "Dodo", "Rodrigão", "Cal", "Fernando"];
+const operacoes = ["Front", "Back", "Portas"];
 const rodizioCarros = [
     ["Equipe 1", "Equipe 2", "Equipe 3"],
     ["Equipe 2", "Equipe 3", "Equipe 1"],
@@ -40,84 +36,76 @@ const rodizioCarros = [
     ["Equipe 1", "Equipe 2", "Equipe 3"],
     ["Equipe 2", "Equipe 3", "Equipe 1"]
 ];
-const operacoes = ["Front", "Back", "Portas"];
 
-const escalaDiv = document.getElementById("escala");
-let ciclos = {};
+// Operação inicial da segunda-feira (chefe determina isso)
+let operacoesIniciais = {
+    "Willians": 0, "L. Ferreira": 1, "Fernando": 2,
+    "Sérgio": 1, "Tiago": 2, "Cal": 0,
+    "Dodo": 2, "Elizeu": 0, "Hércules": 1,
+    "Glauco": 0, "Rodrigão": 1,
+    "Felipe": 0, "Marcus V.": 1
+};
+
+// Ciclo dos carros 4 e 5 (Front e Portas)
 let ciclosFixos = {
     "Glauco": 0, "Rodrigão": 1,
     "Felipe": 0, "Marcus V.": 1
 };
 
+// Ciclo de operações por pessoa
+let ciclos = {...operacoesIniciais};
+
+let escalaDiv = document.getElementById("escala");
 let refinoHoje = mortoInicial[0];
 
-// Ciclo de operações para os trabalhadores (0 - Front, 1 - Back, 2 - Portas)
-for (const [equipe, membros] of Object.entries(equipesBase)) {
-    for (const nome of membros) {
-        ciclos[nome] = 0;
-    }
-}
-
-for (let d = 0; d < 5; d++) {
-    const card = document.createElement("div");
+for (let dia = 0; dia < 5; dia++) {
+    let card = document.createElement("div");
     card.className = "card";
+    let diaNome = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"][dia];
+    card.innerHTML = `<h3>${diaNome}</h3>`;
 
-    const titulo = document.createElement("h2");
-    titulo.textContent = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"][d];
-    card.appendChild(titulo);
-
-    // Preparar as equipes, removendo o nome do escalado para o Morto
-    const equipesDia = JSON.parse(JSON.stringify(equipesBase));  // Cópia profunda
-    for (const equipe of ["Equipe 1", "Equipe 2", "Equipe 3"]) {
-        equipesDia[equipe] = equipesDia[equipe].filter(n => n !== refinoHoje);
+    // Clonar as equipes do dia para evitar alterações do refino
+    let equipesDia = JSON.parse(JSON.stringify(equipes));
+    for (let equipe in equipesDia) {
+        equipesDia[equipe] = equipesDia[equipe].filter(p => p !== refinoHoje);
     }
 
-    // Distribuir as equipes pelos Carros 1-3
-    for (let c = 0; c < 3; c++) {
-        const equipeNome = rodizioCarros[d][c];
-        const membros = equipesDia[equipeNome];
-        let detalhe = `<strong>Carro ${c + 1}:</strong><br>`;
-        membros.forEach(membro => {
-            let op = operacoes[ciclos[membro] % 3];
-            detalhe += `- ${membro}: <span class="op ${op}">${op}</span><br>`;
-            ciclos[membro] = (ciclos[membro] + 8) % 3;  // Avança 8h para o próximo dia
+    // Carros 1, 2 e 3 com rodízio e operações
+    for (let carro = 0; carro < 3; carro++) {
+        let equipe = rodizioCarros[dia][carro];
+        let pessoas = equipesDia[equipe];
+        let carroHTML = `<strong>Carro ${carro + 1}:</strong><br>`;
+        pessoas.forEach(pessoa => {
+            let op = operacoes[ciclos[pessoa] % 3];
+            carroHTML += `- ${pessoa}: <span class="op ${op}">${op}</span><br>`;
+            ciclos[pessoa] = (ciclos[pessoa] + 8) % 3;
         });
-        const div = document.createElement("div");
-        div.className = "carro";
-        div.innerHTML = detalhe;
-        card.appendChild(div);
+        card.innerHTML += carroHTML;
     }
 
     // Carros 4 e 5 fixos
-    ["Carro 4", "Carro 5"].forEach((carro, idx) => {
-        const dupla = idx === 0 ? ["Glauco", "Rodrigão"] : ["Felipe", "Marcus V."];
-        let detalhe = `<strong>${carro}:</strong><br>`;
-        dupla.forEach(membro => {
-            const op = operacoes[ciclosFixos[membro] % 2 * 2];  // Front ou Portas
-            detalhe += `- ${membro}: <span class="op ${op}">${op}</span><br>`;
-            ciclosFixos[membro] = (ciclosFixos[membro] + 8) % 2;
+    for (let idx = 4; idx <= 5; idx++) {
+        let dupla = equipes[`Equipe ${idx}`];
+        let carroHTML = `<strong>Carro ${idx}:</strong><br>`;
+        dupla.forEach(pessoa => {
+            let op = operacoes[ciclosFixos[pessoa] % 2 * 2];
+            carroHTML += `- ${pessoa}: <span class="op ${op}">${op}</span><br>`;
+            ciclosFixos[pessoa] = (ciclosFixos[pessoa] + 8) % 2;
         });
-        const div = document.createElement("div");
-        div.className = "carro";
-        div.innerHTML = detalhe;
-        card.appendChild(div);
-    });
+        card.innerHTML += carroHTML;
+    }
 
-    // Mostrar o nome do escalado para o Morto
-    const refinoDiv = document.createElement("div");
-    refinoDiv.className = "refino";
-    refinoDiv.innerHTML = `<strong>Morto/Refino:</strong> ${refinoHoje}`;
-    card.appendChild(refinoDiv);
+    // Morto/Refino
+    card.innerHTML += `<br><strong>Morto/Refino:</strong> ${refinoHoje}`;
 
-    // Atualizar para o próximo dia (substituição do escalado para o Morto)
-    if (d < 4) {
-        const idxHoje = mortoInicial.indexOf(refinoHoje);
-        refinoHoje = mortoInicial[(idxHoje + 1) % mortoInicial.length];
+    // Atualizar refino para o próximo dia
+    if (dia < 4) {
+        let idxRefino = mortoInicial.indexOf(refinoHoje);
+        refinoHoje = mortoInicial[(idxRefino + 1) % mortoInicial.length];
     }
 
     escalaDiv.appendChild(card);
 }
 </script>
-
 </body>
 </html>
