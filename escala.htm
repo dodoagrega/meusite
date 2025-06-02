@@ -1,99 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Escala Semanal de Trabalho</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .dia {
-      background-color: #ffffff;
-      border: 1px solid #dddddd;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    .dia h2 {
-      margin-top: 0;
-      color: #333333;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    li {
-      padding: 5px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala de Operações</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .dia {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 10px 0;
+            padding: 15px;
+        }
+        .dia h2 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+        .carro {
+            margin: 5px 0;
+        }
+        .responsivo {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        @media (max-width: 600px) {
+            .dia {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Escala Semanal de Trabalho</h1>
+    <h1>Escala de Operações - Semana</h1>
+    <div id="escala" class="responsivo"></div>
 
-  <div class="dia">
-    <h2>Segunda-feira</h2>
-    <ul>
-      <li>Carro 1: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
-      <li>Carro 2: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
-      <li>Carro 3: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
-      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
-      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
-      <li>Morto/Refino: Elizeu</li>
-    </ul>
-  </div>
+    <script>
+        const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+        const carros = ["Carro 1", "Carro 2", "Carro 3", "Carro 4", "Carro 5", "Morto/Refino"];
+        const equipesBase = [
+            ["Equipe 1", "Equipe 2", "Equipe 3", "Glauco & Rodrigão", "Felipe & Marcus V.", "L. Prado & Ives"],
+            ["Equipe 2", "Equipe 3", "Equipe 1", "continuação", "continuação", "Elizeu"],
+            ["Equipe 3", "Equipe 1", "Equipe 2", "continuação", "continuação", "Dodo"],
+            ["Equipe 1", "Equipe 2", "Equipe 3", "continuação", "continuação", "Rodrigão"],
+            ["Equipe 2", "Equipe 3", "Equipe 1", "continuação", "continuação", "Cal"]
+        ];
 
-  <div class="dia">
-    <h2>Terça-feira</h2>
-    <ul>
-      <li>Carro 1: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
-      <li>Carro 2: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
-      <li>Carro 3: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
-      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
-      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
-      <li>Morto/Refino: Elizeu</li>
-    </ul>
-  </div>
+        const escalaDiv = document.getElementById("escala");
 
-  <div class="dia">
-    <h2>Quarta-feira</h2>
-    <ul>
-      <li>Carro 1: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
-      <li>Carro 2: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
-      <li>Carro 3: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
-      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
-      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
-      <li>Morto/Refino: (a definir)</li>
-    </ul>
-  </div>
+        dias.forEach((dia, i) => {
+            const card = document.createElement("div");
+            card.className = "dia";
+            const title = document.createElement("h2");
+            title.textContent = dia;
+            card.appendChild(title);
 
-  <div class="dia">
-    <h2>Quinta-feira</h2>
-    <ul>
-      <li>Carro 1: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
-      <li>Carro 2: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
-      <li>Carro 3: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
-      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
-      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
-      <li>Morto/Refino: (a definir)</li>
-    </ul>
-  </div>
+            carros.forEach((carro, j) => {
+                const equipe = document.createElement("div");
+                equipe.className = "carro";
+                equipe.textContent = `${carro}: ${equipesBase[i][j]}`;
+                card.appendChild(equipe);
+            });
 
-  <div class="dia">
-    <h2>Sexta-feira</h2>
-    <ul>
-      <li>Carro 1: Front End - Sérgio, Portas - Cal, Back End - Hércules</li>
-      <li>Carro 2: Front End - Glauco, Portas - Dodo, Back End - L. Prado</li>
-      <li>Carro 3: Front End - Willians, Portas - Fernando, Back End - L. Ferreira</li>
-      <li>Carro 4: Front End - Rodrigo, Portas - Marcos</li>
-      <li>Carro 5: Front End - Tiago, Portas - Felipe</li>
-      <li>Morto/Refino: (a definir)</li>
-    </ul>
-  </div>
-
+            escalaDiv.appendChild(card);
+        });
+    </script>
 </body>
 </html>
