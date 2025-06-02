@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escala Corrigida</title>
+    <title>Escala Corrigida Final</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f0f0; }
         .card { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
@@ -15,10 +15,11 @@
 </head>
 <body>
 
-<h1>Escala Corrigida 2</h1>
+<h1>Escala Corrigida Final</h1>
 <div id="escala"></div>
 
 <script>
+// Dados iniciais
 const equipes = {
     "Equipe 1": ["Willians", "L. Ferreira", "Fernando"],
     "Equipe 2": ["Sérgio", "Tiago", "Cal"],
@@ -37,7 +38,7 @@ const rodizioCarros = [
     ["Equipe 2", "Equipe 3", "Equipe 1"]
 ];
 
-// Operação inicial da segunda-feira (chefe determina isso)
+// Operações iniciais de cada trabalhador (segunda-feira)
 let operacoesIniciais = {
     "Willians": 0, "L. Ferreira": 1, "Fernando": 2,
     "Sérgio": 1, "Tiago": 2, "Cal": 0,
@@ -46,13 +47,8 @@ let operacoesIniciais = {
     "Felipe": 0, "Marcus V.": 1
 };
 
-// Ciclo dos carros 4 e 5 (Front e Portas)
-let ciclosFixos = {
-    "Glauco": 0, "Rodrigão": 1,
-    "Felipe": 0, "Marcus V.": 1
-};
-
-// Ciclo de operações por pessoa
+// Ciclo de operações dos carros 4 e 5
+let ciclosFixos = {"Glauco": 0, "Rodrigão": 1, "Felipe": 0, "Marcus V.": 1};
 let ciclos = {...operacoesIniciais};
 
 let escalaDiv = document.getElementById("escala");
@@ -64,13 +60,20 @@ for (let dia = 0; dia < 5; dia++) {
     let diaNome = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"][dia];
     card.innerHTML = `<h3>${diaNome}</h3>`;
 
-    // Clonar as equipes do dia para evitar alterações do refino
+    // Clonar equipes para evitar modificação no original
     let equipesDia = JSON.parse(JSON.stringify(equipes));
-    for (let equipe in equipesDia) {
-        equipesDia[equipe] = equipesDia[equipe].filter(p => p !== refinoHoje);
+
+    // Encontrar a equipe do refino
+    let equipeDoRefino = Object.keys(equipesDia).find(equipe =>
+        equipesDia[equipe].includes(refinoHoje)
+    );
+
+    // Retirar o operador do refino da equipe dele (para ele não aparecer no carro e no morto)
+    if (equipeDoRefino) {
+        equipesDia[equipeDoRefino] = equipesDia[equipeDoRefino].filter(p => p !== refinoHoje);
     }
 
-    // Carros 1, 2 e 3 com rodízio e operações
+    // Carros 1, 2, 3 com rodízio e ciclo de operações
     for (let carro = 0; carro < 3; carro++) {
         let equipe = rodizioCarros[dia][carro];
         let pessoas = equipesDia[equipe];
@@ -85,7 +88,7 @@ for (let dia = 0; dia < 5; dia++) {
 
     // Carros 4 e 5 fixos
     for (let idx = 4; idx <= 5; idx++) {
-        let dupla = equipes[`Equipe ${idx}`];
+        let dupla = equipesDia[`Equipe ${idx}`];
         let carroHTML = `<strong>Carro ${idx}:</strong><br>`;
         dupla.forEach(pessoa => {
             let op = operacoes[ciclosFixos[pessoa] % 2 * 2];
@@ -95,10 +98,10 @@ for (let dia = 0; dia < 5; dia++) {
         card.innerHTML += carroHTML;
     }
 
-    // Morto/Refino
+    // Morto/Refino do dia
     card.innerHTML += `<br><strong>Morto/Refino:</strong> ${refinoHoje}`;
 
-    // Atualizar refino para o próximo dia
+    // Avançar refino para o próximo dia
     if (dia < 4) {
         let idxRefino = mortoInicial.indexOf(refinoHoje);
         refinoHoje = mortoInicial[(idxRefino + 1) % mortoInicial.length];
