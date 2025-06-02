@@ -1,114 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escala Corrigida Final</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f0f0; }
-        .card { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .op { display: inline-block; padding: 5px 10px; border-radius: 5px; color: #fff; margin-left: 10px; }
-        .Front { background-color: #4caf50; }
-        .Back { background-color: #2196f3; }
-        .Portas { background-color: #ff9800; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala de Operações</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+    h1 { text-align: center; }
+    .dia-card { background: white; padding: 10px; margin-bottom: 15px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
+    .dia-card h2 { margin: 0 0 10px 0; color: #333; }
+    .carro { margin-bottom: 8px; }
+    .op { display: inline-block; margin-left: 5px; padding: 3px 6px; border-radius: 4px; color: white; }
+    .Front { background: #4caf50; }
+    .Portas { background: #ff9800; }
+    .Back { background: #2196f3; }
+    .morto { font-weight: bold; margin-top: 5px; }
+  </style>
 </head>
 <body>
 
-<h1>Escala Corrigida Final</h1>
+<h1>Escala de Operações da Semana</h1>
+
 <div id="escala"></div>
 
 <script>
-// Dados iniciais
-const equipes = {
-    "Equipe 1": ["Willians", "L. Ferreira", "Fernando"],
-    "Equipe 2": ["Sérgio", "Tiago", "Cal"],
-    "Equipe 3": ["Dodo", "Elizeu", "Hércules"],
-    "Equipe 4": ["Glauco", "Rodrigão"],
-    "Equipe 5": ["Felipe", "Marcus V."]
-};
-
-const mortoInicial = ["Elizeu", "Dodo", "Rodrigão", "Cal", "Fernando"];
-const operacoes = ["Front", "Back", "Portas"];
-const rodizioCarros = [
-    ["Equipe 1", "Equipe 2", "Equipe 3"],
-    ["Equipe 2", "Equipe 3", "Equipe 1"],
-    ["Equipe 3", "Equipe 1", "Equipe 2"],
-    ["Equipe 1", "Equipe 2", "Equipe 3"],
-    ["Equipe 2", "Equipe 3", "Equipe 1"]
+const equipes = [
+  { nome: "Equipe 1", membros: ["Willians", "L. Ferreira", "Fernando"], operacoes: ["Front", "Back", "Portas"] },
+  { nome: "Equipe 2", membros: ["Sérgio", "Tiago", "Cal"], operacoes: ["Front", "Back", "Portas"] },
+  { nome: "Equipe 3", membros: ["Dodo", "Hércules", "Elizeu"], operacoes: ["Front", "Back", "Portas"] },
+  { nome: "Equipe 4", membros: ["Glauco", "Rodrigão"], operacoes: ["Front", "Portas"] },
+  { nome: "Equipe 5", membros: ["Felipe", "Marcus V."], operacoes: ["Front", "Portas"] }
 ];
 
-// Operações iniciais de cada trabalhador (segunda-feira)
-let operacoesIniciais = {
-    "Willians": 0, "L. Ferreira": 1, "Fernando": 2,
-    "Sérgio": 1, "Tiago": 2, "Cal": 0,
-    "Dodo": 2, "Elizeu": 0, "Hércules": 1,
-    "Glauco": 0, "Rodrigão": 1,
-    "Felipe": 0, "Marcus V.": 1
-};
+const mortoInicial = ["L. Prado", "Ives", "Elizeu", "Dodo", "Rodrigão", "Cal"];
+const diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+const carros = [1,2,3,4,5];
 
-// Ciclo de operações dos carros 4 e 5
-let ciclosFixos = {"Glauco": 0, "Rodrigão": 1, "Felipe": 0, "Marcus V.": 1};
-let ciclos = {...operacoesIniciais};
+const escalaDiv = document.getElementById("escala");
 
-let escalaDiv = document.getElementById("escala");
-let refinoHoje = mortoInicial[0];
+for (let dia = 0; dia < diasSemana.length; dia++) {
+  let card = document.createElement("div");
+  card.className = "dia-card";
+  let diaNome = document.createElement("h2");
+  diaNome.textContent = diasSemana[dia];
+  card.appendChild(diaNome);
 
-for (let dia = 0; dia < 5; dia++) {
-    let card = document.createElement("div");
-    card.className = "card";
-    let diaNome = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"][dia];
-    card.innerHTML = `<h3>${diaNome}</h3>`;
+  // Carros 1 a 3 (equipes 1 a 3 rotacionadas)
+  for (let c = 0; c < 3; c++) {
+    let equipeIndex = (c + dia) % 3; // rotação dos carros
+    let equipe = equipes[equipeIndex];
+    let operacoes = equipe.operacoes.map((op, idx) => {
+      let rotacao = (idx + dia) % equipe.operacoes.length;
+      return { membro: equipe.membros[idx], op: equipe.operacoes[rotacao] };
+    });
+    let carroDiv = document.createElement("div");
+    carroDiv.className = "carro";
+    carroDiv.innerHTML = `<strong>Carro ${c+1}:</strong>`;
+    operacoes.forEach(o => {
+      carroDiv.innerHTML += `<div>- ${o.membro}: <span class="op ${o.op}">${o.op}</span></div>`;
+    });
+    card.appendChild(carroDiv);
+  }
 
-    // Clonar equipes para evitar modificação no original
-    let equipesDia = JSON.parse(JSON.stringify(equipes));
+  // Carros 4 e 5 (fixos, com rotação de operação)
+  for (let c = 3; c < 5; c++) {
+    let equipe = equipes[c];
+    let operacoes = equipe.operacoes.map((op, idx) => {
+      let rotacao = (idx + dia) % equipe.operacoes.length;
+      return { membro: equipe.membros[idx], op: equipe.operacoes[rotacao] };
+    });
+    let carroDiv = document.createElement("div");
+    carroDiv.className = "carro";
+    carroDiv.innerHTML = `<strong>Carro ${c+1}:</strong>`;
+    operacoes.forEach(o => {
+      carroDiv.innerHTML += `<div>- ${o.membro}: <span class="op ${o.op}">${o.op}</span></div>`;
+    });
+    card.appendChild(carroDiv);
+  }
 
-    // Encontrar a equipe do refino
-    let equipeDoRefino = Object.keys(equipesDia).find(equipe =>
-        equipesDia[equipe].includes(refinoHoje)
-    );
+  // Morto/Refino
+  let mortoDia = dia === 0 ? `${mortoInicial[0]} e ${mortoInicial[1]}` : mortoInicial[dia+1];
+  let mortoDiv = document.createElement("div");
+  mortoDiv.className = "morto";
+  mortoDiv.textContent = `Morto/Refino: ${mortoDia}`;
+  card.appendChild(mortoDiv);
 
-    // Retirar o operador do refino da equipe dele (para ele não aparecer no carro e no morto)
-    if (equipeDoRefino) {
-        equipesDia[equipeDoRefino] = equipesDia[equipeDoRefino].filter(p => p !== refinoHoje);
-    }
-
-    // Carros 1, 2, 3 com rodízio e ciclo de operações
-    for (let carro = 0; carro < 3; carro++) {
-        let equipe = rodizioCarros[dia][carro];
-        let pessoas = equipesDia[equipe];
-        let carroHTML = `<strong>Carro ${carro + 1}:</strong><br>`;
-        pessoas.forEach(pessoa => {
-            let op = operacoes[ciclos[pessoa] % 3];
-            carroHTML += `- ${pessoa}: <span class="op ${op}">${op}</span><br>`;
-            ciclos[pessoa] = (ciclos[pessoa] + 8) % 3;
-        });
-        card.innerHTML += carroHTML;
-    }
-
-    // Carros 4 e 5 fixos
-    for (let idx = 4; idx <= 5; idx++) {
-        let dupla = equipesDia[`Equipe ${idx}`];
-        let carroHTML = `<strong>Carro ${idx}:</strong><br>`;
-        dupla.forEach(pessoa => {
-            let op = operacoes[ciclosFixos[pessoa] % 2 * 2];
-            carroHTML += `- ${pessoa}: <span class="op ${op}">${op}</span><br>`;
-            ciclosFixos[pessoa] = (ciclosFixos[pessoa] + 8) % 2;
-        });
-        card.innerHTML += carroHTML;
-    }
-
-    // Morto/Refino do dia
-    card.innerHTML += `<br><strong>Morto/Refino:</strong> ${refinoHoje}`;
-
-    // Avançar refino para o próximo dia
-    if (dia < 4) {
-        let idxRefino = mortoInicial.indexOf(refinoHoje);
-        refinoHoje = mortoInicial[(idxRefino + 1) % mortoInicial.length];
-    }
-
-    escalaDiv.appendChild(card);
+  escalaDiv.appendChild(card);
 }
 </script>
+
 </body>
 </html>
