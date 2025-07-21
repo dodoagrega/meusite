@@ -10,7 +10,7 @@
       margin: 10px;
       background: #f9f9f9;
     }
-    h2 {
+    h2, h3 {
       text-align: center;
       color: #cc0000;
     }
@@ -41,6 +41,13 @@
       padding: 10px;
       border-radius: 5px;
     }
+    #total-dia {
+      background: #eaeaea;
+      padding: 10px;
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -66,18 +73,27 @@
 
   <button onclick="registrarVenda()">Registrar Venda</button>
 
+  <div id="total-dia">Total do Dia: R$ 0,00</div>
   <div id="lista-vendas"></div>
 
   <script>
     const vendas = [];
 
+    const precos = {
+      "Pipoca Doce": 8,
+      "Pipoca Salgada": 10,
+      "Combo Pipoca + Refri": 15
+    };
+
     function registrarVenda() {
       const produto = document.getElementById('produto').value;
       const quantidade = parseInt(document.getElementById('quantidade').value);
       const pagamento = document.getElementById('pagamento').value;
+      const preco = precos[produto];
+      const valor = preco * quantidade;
       const data = new Date().toLocaleString('pt-BR');
 
-      const venda = { produto, quantidade, pagamento, data };
+      const venda = { produto, quantidade, pagamento, data, valor };
       vendas.push(venda);
 
       mostrarVendas();
@@ -85,19 +101,26 @@
 
     function mostrarVendas() {
       const lista = document.getElementById('lista-vendas');
+      const totalEl = document.getElementById('total-dia');
       lista.innerHTML = "<h3>Vendas do Dia:</h3>";
 
+      let total = 0;
+
       vendas.forEach((v, index) => {
+        total += v.valor;
         lista.innerHTML += `
           <div class="venda">
             <strong>#${index + 1}</strong><br>
             Produto: ${v.produto}<br>
             Quantidade: ${v.quantidade}<br>
             Pagamento: ${v.pagamento}<br>
+            Valor: R$ ${v.valor.toFixed(2)}<br>
             Data: ${v.data}
           </div>
         `;
       });
+
+      totalEl.innerHTML = `Total do Dia: R$ ${total.toFixed(2)}`;
     }
   </script>
 
