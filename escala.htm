@@ -1,69 +1,105 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escala Operacional - Celular</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle de Vendas - Pipoca</title>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 10px; }
-    .dia { background: white; margin-bottom: 10px; padding: 10px; border-radius: 5px; }
-    h2 { margin-top: 0; font-size: 18px; }
-    .carro { margin-bottom: 5px; }
-    .op { display: inline-block; padding: 4px 8px; margin-right: 5px; border-radius: 4px; color: white; }
-    .front { background-color: green; }
-    .portas { background-color: orange; }
-    .back { background-color: blue; }
-    .morto { background-color: red; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      background: #f9f9f9;
+    }
+    h2 {
+      text-align: center;
+      color: #cc0000;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .venda {
+      background: white;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
 
-<h1>Escala da Semana</h1>
+  <h2>Controle de Vendas - Pipoca</h2>
 
-<div id="escala"></div>
+  <label for="produto">Produto</label>
+  <select id="produto">
+    <option value="Pipoca Doce">Pipoca Doce</option>
+    <option value="Pipoca Salgada">Pipoca Salgada</option>
+    <option value="Combo Pipoca + Refri">Combo Pipoca + Refri</option>
+  </select>
 
-<script>
-const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-const equipes = [
-  { equipe: 1, nomes: ["Willians", "Fernando", "L. Ferreira"] },
-  { equipe: 2, nomes: ["Sérgio", "Cal", "Tiago"] },
-  { equipe: 3, nomes: ["Dodo", "Hércules", "Elizeu"] },
-  { equipe: 4, nomes: ["Glauco", "Rodrigão"] },
-  { equipe: 5, nomes: ["Felipe", "Marcus V."] }
-];
-const operacoes = ["Front", "Portas", "Back"];
-const mortoSemana = ["L. Prado / Ives", "Elizeu", "Dodo", "Rodrigão", "Cal"];
+  <label for="quantidade">Quantidade</label>
+  <input type="number" id="quantidade" value="1" min="1">
 
-function gerarEscala() {
-  let html = "";
-  for (let d = 0; d < dias.length; d++) {
-    html += `<div class="dia"><h2>${dias[d]}</h2>`;
-    let mortos = mortoSemana[d];
-    for (let e = 0; e < equipes.length; e++) {
-      let nomes = equipes[e].nomes.slice(); 
-      // Se algum integrante for o morto, remove da lista e substitui pelo morto anterior
-      if (d > 0 && mortos.includes(nomes[0])) { nomes[0] = mortoSemana[d-1].split(" / ")[0]; }
-      html += `<div class="carro"><strong>Carro ${e+1}:</strong> `;
-      for (let n = 0; n < nomes.length; n++) {
-        let op = operacoes[n % operacoes.length].toLowerCase();
-        html += `<span class="op ${op}">${nomes[n]}</span>`;
-      }
-      html += "</div>";
+  <label for="pagamento">Forma de Pagamento</label>
+  <select id="pagamento">
+    <option value="Dinheiro">Dinheiro</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão">Cartão</option>
+  </select>
+
+  <button onclick="registrarVenda()">Registrar Venda</button>
+
+  <div id="lista-vendas"></div>
+
+  <script>
+    const vendas = [];
+
+    function registrarVenda() {
+      const produto = document.getElementById('produto').value;
+      const quantidade = parseInt(document.getElementById('quantidade').value);
+      const pagamento = document.getElementById('pagamento').value;
+      const data = new Date().toLocaleString('pt-BR');
+
+      const venda = { produto, quantidade, pagamento, data };
+      vendas.push(venda);
+
+      mostrarVendas();
     }
-    html += `<div><span class="op morto">Morto/Refino: ${mortos}</span></div>`;
-    html += "</div>";
-  }
-  document.getElementById("escala").innerHTML = html;
-}
 
-gerarEscala();
-</script>
-  <div class="legenda">
-    <strong>Legenda:</strong><br>
-    <span class="label front">Front End</span>
-    <span class="label portas">Portas</span>
-    <span class="label back">Back End</span>
-    <span class="label refino">Morto/Refino</span>
-    </div>
+    function mostrarVendas() {
+      const lista = document.getElementById('lista-vendas');
+      lista.innerHTML = "<h3>Vendas do Dia:</h3>";
+
+      vendas.forEach((v, index) => {
+        lista.innerHTML += `
+          <div class="venda">
+            <strong>#${index + 1}</strong><br>
+            Produto: ${v.produto}<br>
+            Quantidade: ${v.quantidade}<br>
+            Pagamento: ${v.pagamento}<br>
+            Data: ${v.data}
+          </div>
+        `;
+      });
+    }
+  </script>
+
 </body>
 </html>
