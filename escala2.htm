@@ -1,103 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escala da Semana - Cartões por Dia</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-        h2 {
-            text-align: center;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-        .day {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        .card {
-            background-color: #fff;
-            border: 2px solid #333;
-            border-radius: 10px;
-            margin: 10px;
-            padding: 15px;
-            width: 250px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
-        .card h3 {
-            margin-top: 0;
-            text-align: center;
-            background-color: #333;
-            color: #fff;
-            padding: 5px;
-            border-radius: 5px;
-        }
-        .op {
-            background-color: #ddd;
-            padding: 5px;
-            margin: 3px 0;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fechamento da Rota</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      background: #f2f2f2;
+    }
+    h2 {
+      text-align: center;
+      color: #cc0000;
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background-color: #cc0000;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .resultado {
+      background: white;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #ccc;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Segunda-feira -->
-<h2>Segunda-feira</h2>
-<div class="day">
-    <div class="card"><h3>Carro 1 - Equipe 1</h3><div class="op"><strong>Willians</strong>: Front End</div><div class="op"><strong>Fernando</strong>: Portas</div><div class="op"><strong>L. Ferreira</strong>: Back End</div></div>
-    <div class="card"><h3>Carro 2 - Equipe 2</h3><div class="op"><strong>Sérgio</strong>: Front End</div><div class="op"><strong>Cal</strong>: Portas</div><div class="op"><strong>Hércules</strong>: Back End</div></div>
-    <div class="card"><h3>Carro 3 - Equipe 3</h3><div class="op"><strong>Glauco</strong>: Front End</div><div class="op"><strong>Dodo</strong>: Portas</div><div class="op"><strong>L. Prado</strong>: Back End</div></div>
-    <div class="card"><h3>Carro 4 - Equipe 4</h3><div class="op"><strong>Rodrigo</strong>: Front End</div><div class="op"><strong>Marcos</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 5 - Equipe 5</h3><div class="op"><strong>Tiago</strong>: Front End</div><div class="op"><strong>Felipe</strong>: Portas</div></div>
-</div>
+  <h2>Fechamento da Rota</h2>
 
-<!-- Terça-feira -->
-<h2>Terça-feira</h2>
-<div class="day">
-    <div class="card"><h3>Carro 1 - Equipe 2</h3><div class="op"><strong>Sérgio</strong>: Front End</div><div class="op"><strong>Cal</strong>: Back End</div><div class="op"><strong>Hércules</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 2 - Equipe 3</h3><div class="op"><strong>Glauco</strong>: Front End</div><div class="op"><strong>Dodo</strong>: Back End</div><div class="op"><strong>L. Prado</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 3 - Equipe 1</h3><div class="op"><strong>Willians</strong>: Front End</div><div class="op"><strong>Fernando</strong>: Back End</div><div class="op"><strong>L. Ferreira</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 4 - Equipe 4</h3><div class="op"><strong>Marcos</strong>: Front End</div><div class="op"><strong>Rodrigo</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 5 - Equipe 5</h3><div class="op"><strong>Felipe</strong>: Front End</div><div class="op"><strong>Tiago</strong>: Portas</div></div>
-</div>
+  <label>Caixa Inicial (Dinheiro)</label>
+  <input type="number" id="caixaInicial" placeholder="Ex: 100" min="0">
 
-<!-- Quarta-feira -->
-<h2>Quarta-feira</h2>
-<div class="day">
-    <div class="card"><h3>Carro 1 - Equipe 3</h3><div class="op"><strong>Glauco</strong>: Front End</div><div class="op"><strong>Dodo</strong>: Back End</div><div class="op"><strong>L. Prado</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 2 - Equipe 1</h3><div class="op"><strong>Willians</strong>: Front End</div><div class="op"><strong>Fernando</strong>: Back End</div><div class="op"><strong>L. Ferreira</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 3 - Equipe 2</h3><div class="op"><strong>Sérgio</strong>: Front End</div><div class="op"><strong>Cal</strong>: Back End</div><div class="op"><strong>Hércules</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 4 - Equipe 4</h3><div class="op"><strong>Rodrigo</strong>: Front End</div><div class="op"><strong>Marcos</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 5 - Equipe 5</h3><div class="op"><strong>Tiago</strong>: Front End</div><div class="op"><strong>Felipe</strong>: Portas</div></div>
-</div>
+  <label>Total em Dinheiro recebido</label>
+  <input type="number" id="valorDinheiro" placeholder="Ex: 180" min="0">
 
-<!-- Quinta-feira -->
-<h2>Quinta-feira</h2>
-<div class="day">
-    <div class="card"><h3>Carro 1 - Equipe 1</h3><div class="op"><strong>Willians</strong>: Front End</div><div class="op"><strong>Fernando</strong>: Back End</div><div class="op"><strong>L. Ferreira</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 2 - Equipe 2</h3><div class="op"><strong>Sérgio</strong>: Front End</div><div class="op"><strong>Cal</strong>: Back End</div><div class="op"><strong>Hércules</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 3 - Equipe 3</h3><div class="op"><strong>Glauco</strong>: Front End</div><div class="op"><strong>Dodo</strong>: Back End</div><div class="op"><strong>L. Prado</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 4 - Equipe 4</h3><div class="op"><strong>Marcos</strong>: Front End</div><div class="op"><strong>Rodrigo</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 5 - Equipe 5</h3><div class="op"><strong>Felipe</strong>: Front End</div><div class="op"><strong>Tiago</strong>: Portas</div></div>
-</div>
+  <label>Total em Pix</label>
+  <input type="number" id="valorPix" placeholder="Ex: 108" min="0">
 
-<!-- Sexta-feira -->
-<h2>Sexta-feira</h2>
-<div class="day">
-    <div class="card"><h3>Carro 1 - Equipe 2</h3><div class="op"><strong>Sérgio</strong>: Front End</div><div class="op"><strong>Cal</strong>: Back End</div><div class="op"><strong>Hércules</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 2 - Equipe 3</h3><div class="op"><strong>Glauco</strong>: Front End</div><div class="op"><strong>Dodo</strong>: Back End</div><div class="op"><strong>L. Prado</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 3 - Equipe 1</h3><div class="op"><strong>Willians</strong>: Front End</div><div class="op"><strong>Fernando</strong>: Back End</div><div class="op"><strong>L. Ferreira</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 4 - Equipe 4</h3><div class="op"><strong>Rodrigo</strong>: Front End</div><div class="op"><strong>Marcos</strong>: Portas</div></div>
-    <div class="card"><h3>Carro 5 - Equipe 5</h3><div class="op"><strong>Tiago</strong>: Front End</div><div class="op"><strong>Felipe</strong>: Portas</div></div>
-</div>
+  <label>Total em Cartão</label>
+  <input type="number" id="valorCartao" placeholder="Ex: 62" min="0">
+
+  <button onclick="fecharDia()">Fechar o Dia</button>
+
+  <div class="resultado" id="resumoDia"></div>
+
+  <script>
+    function fecharDia() {
+      const caixaInicial = parseFloat(document.getElementById("caixaInicial").value) || 0;
+      const valorDinheiro = parseFloat(document.getElementById("valorDinheiro").value) || 0;
+      const valorPix = parseFloat(document.getElementById("valorPix").value) || 0;
+      const valorCartao = parseFloat(document.getElementById("valorCartao").value) || 0;
+
+      const totalRecebido = valorDinheiro + valorPix + valorCartao;
+
+      const custoMedio = 3.5; // custo médio por venda
+      const precoMedio = 9;   // preço médio de venda
+      const lucroMedio = precoMedio - custoMedio;
+
+      const estimativaVendas = totalRecebido / precoMedio;
+      const lucroTotal = estimativaVendas * lucroMedio;
+
+      const caixaFinal = caixaInicial + valorDinheiro;
+
+      const resumo = `
+        <h3>Resumo do Dia</h3>
+        <p><strong>Total recebido:</strong> R$ ${totalRecebido.toFixed(2)}</p>
+        <p><strong>Dinheiro:</strong> R$ ${valorDinheiro.toFixed(2)}</p>
+        <p><strong>Pix:</strong> R$ ${valorPix.toFixed(2)}</p>
+        <p><strong>Cartão:</strong> R$ ${valorCartao.toFixed(2)}</p>
+        <hr>
+        <p><strong>Estimativa de vendas:</strong> ~ ${Math.round(estimativaVendas)} unidades</p>
+        <p><strong>Lucro estimado:</strong> R$ ${lucroTotal.toFixed(2)}</p>
+        <hr>
+        <p><strong>Caixa Final (com troco):</strong> R$ ${caixaFinal.toFixed(2)}</p>
+      `;
+
+      document.getElementById("resumoDia").innerHTML = resumo;
+    }
+  </script>
 
 </body>
 </html>
