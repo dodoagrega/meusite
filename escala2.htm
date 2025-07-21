@@ -1,102 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fechamento da Rota</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 10px;
-      background: #f2f2f2;
-    }
-    h2 {
-      text-align: center;
-      color: #cc0000;
-    }
-    label {
-      margin-top: 10px;
-      display: block;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background-color: #cc0000;
-      color: white;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-    .resultado {
-      background: white;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px #ccc;
-    }
-  </style>
-</head>
-<body>
+<script>
+  const precos = {
+    "Pipoca Salgada": 10,
+    "Pipoca Doce": 8
+  };
 
-  <h2>Fechamento da Rota</h2>
+  function fecharDia() {
+    const caixaInicial = parseFloat(document.getElementById("caixaInicial").value) || 0;
+    const valorDinheiro = parseFloat(document.getElementById("valorDinheiro").value) || 0;
+    const valorPix = parseFloat(document.getElementById("valorPix").value) || 0;
+    const valorCartao = parseFloat(document.getElementById("valorCartao").value) || 0;
 
-  <label>Caixa Inicial (Dinheiro)</label>
-  <input type="number" id="caixaInicial" placeholder="Ex: 100" min="0">
+    const totalRecebido = valorDinheiro + valorPix + valorCartao;
 
-  <label>Total em Dinheiro recebido</label>
-  <input type="number" id="valorDinheiro" placeholder="Ex: 180" min="0">
+    const custoMedio = 3.5; // custo médio por unidade
+    const precoMedio = 9;   // preço médio de venda
+    const lucroMedio = precoMedio - custoMedio;
 
-  <label>Total em Pix</label>
-  <input type="number" id="valorPix" placeholder="Ex: 108" min="0">
+    const estimativaVendas = totalRecebido / precoMedio;
+    const lucroTotal = estimativaVendas * lucroMedio;
 
-  <label>Total em Cartão</label>
-  <input type="number" id="valorCartao" placeholder="Ex: 62" min="0">
+    const caixaFinal = caixaInicial + valorDinheiro;
 
-  <button onclick="fecharDia()">Fechar o Dia</button>
+    const sugestaoPix = gerarSugestao(valorPix);
+    const sugestaoDinheiro = gerarSugestao(valorDinheiro);
+    const sugestaoCartao = gerarSugestao(valorCartao);
 
-  <div class="resultado" id="resumoDia"></div>
+    const resumo = `
+      <h3>Resumo do Dia</h3>
+      <p><strong>Total recebido:</strong> R$ ${totalRecebido.toFixed(2)}</p>
+      <p><strong>Dinheiro:</strong> R$ ${valorDinheiro.toFixed(2)} <br><em>${sugestaoDinheiro}</em></p>
+      <p><strong>Pix:</strong> R$ ${valorPix.toFixed(2)} <br><em>${sugestaoPix}</em></p>
+      <p><strong>Cartão:</strong> R$ ${valorCartao.toFixed(2)} <br><em>${sugestaoCartao}</em></p>
+      <hr>
+      <p><strong>Estimativa de vendas:</strong> ~ ${Math.round(estimativaVendas)} unidades</p>
+      <p><strong>Lucro estimado:</strong> R$ ${lucroTotal.toFixed(2)}</p>
+      <hr>
+      <p><strong>Caixa Final (com troco):</strong> R$ ${caixaFinal.toFixed(2)}</p>
+    `;
 
-  <script>
-    function fecharDia() {
-      const caixaInicial = parseFloat(document.getElementById("caixaInicial").value) || 0;
-      const valorDinheiro = parseFloat(document.getElementById("valorDinheiro").value) || 0;
-      const valorPix = parseFloat(document.getElementById("valorPix").value) || 0;
-      const valorCartao = parseFloat(document.getElementById("valorCartao").value) || 0;
+    document.getElementById("resumoDia").innerHTML = resumo;
+  }
 
-      const totalRecebido = valorDinheiro + valorPix + valorCartao;
+  function gerarSugestao(valor) {
+    if (valor === 0) return "—";
 
-      const custoMedio = 3.5; // custo médio por venda
-      const precoMedio = 9;   // preço médio de venda
-      const lucroMedio = precoMedio - custoMedio;
+    const salgada = Math.floor(valor / precos["Pipoca Salgada"]);
+    const doce = Math.floor(valor / precos["Pipoca Doce"]);
 
-      const estimativaVendas = totalRecebido / precoMedio;
-      const lucroTotal = estimativaVendas * lucroMedio;
-
-      const caixaFinal = caixaInicial + valorDinheiro;
-
-      const resumo = `
-        <h3>Resumo do Dia</h3>
-        <p><strong>Total recebido:</strong> R$ ${totalRecebido.toFixed(2)}</p>
-        <p><strong>Dinheiro:</strong> R$ ${valorDinheiro.toFixed(2)}</p>
-        <p><strong>Pix:</strong> R$ ${valorPix.toFixed(2)}</p>
-        <p><strong>Cartão:</strong> R$ ${valorCartao.toFixed(2)}</p>
-        <hr>
-        <p><strong>Estimativa de vendas:</strong> ~ ${Math.round(estimativaVendas)} unidades</p>
-        <p><strong>Lucro estimado:</strong> R$ ${lucroTotal.toFixed(2)}</p>
-        <hr>
-        <p><strong>Caixa Final (com troco):</strong> R$ ${caixaFinal.toFixed(2)}</p>
-      `;
-
-      document.getElementById("resumoDia").innerHTML = resumo;
-    }
-  </script>
-
-</body>
-</html>
+    return `Possível: ${salgada} salgadas ou ${doce} doces`;
+  }
+</script>
