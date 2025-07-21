@@ -73,16 +73,24 @@
 
   <button onclick="registrarVenda()">Registrar Venda</button>
 
-  <div id="total-dia">Total do Dia: R$ 0,00</div>
+  <div id="total-dia">Total do Dia: R$ 0,00 | Lucro: R$ 0,00</div>
   <div id="lista-vendas"></div>
 
   <script>
     const vendas = [];
 
+    // Preço de venda
     const precos = {
       "Pipoca Doce": 8,
       "Pipoca Salgada": 10,
       "Combo Pipoca + Refri": 15
+    };
+
+    // Custo de produção
+    const custos = {
+      "Pipoca Doce": 3,
+      "Pipoca Salgada": 4,
+      "Combo Pipoca + Refri": 7
     };
 
     function registrarVenda() {
@@ -90,10 +98,13 @@
       const quantidade = parseInt(document.getElementById('quantidade').value);
       const pagamento = document.getElementById('pagamento').value;
       const preco = precos[produto];
+      const custo = custos[produto];
       const valor = preco * quantidade;
+      const despesa = custo * quantidade;
+      const lucro = valor - despesa;
       const data = new Date().toLocaleString('pt-BR');
 
-      const venda = { produto, quantidade, pagamento, data, valor };
+      const venda = { produto, quantidade, pagamento, data, valor, despesa, lucro };
       vendas.push(venda);
 
       mostrarVendas();
@@ -105,9 +116,11 @@
       lista.innerHTML = "<h3>Vendas do Dia:</h3>";
 
       let total = 0;
+      let lucroTotal = 0;
 
       vendas.forEach((v, index) => {
         total += v.valor;
+        lucroTotal += v.lucro;
         lista.innerHTML += `
           <div class="venda">
             <strong>#${index + 1}</strong><br>
@@ -115,12 +128,14 @@
             Quantidade: ${v.quantidade}<br>
             Pagamento: ${v.pagamento}<br>
             Valor: R$ ${v.valor.toFixed(2)}<br>
+            Custo: R$ ${v.despesa.toFixed(2)}<br>
+            Lucro: R$ ${v.lucro.toFixed(2)}<br>
             Data: ${v.data}
           </div>
         `;
       });
 
-      totalEl.innerHTML = `Total do Dia: R$ ${total.toFixed(2)}`;
+      totalEl.innerHTML = `Total do Dia: R$ ${total.toFixed(2)} | Lucro: R$ ${lucroTotal.toFixed(2)}`;
     }
   </script>
 
