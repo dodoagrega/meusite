@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Controle de Pipoca</title>
+  <title>Sistema Pipoca</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      padding: 10px;
-    }
-    h2 {
-      margin-top: 0;
+      margin: 0;
+      background: #fefae0;
+      padding: 20px;
     }
     .tela {
       display: none;
@@ -19,114 +17,159 @@
     .ativa {
       display: block;
     }
-    .menu {
-      margin-bottom: 20px;
-    }
-    .menu button {
-      margin-right: 5px;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
+    h2 {
+      color: #bc6c25;
     }
     input {
+      margin-bottom: 10px;
+      padding: 5px;
       width: 100%;
-      padding: 6px;
-      margin-top: 4px;
     }
-    .resumo {
-      background: #eef;
+    button {
       padding: 10px;
-      margin-top: 20px;
+      margin: 5px;
+      background-color: #606c38;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #283618;
+    }
+    .menu {
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
+
   <div class="menu">
-    <button onclick="abrirTela('situacao')">Situação Operacional</button>
-    <button onclick="abrirTela('entradas')">Entradas</button>
-    <button onclick="abrirTela('gastos')">Gastos</button>
-    <button onclick="abrirTela('fechamento')">Fechamento</button>
-    <button onclick="abrirTela('historico')">Histórico</button>
+    <button onclick="mostrarTela('operacional')">Situação Operacional</button>
+    <button onclick="mostrarTela('entradas')">Entradas</button>
+    <button onclick="mostrarTela('gastos')">Gastos</button>
+    <button onclick="mostrarTela('fechamento')">Fechamento</button>
+    <button onclick="mostrarTela('historico')">Histórico</button>
   </div>
 
-  <!-- Tela Situação Operacional -->
-  <div id="situacao" class="tela ativa">
+  <!-- Tela: Situação Operacional -->
+  <div id="operacional" class="tela ativa">
     <h2>Situação Operacional</h2>
 
     <label>Caixa (Fechamento dia anterior):</label>
-    <input type="number" id="caixaAnterior" value="0" oninput="atualizarCusto()" />
+    <input type="number" id="caixaInicial" placeholder="Ex: 150" onfocus="this.value=''">
 
-    <h3>Valores dos itens necessários para operar o dia</h3>
+    <h3>Valores dos itens para operar no dia</h3>
+    <label>1kg Queijo:</label>
+    <input type="number" id="valorQueijo" placeholder="R$" onfocus="this.value=''">
 
-    <label>1kg Queijo (R$):</label>
-    <input type="number" id="valorQueijo" value="0" oninput="atualizarCusto()" />
+    <label>2kg Milho:</label>
+    <input type="number" id="valorMilho" placeholder="R$" onfocus="this.value=''">
 
-    <label>2kg Milho (R$):</label>
-    <input type="number" id="valorMilho" value="0" oninput="atualizarCusto()" />
+    <label>1kg Açúcar:</label>
+    <input type="number" id="valorAcucar" placeholder="R$" onfocus="this.value=''">
 
-    <label>1kg Açúcar (R$):</label>
-    <input type="number" id="valorAcucar" value="0" oninput="atualizarCusto()" />
+    <label>1 Pacote Embalagens:</label>
+    <input type="number" id="valorEmbalagens" placeholder="R$" onfocus="this.value=''">
 
-    <label>1 pacote de Embalagens (R$):</label>
-    <input type="number" id="valorEmbalagem" value="0" oninput="atualizarCusto()" />
+    <label>2 Litros de Óleo:</label>
+    <input type="number" id="valorOleo" placeholder="R$" onfocus="this.value=''">
 
-    <label>2 litros de Óleo (R$):</label>
-    <input type="number" id="valorOleo" value="0" oninput="atualizarCusto()" />
+    <button onclick="calcularCustoOperar()">Calcular Custo para Operar</button>
 
-    <div class="resumo">
-      <strong>Custo para Operar o Dia:</strong>
-      R$ <span id="custoTotal">0.00</span>
-    </div>
+    <h3>Custo Total para Operar:</h3>
+    <input type="text" id="custoOperar" readonly />
   </div>
 
-  <!-- Tela Entradas -->
+  <!-- Tela: Entradas -->
   <div id="entradas" class="tela">
-    <h2>Entradas</h2>
-    <label>Pix (R$):</label>
-    <input type="number" id="entradaPix" />
-    <label>Cartão (R$):</label>
-    <input type="number" id="entradaCartao" />
-    <label>Dinheiro (R$):</label>
-    <input type="number" id="entradaDinheiro" />
+    <h2>Entradas do Dia</h2>
+
+    <label>Recebido em Dinheiro:</label>
+    <input type="number" id="entradaDinheiro" placeholder="R$" onfocus="this.value=''">
+
+    <label>Recebido em Pix:</label>
+    <input type="number" id="entradaPix" placeholder="R$" onfocus="this.value=''">
+
+    <label>Recebido em Cartão:</label>
+    <input type="number" id="entradaCartao" placeholder="R$" onfocus="this.value=''">
   </div>
 
-  <!-- Tela Gastos -->
+  <!-- Tela: Gastos -->
   <div id="gastos" class="tela">
-    <h2>Gastos</h2>
-    <label>Gastos do dia (R$):</label>
-    <input type="number" id="gastosDia" />
-    <label>Descrição:</label>
-    <input type="text" id="descricaoGasto" />
+    <h2>Gastos do Dia</h2>
+
+    <label>Gastos Operacionais:</label>
+    <input type="number" id="gastosOperacionais" placeholder="R$" onfocus="this.value=''">
+
+    <label>Outros Gastos:</label>
+    <input type="number" id="gastosOutros" placeholder="R$" onfocus="this.value=''">
   </div>
 
-  <!-- Tela Fechamento -->
+  <!-- Tela: Fechamento -->
   <div id="fechamento" class="tela">
-    <h2>Fechamento</h2>
-    <p>Essa seção será usada para consolidar o lucro diário baseado nas entradas e gastos.</p>
+    <h2>Fechamento do Dia</h2>
+
+    <button onclick="fazerFechamento()">Calcular Fechamento</button>
+
+    <div id="resultadoFechamento"></div>
   </div>
 
-  <!-- Tela Histórico -->
+  <!-- Tela: Histórico -->
   <div id="historico" class="tela">
     <h2>Histórico</h2>
-    <p>Aqui será possível visualizar os fechamentos anteriores.</p>
+    <div id="listaHistorico"></div>
   </div>
 
   <script>
-    function abrirTela(id) {
-      document.querySelectorAll('.tela').forEach(el => el.classList.remove('ativa'));
+    function mostrarTela(id) {
+      document.querySelectorAll('.tela').forEach(tela => {
+        tela.classList.remove('ativa');
+      });
       document.getElementById(id).classList.add('ativa');
     }
 
-    function atualizarCusto() {
-      const queijo = parseFloat(document.getElementById('valorQueijo').value) || 0;
-      const milho = parseFloat(document.getElementById('valorMilho').value) || 0;
-      const acucar = parseFloat(document.getElementById('valorAcucar').value) || 0;
-      const embalagem = parseFloat(document.getElementById('valorEmbalagem').value) || 0;
-      const oleo = parseFloat(document.getElementById('valorOleo').value) || 0;
+    function calcularCustoOperar() {
+      let total = 0;
+      total += Number(document.getElementById('valorQueijo').value) || 0;
+      total += Number(document.getElementById('valorMilho').value) || 0;
+      total += Number(document.getElementById('valorAcucar').value) || 0;
+      total += Number(document.getElementById('valorEmbalagens').value) || 0;
+      total += Number(document.getElementById('valorOleo').value) || 0;
 
-      const custoTotal = queijo + milho + acucar + embalagem + oleo;
-      document.getElementById('custoTotal').innerText = custoTotal.toFixed(2);
+      document.getElementById('custoOperar').value = "R$ " + total.toFixed(2);
+    }
+
+    function fazerFechamento() {
+      const caixa = Number(document.getElementById('caixaInicial').value) || 0;
+      const entradas = (Number(document.getElementById('entradaDinheiro').value) || 0)
+                     + (Number(document.getElementById('entradaPix').value) || 0)
+                     + (Number(document.getElementById('entradaCartao').value) || 0);
+      const gastos = (Number(document.getElementById('gastosOperacionais').value) || 0)
+                   + (Number(document.getElementById('gastosOutros').value) || 0);
+      const custo = (Number(document.getElementById('valorQueijo').value) || 0)
+                  + (Number(document.getElementById('valorMilho').value) || 0)
+                  + (Number(document.getElementById('valorAcucar').value) || 0)
+                  + (Number(document.getElementById('valorEmbalagens').value) || 0)
+                  + (Number(document.getElementById('valorOleo').value) || 0);
+
+      const lucro = (caixa + entradas) - (gastos + custo);
+      const novoCaixa = caixa + entradas - gastos - custo;
+
+      const resultado = `
+        <p><strong>Lucro do dia:</strong> R$ ${lucro.toFixed(2)}</p>
+        <p><strong>Caixa Final:</strong> R$ ${novoCaixa.toFixed(2)}</p>
+      `;
+      document.getElementById('resultadoFechamento').innerHTML = resultado;
+
+      // Salvar no histórico
+      const historico = document.getElementById('listaHistorico');
+      const item = document.createElement('div');
+      item.innerHTML = `<hr><p><strong>Dia:</strong> ${new Date().toLocaleDateString()}<br>
+        Entradas: R$ ${entradas.toFixed(2)}<br>
+        Gastos: R$ ${(gastos + custo).toFixed(2)}<br>
+        Lucro: R$ ${lucro.toFixed(2)}<br>
+        Caixa Final: R$ ${novoCaixa.toFixed(2)}</p>`;
+      historico.prepend(item);
     }
   </script>
 </body>
