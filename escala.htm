@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Situação Operacional</title>
+  <title>Controle de Pipoca</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
+      background: #f9f9f9;
+      padding: 10px;
+    }
+    h2 {
+      margin-top: 0;
     }
     .tela {
       display: none;
@@ -15,79 +19,115 @@
     .ativa {
       display: block;
     }
+    .menu {
+      margin-bottom: 20px;
+    }
+    .menu button {
+      margin-right: 5px;
+    }
     label {
       display: block;
-      margin: 10px 0 5px;
+      margin-top: 10px;
     }
-    input[type="number"] {
+    input {
       width: 100%;
       padding: 6px;
-      font-size: 1rem;
+      margin-top: 4px;
     }
-    button {
-      margin-top: 15px;
+    .resumo {
+      background: #eef;
       padding: 10px;
-      font-size: 1rem;
-      width: 100%;
-    }
-    h2 {
       margin-top: 20px;
     }
   </style>
 </head>
 <body>
+  <div class="menu">
+    <button onclick="abrirTela('situacao')">Situação Operacional</button>
+    <button onclick="abrirTela('entradas')">Entradas</button>
+    <button onclick="abrirTela('gastos')">Gastos</button>
+    <button onclick="abrirTela('fechamento')">Fechamento</button>
+    <button onclick="abrirTela('historico')">Histórico</button>
+  </div>
 
-  <h1>Situação Operacional</h1>
+  <!-- Tela Situação Operacional -->
+  <div id="situacao" class="tela ativa">
+    <h2>Situação Operacional</h2>
 
-  <div class="tela ativa" id="telaSituacao">
-    <h2>Caixa (Fechamento do dia anterior)</h2>
-    <input type="number" id="caixaAnterior" class="campo-valor" placeholder="Ex: 150.00">
+    <label>Caixa (Fechamento dia anterior):</label>
+    <input type="number" id="caixaAnterior" value="0" oninput="atualizarCusto()" />
 
-    <h2>Valores dos itens necessários para operar hoje</h2>
+    <h3>Valores dos itens necessários para operar o dia</h3>
 
-    <label for="valorQueijo">1kg de Queijo</label>
-    <input type="number" id="valorQueijo" class="campo-valor" placeholder="Ex: 54.00">
+    <label>1kg Queijo (R$):</label>
+    <input type="number" id="valorQueijo" value="0" oninput="atualizarCusto()" />
 
-    <label for="valorMilho">2kg de Milho</label>
-    <input type="number" id="valorMilho" class="campo-valor" placeholder="Ex: 12.00">
+    <label>2kg Milho (R$):</label>
+    <input type="number" id="valorMilho" value="0" oninput="atualizarCusto()" />
 
-    <label for="valorAcucar">1kg de Açúcar</label>
-    <input type="number" id="valorAcucar" class="campo-valor" placeholder="Ex: 5.00">
+    <label>1kg Açúcar (R$):</label>
+    <input type="number" id="valorAcucar" value="0" oninput="atualizarCusto()" />
 
-    <label for="valorEmbalagens">1 Pacote de Embalagens</label>
-    <input type="number" id="valorEmbalagens" class="campo-valor" placeholder="Ex: 9.50">
+    <label>1 pacote de Embalagens (R$):</label>
+    <input type="number" id="valorEmbalagem" value="0" oninput="atualizarCusto()" />
 
-    <label for="valorOleo">2 Litros de Óleo</label>
-    <input type="number" id="valorOleo" class="campo-valor" placeholder="Ex: 14.00">
+    <label>2 litros de Óleo (R$):</label>
+    <input type="number" id="valorOleo" value="0" oninput="atualizarCusto()" />
 
-    <button onclick="calcularCustoOperar()">Calcular Custo para Operar</button>
+    <div class="resumo">
+      <strong>Custo para Operar o Dia:</strong>
+      R$ <span id="custoTotal">0.00</span>
+    </div>
+  </div>
 
-    <h2>Custo para Operar</h2>
-    <input type="text" id="custoTotal" readonly>
+  <!-- Tela Entradas -->
+  <div id="entradas" class="tela">
+    <h2>Entradas</h2>
+    <label>Pix (R$):</label>
+    <input type="number" id="entradaPix" />
+    <label>Cartão (R$):</label>
+    <input type="number" id="entradaCartao" />
+    <label>Dinheiro (R$):</label>
+    <input type="number" id="entradaDinheiro" />
+  </div>
+
+  <!-- Tela Gastos -->
+  <div id="gastos" class="tela">
+    <h2>Gastos</h2>
+    <label>Gastos do dia (R$):</label>
+    <input type="number" id="gastosDia" />
+    <label>Descrição:</label>
+    <input type="text" id="descricaoGasto" />
+  </div>
+
+  <!-- Tela Fechamento -->
+  <div id="fechamento" class="tela">
+    <h2>Fechamento</h2>
+    <p>Essa seção será usada para consolidar o lucro diário baseado nas entradas e gastos.</p>
+  </div>
+
+  <!-- Tela Histórico -->
+  <div id="historico" class="tela">
+    <h2>Histórico</h2>
+    <p>Aqui será possível visualizar os fechamentos anteriores.</p>
   </div>
 
   <script>
-    function calcularCustoOperar() {
-      const queijo = parseFloat(document.getElementById("valorQueijo").value) || 0;
-      const milho = parseFloat(document.getElementById("valorMilho").value) || 0;
-      const acucar = parseFloat(document.getElementById("valorAcucar").value) || 0;
-      const embalagens = parseFloat(document.getElementById("valorEmbalagens").value) || 0;
-      const oleo = parseFloat(document.getElementById("valorOleo").value) || 0;
-
-      const total = queijo + milho + acucar + embalagens + oleo;
-
-      document.getElementById("custoTotal").value = `R$ ${total.toFixed(2)}`;
+    function abrirTela(id) {
+      document.querySelectorAll('.tela').forEach(el => el.classList.remove('ativa'));
+      document.getElementById(id).classList.add('ativa');
     }
 
-    // Limpar campos ao focar se for 0 ou vazio
-    document.querySelectorAll('.campo-valor').forEach(campo => {
-      campo.addEventListener('focus', () => {
-        if (campo.value == "0") campo.value = "";
-      });
-      campo.addEventListener('blur', () => {
-        if (campo.value.trim() === "") campo.value = "0";
-      });
-    });
+    function atualizarCusto() {
+      const queijo = parseFloat(document.getElementById('valorQueijo').value) || 0;
+      const milho = parseFloat(document.getElementById('valorMilho').value) || 0;
+      const acucar = parseFloat(document.getElementById('valorAcucar').value) || 0;
+      const embalagem = parseFloat(document.getElementById('valorEmbalagem').value) || 0;
+      const oleo = parseFloat(document.getElementById('valorOleo').value) || 0;
+
+      const custoTotal = queijo + milho + acucar + embalagem + oleo;
+      document.getElementById('custoTotal').innerText = custoTotal.toFixed(2);
+    }
   </script>
 </body>
 </html>
