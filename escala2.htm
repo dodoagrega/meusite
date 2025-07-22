@@ -36,10 +36,10 @@
   <div class="card">
     <p>💰 Investimento Inicial: <strong>R$ 1.000,00</strong></p>
     <label>🏦 Saldo atual da conta (Pix + Cartão):</label>
-    <input type="number" id="saldoConta" value="0" onchange="atualizarLucro()">
+    <input type="number" id="saldoConta" value="0" class="campo-valor" onchange="atualizarLucro()">
 
     <label>👦 Valor já pago ao sócio:</label>
-    <input type="number" id="pagoSocio" value="0" onchange="atualizarLucro()">
+    <input type="number" id="pagoSocio" value="0" class="campo-valor" onchange="atualizarLucro()">
 
     <p>📈 Lucro acumulado: <strong id="lucroTotal">R$ 0,00</strong></p>
   </div>
@@ -49,13 +49,13 @@
 <div id="tela-entradas" class="tela">
   <div class="card">
     <label>Dinheiro (R$):</label>
-    <input type="number" id="entradaDinheiro" value="0">
+    <input type="number" id="entradaDinheiro" value="0" class="campo-valor">
     
     <label>Pix (R$):</label>
-    <input type="number" id="entradaPix" value="0">
+    <input type="number" id="entradaPix" value="0" class="campo-valor">
     
     <label>Cartão (R$):</label>
-    <input type="number" id="entradaCartao" value="0">
+    <input type="number" id="entradaCartao" value="0" class="campo-valor">
     
     <button onclick="salvarEntradas()">Salvar Entradas</button>
   </div>
@@ -65,16 +65,16 @@
 <div id="tela-gastos" class="tela">
   <div class="card">
     <label>Milho (R$):</label>
-    <input type="number" id="gastoMilho" value="0">
+    <input type="number" id="gastoMilho" value="0" class="campo-valor">
     
     <label>Gás (R$):</label>
-    <input type="number" id="gastoGas" value="0">
+    <input type="number" id="gastoGas" value="0" class="campo-valor">
 
     <label>Transporte (R$):</label>
-    <input type="number" id="gastoTransporte" value="0">
+    <input type="number" id="gastoTransporte" value="0" class="campo-valor">
 
     <label>Outros (R$):</label>
-    <input type="number" id="gastoOutros" value="0">
+    <input type="number" id="gastoOutros" value="0" class="campo-valor">
 
     <button onclick="salvarGastos()">Salvar Gastos</button>
   </div>
@@ -170,6 +170,18 @@
       });
     }
   }
+
+  // Comportamento: limpa campo ao focar se for 0, e volta 0 se ficar vazio
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.campo-valor').forEach(campo => {
+      campo.addEventListener('focus', () => {
+        if (campo.value == "0") campo.value = "";
+      });
+      campo.addEventListener('blur', () => {
+        if (campo.value.trim() === "") campo.value = "0";
+      });
+    });
+  });
 </script>
 
 </body>
