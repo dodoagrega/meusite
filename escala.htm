@@ -1,143 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Controle de Vendas - Pipoca</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Situação Operacional</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 10px;
-      background: #f9f9f9;
+      padding: 20px;
     }
-    h2, h3 {
-      text-align: center;
-      color: #cc0000;
+    .tela {
+      display: none;
+    }
+    .ativa {
+      display: block;
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin: 10px 0 5px;
     }
-    select, input {
+    input[type="number"] {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      box-sizing: border-box;
+      padding: 6px;
+      font-size: 1rem;
     }
     button {
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 1rem;
       width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background-color: #cc0000;
-      color: white;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
     }
-    .venda {
-      background: white;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    #total-dia {
-      background: #eaeaea;
-      padding: 10px;
-      margin-top: 15px;
-      text-align: center;
-      font-weight: bold;
+    h2 {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h2>Controle de Vendas - Pipoca</h2>
+  <h1>Situação Operacional</h1>
 
-  <label for="produto">Produto</label>
-  <select id="produto">
-    <option value="Pipoca Doce">Pipoca Doce</option>
-    <option value="Pipoca Salgada">Pipoca Salgada</option>
-    <option value="Combo Pipoca + Refri">Combo Pipoca + Refri</option>
-  </select>
+  <div class="tela ativa" id="telaSituacao">
+    <h2>Caixa (Fechamento do dia anterior)</h2>
+    <input type="number" id="caixaAnterior" class="campo-valor" placeholder="Ex: 150.00">
 
-  <label for="quantidade">Quantidade</label>
-  <input type="number" id="quantidade" value="1" min="1">
+    <h2>Valores dos itens necessários para operar hoje</h2>
 
-  <label for="pagamento">Forma de Pagamento</label>
-  <select id="pagamento">
-    <option value="Dinheiro">Dinheiro</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão">Cartão</option>
-  </select>
+    <label for="valorQueijo">1kg de Queijo</label>
+    <input type="number" id="valorQueijo" class="campo-valor" placeholder="Ex: 54.00">
 
-  <button onclick="registrarVenda()">Registrar Venda</button>
+    <label for="valorMilho">2kg de Milho</label>
+    <input type="number" id="valorMilho" class="campo-valor" placeholder="Ex: 12.00">
 
-  <div id="total-dia">Total do Dia: R$ 0,00 | Lucro: R$ 0,00</div>
-  <div id="lista-vendas"></div>
+    <label for="valorAcucar">1kg de Açúcar</label>
+    <input type="number" id="valorAcucar" class="campo-valor" placeholder="Ex: 5.00">
+
+    <label for="valorEmbalagens">1 Pacote de Embalagens</label>
+    <input type="number" id="valorEmbalagens" class="campo-valor" placeholder="Ex: 9.50">
+
+    <label for="valorOleo">2 Litros de Óleo</label>
+    <input type="number" id="valorOleo" class="campo-valor" placeholder="Ex: 14.00">
+
+    <button onclick="calcularCustoOperar()">Calcular Custo para Operar</button>
+
+    <h2>Custo para Operar</h2>
+    <input type="text" id="custoTotal" readonly>
+  </div>
 
   <script>
-    const vendas = [];
+    function calcularCustoOperar() {
+      const queijo = parseFloat(document.getElementById("valorQueijo").value) || 0;
+      const milho = parseFloat(document.getElementById("valorMilho").value) || 0;
+      const acucar = parseFloat(document.getElementById("valorAcucar").value) || 0;
+      const embalagens = parseFloat(document.getElementById("valorEmbalagens").value) || 0;
+      const oleo = parseFloat(document.getElementById("valorOleo").value) || 0;
 
-    // Preço de venda
-    const precos = {
-      "Pipoca Doce": 8,
-      "Pipoca Salgada": 10,
-      "Combo Pipoca + Refri": 15
-    };
+      const total = queijo + milho + acucar + embalagens + oleo;
 
-    // Custo de produção
-    const custos = {
-      "Pipoca Doce": 3,
-      "Pipoca Salgada": 4,
-      "Combo Pipoca + Refri": 7
-    };
-
-    function registrarVenda() {
-      const produto = document.getElementById('produto').value;
-      const quantidade = parseInt(document.getElementById('quantidade').value);
-      const pagamento = document.getElementById('pagamento').value;
-      const preco = precos[produto];
-      const custo = custos[produto];
-      const valor = preco * quantidade;
-      const despesa = custo * quantidade;
-      const lucro = valor - despesa;
-      const data = new Date().toLocaleString('pt-BR');
-
-      const venda = { produto, quantidade, pagamento, data, valor, despesa, lucro };
-      vendas.push(venda);
-
-      mostrarVendas();
+      document.getElementById("custoTotal").value = `R$ ${total.toFixed(2)}`;
     }
 
-    function mostrarVendas() {
-      const lista = document.getElementById('lista-vendas');
-      const totalEl = document.getElementById('total-dia');
-      lista.innerHTML = "<h3>Vendas do Dia:</h3>";
-
-      let total = 0;
-      let lucroTotal = 0;
-
-      vendas.forEach((v, index) => {
-        total += v.valor;
-        lucroTotal += v.lucro;
-        lista.innerHTML += `
-          <div class="venda">
-            <strong>#${index + 1}</strong><br>
-            Produto: ${v.produto}<br>
-            Quantidade: ${v.quantidade}<br>
-            Pagamento: ${v.pagamento}<br>
-            Valor: R$ ${v.valor.toFixed(2)}<br>
-            Custo: R$ ${v.despesa.toFixed(2)}<br>
-            Lucro: R$ ${v.lucro.toFixed(2)}<br>
-            Data: ${v.data}
-          </div>
-        `;
+    // Limpar campos ao focar se for 0 ou vazio
+    document.querySelectorAll('.campo-valor').forEach(campo => {
+      campo.addEventListener('focus', () => {
+        if (campo.value == "0") campo.value = "";
       });
-
-      totalEl.innerHTML = `Total do Dia: R$ ${total.toFixed(2)} | Lucro: R$ ${lucroTotal.toFixed(2)}`;
-    }
+      campo.addEventListener('blur', () => {
+        if (campo.value.trim() === "") campo.value = "0";
+      });
+    });
   </script>
-
 </body>
 </html>
