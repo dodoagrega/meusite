@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas da cidade. Faça seu pedido ou encontre nosso carrinho!">
+    <meta name="description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas da cidade, com nossa famosa versão gourmet com bacon e a doce raiz!">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍿</text></svg>">
     
     <title>Pipoquinha da Esquina - A melhor pipoca da cidade!</title>
     
@@ -14,10 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Importação da fonte - já linkada no <head>, mas garantido aqui */
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
-
-        /* Variáveis de Cor (Ótima prática!) */
+        /* Variáveis de Cor */
         :root {
             --cor-vermelho: #E03C31;
             --cor-amarelo: #FFD700;
@@ -35,7 +32,7 @@
             text-align: center;
         }
 
-        /* Container principal - usado no header e na seção do mapa */
+        /* Container principal */
         .container {
             background-color: white;
             padding: 30px 40px;
@@ -152,9 +149,9 @@
 
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            text-align: left; /* Alinha o texto dentro dos cards à esquerda */
+            text-align: left;
         }
 
         .menu-item {
@@ -164,6 +161,8 @@
             border: 3px solid var(--cor-amarelo);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .menu-item:hover {
@@ -172,4 +171,159 @@
         }
 
         .menu-item h4 {
-            margin
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: var(--cor-vermelho);
+        }
+
+        .menu-item p {
+            margin: 0 0 15px 0;
+            color: var(--cor-texto);
+            font-size: 1rem;
+            flex-grow: 1; /* Faz o parágrafo crescer para alinhar os botões */
+        }
+
+        .menu-item span {
+            display: inline-block;
+            background-color: var(--cor-vermelho);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+
+        /* --- SEÇÃO DO MAPA --- */
+        .map-section {
+            padding-bottom: 40px;
+        }
+        
+        .map-section .container {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .map-section h3 {
+            font-size: 2.5rem;
+            color: var(--cor-vermelho);
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 0 var(--cor-azul);
+        }
+
+        .map-section p {
+            color: var(--cor-texto);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            border: 4px solid var(--cor-vermelho);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 350px;
+            width: 100%;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- RODAPÉ --- */
+        .site-footer {
+            background-color: var(--cor-vermelho);
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        .site-footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .slogan {
+                font-size: 2.5rem;
+            }
+            .logo {
+                font-size: 60px;
+            }
+            .info {
+                font-size: 1rem;
+            }
+            .contact-button {
+                font-size: 1rem;
+            }
+            .menu-section h3, .map-section h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header class="container">
+        <h1 class="logo">🍿</h1>
+        <h2 class="slogan">Você disse pipoca?</h2>
+        
+        <img src="https://i.imgur.com/kS9k944.png" alt="Carrinho de pipoca animado" class="popcorn-cart">
+        
+        <div class="info">
+            <p><strong>A Pipoquinha da Esquina está chegando!</strong></p>
+            <p>Os sabores mais crocantes e deliciosos da cidade.</p>
+        </div>
+        
+        <a href="https://wa.me/5511999998888?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20pipoca!" class="contact-button" target="_blank">
+            Faça seu pedido!
+        </a>
+    </header>
+
+    <main>
+        <section id="cardapio" class="menu-section">
+            <div class="container-cardapio">
+                <h3>Nosso Cardápio Crocante</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Pipoca Salgada Gourmet</h4>
+                        <p>A nossa especial! Feita com manteiga de cinema, pedacinhos de bacon e finalizada com queijo parmesão ralado.</p>
+                        <span>R$ XX,XX</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Pipoca Doce Raiz</h4>
+                        <p>A famosa pipoca vermelhinha de infância! Caramelizada com açúcar na medida certa.</p>
+                        <span>R$ XX,XX</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="localizacao" class="map-section">
+            <div class="container">
+                <h3>Onde nos encontrar</h3>
+                <p>Estamos sempre em movimento! Veja nossa localização hoje:</p>
+                <div class="map-container">
+                    <iframe 
+                        src="http://googleusercontent.com/maps.google.com/4" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <p>© 2025 Pipoquinha da Esquina. Todos os direitos reservados.</p>
+        <p>Feito com ❤️ e muito milho!</p>
+    </footer>
+
+</body>
+</html>
+
