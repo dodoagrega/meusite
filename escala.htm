@@ -1,176 +1,175 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sistema Pipoca</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #fefae0;
-      padding: 20px;
-    }
-    .tela {
-      display: none;
-    }
-    .ativa {
-      display: block;
-    }
-    h2 {
-      color: #bc6c25;
-    }
-    input {
-      margin-bottom: 10px;
-      padding: 5px;
-      width: 100%;
-    }
-    button {
-      padding: 10px;
-      margin: 5px;
-      background-color: #606c38;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #283618;
-    }
-    .menu {
-      margin-bottom: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você disse pipoca? - Pipoquinha da Esquina</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
+
+        :root {
+            --cor-vermelho: #E03C31;
+            --cor-amarelo: #FFD700;
+            --cor-azul: #007ACC;
+            --cor-fundo: #FFF8E1;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-vermelho);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--cor-vermelho);
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        .logo {
+            font-size: 80px;
+            line-height: 1;
+            color: var(--cor-amarelo);
+            text-shadow: 4px 4px 0 var(--cor-vermelho), 6px 6px 0 var(--cor-azul);
+            margin-bottom: 10px;
+            transform: rotate(-5deg);
+        }
+
+        .slogan {
+            font-size: 3.5rem;
+            color: var(--cor-vermelho);
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 0 var(--cor-azul);
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .slogan:hover {
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .popcorn-cart {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .info {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .contact-button {
+            background-color: var(--cor-amarelo);
+            color: var(--cor-vermelho);
+            padding: 12px 25px;
+            border: 3px solid var(--cor-vermelho);
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 4px 4px 0 var(--cor-azul);
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 6px 6px 0 var(--cor-azul);
+        }
+
+        @media (max-width: 600px) {
+            .slogan {
+                font-size: 2.5rem;
+            }
+            .logo {
+                font-size: 60px;
+            }
+            .info {
+                font-size: 1rem;
+            }
+            .contact-button {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="menu">
-    <button onclick="mostrarTela('operacional')">Situação Operacional</button>
-    <button onclick="mostrarTela('entradas')">Entradas</button>
-    <button onclick="mostrarTela('gastos')">Gastos</button>
-    <button onclick="mostrarTela('fechamento')">Fechamento</button>
-    <button onclick="mostrarTela('historico')">Histórico</button>
-  </div>
+    <div class="container">
+        <h1 class="logo">🍿</h1>
+        <h2 class="slogan">Você disse pipoca?</h2>
+        
+        <img src="https://i.imgur.com/kS9k944.png" alt="Carrinho de pipoca animado" class="popcorn-cart">
+        
+        <div class="info">
+            <p><strong>A Pipoquinha da Esquina está chegando!</strong></p>
+            <p>Os sabores mais crocantes e deliciosos da cidade.</p>
+        </div>
+        
+        <a href="https://wa.me/seu-numero-aqui" class="contact-button" target="_blank">Faça seu pedido!</a>
+    </div>
 
-  <!-- Tela: Situação Operacional -->
-  <div id="operacional" class="tela ativa">
-    <h2>Situação Operacional</h2>
-
-    <label>Caixa (Fechamento dia anterior):</label>
-    <input type="number" id="caixaInicial" placeholder="Ex: 150" onfocus="this.value=''">
-
-    <h3>Valores dos itens para operar no dia</h3>
-    <label>1kg Queijo:</label>
-    <input type="number" id="valorQueijo" placeholder="R$" onfocus="this.value=''">
-
-    <label>2kg Milho:</label>
-    <input type="number" id="valorMilho" placeholder="R$" onfocus="this.value=''">
-
-    <label>1kg Açúcar:</label>
-    <input type="number" id="valorAcucar" placeholder="R$" onfocus="this.value=''">
-
-    <label>1 Pacote Embalagens:</label>
-    <input type="number" id="valorEmbalagens" placeholder="R$" onfocus="this.value=''">
-
-    <label>2 Litros de Óleo:</label>
-    <input type="number" id="valorOleo" placeholder="R$" onfocus="this.value=''">
-
-    <button onclick="calcularCustoOperar()">Calcular Custo para Operar</button>
-
-    <h3>Custo Total para Operar:</h3>
-    <input type="text" id="custoOperar" readonly />
-  </div>
-
-  <!-- Tela: Entradas -->
-  <div id="entradas" class="tela">
-    <h2>Entradas do Dia</h2>
-
-    <label>Recebido em Dinheiro:</label>
-    <input type="number" id="entradaDinheiro" placeholder="R$" onfocus="this.value=''">
-
-    <label>Recebido em Pix:</label>
-    <input type="number" id="entradaPix" placeholder="R$" onfocus="this.value=''">
-
-    <label>Recebido em Cartão:</label>
-    <input type="number" id="entradaCartao" placeholder="R$" onfocus="this.value=''">
-  </div>
-
-  <!-- Tela: Gastos -->
-  <div id="gastos" class="tela">
-    <h2>Gastos do Dia</h2>
-
-    <label>Gastos Operacionais:</label>
-    <input type="number" id="gastosOperacionais" placeholder="R$" onfocus="this.value=''">
-
-    <label>Outros Gastos:</label>
-    <input type="number" id="gastosOutros" placeholder="R$" onfocus="this.value=''">
-  </div>
-
-  <!-- Tela: Fechamento -->
-  <div id="fechamento" class="tela">
-    <h2>Fechamento do Dia</h2>
-
-    <button onclick="fazerFechamento()">Calcular Fechamento</button>
-
-    <div id="resultadoFechamento"></div>
-  </div>
-
-  <!-- Tela: Histórico -->
-  <div id="historico" class="tela">
-    <h2>Histórico</h2>
-    <div id="listaHistorico"></div>
-  </div>
-
-  <script>
-    function mostrarTela(id) {
-      document.querySelectorAll('.tela').forEach(tela => {
-        tela.classList.remove('ativa');
-      });
-      document.getElementById(id).classList.add('ativa');
-    }
-
-    function calcularCustoOperar() {
-      let total = 0;
-      total += Number(document.getElementById('valorQueijo').value) || 0;
-      total += Number(document.getElementById('valorMilho').value) || 0;
-      total += Number(document.getElementById('valorAcucar').value) || 0;
-      total += Number(document.getElementById('valorEmbalagens').value) || 0;
-      total += Number(document.getElementById('valorOleo').value) || 0;
-
-      document.getElementById('custoOperar').value = "R$ " + total.toFixed(2);
-    }
-
-    function fazerFechamento() {
-      const caixa = Number(document.getElementById('caixaInicial').value) || 0;
-      const entradas = (Number(document.getElementById('entradaDinheiro').value) || 0)
-                     + (Number(document.getElementById('entradaPix').value) || 0)
-                     + (Number(document.getElementById('entradaCartao').value) || 0);
-      const gastos = (Number(document.getElementById('gastosOperacionais').value) || 0)
-                   + (Number(document.getElementById('gastosOutros').value) || 0);
-      const custo = (Number(document.getElementById('valorQueijo').value) || 0)
-                  + (Number(document.getElementById('valorMilho').value) || 0)
-                  + (Number(document.getElementById('valorAcucar').value) || 0)
-                  + (Number(document.getElementById('valorEmbalagens').value) || 0)
-                  + (Number(document.getElementById('valorOleo').value) || 0);
-
-      const lucro = (caixa + entradas) - (gastos + custo);
-      const novoCaixa = caixa + entradas - gastos - custo;
-
-      const resultado = `
-        <p><strong>Lucro do dia:</strong> R$ ${lucro.toFixed(2)}</p>
-        <p><strong>Caixa Final:</strong> R$ ${novoCaixa.toFixed(2)}</p>
-      `;
-      document.getElementById('resultadoFechamento').innerHTML = resultado;
-
-      // Salvar no histórico
-      const historico = document.getElementById('listaHistorico');
-      const item = document.createElement('div');
-      item.innerHTML = `<hr><p><strong>Dia:</strong> ${new Date().toLocaleDateString()}<br>
-        Entradas: R$ ${entradas.toFixed(2)}<br>
-        Gastos: R$ ${(gastos + custo).toFixed(2)}<br>
-        Lucro: R$ ${lucro.toFixed(2)}<br>
-        Caixa Final: R$ ${novoCaixa.toFixed(2)}</p>`;
-      historico.prepend(item);
-    }
-  </script>
 </body>
 </html>
