@@ -3,68 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Você disse pipoca? - Pipoquinha da Esquina</title>
+    <meta name="description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas da cidade. Faça seu pedido ou encontre nosso carrinho!">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍿</text></svg>">
+    
+    <title>Pipoquinha da Esquina - A melhor pipoca da cidade!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Importação da fonte - já linkada no <head>, mas garantido aqui */
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
 
+        /* Variáveis de Cor (Ótima prática!) */
         :root {
             --cor-vermelho: #E03C31;
             --cor-amarelo: #FFD700;
             --cor-azul: #007ACC;
             --cor-fundo: #FFF8E1;
+            --cor-texto: #333;
         }
 
+        /* Estilos Globais */
         body {
             font-family: 'Fredoka', sans-serif;
             background-color: var(--cor-fundo);
             color: var(--cor-vermelho);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             text-align: center;
         }
 
+        /* Container principal - usado no header e na seção do mapa */
         .container {
             background-color: white;
-            padding: 30px 50px;
+            padding: 30px 40px;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             border: 5px solid var(--cor-vermelho);
             max-width: 800px;
             width: 90%;
+            margin: 40px auto;
             position: relative;
             animation: bounceIn 1s ease-out;
         }
 
         @keyframes bounceIn {
-            0%, 20%, 40%, 60%, 80%, 100% {
-                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-            }
-            0% {
-                opacity: 0;
-                transform: scale3d(0.3, 0.3, 0.3);
-            }
-            20% {
-                transform: scale3d(1.1, 1.1, 1.1);
-            }
-            40% {
-                transform: scale3d(0.9, 0.9, 0.9);
-            }
-            60% {
-                opacity: 1;
-                transform: scale3d(1.03, 1.03, 1.03);
-            }
-            80% {
-                transform: scale3d(0.97, 0.97, 0.97);
-            }
-            100% {
-                opacity: 1;
-                transform: scale3d(1, 1, 1);
-            }
+            0% { opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
+            20% { transform: scale3d(1.1, 1.1, 1.1); }
+            40% { transform: scale3d(0.9, 0.9, 0.9); }
+            60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+            80% { transform: scale3d(0.97, 0.97, 0.97); }
+            100% { opacity: 1; transform: scale3d(1, 1, 1); }
         }
 
+        /* Header */
         .logo {
             font-size: 80px;
             line-height: 1;
@@ -90,7 +84,7 @@
         }
 
         @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
+            0%, 100% { transform: translate(1px, -2px) rotate(-1deg); }
             10% { transform: translate(-1px, -2px) rotate(-1deg); }
             20% { transform: translate(-3px, 0px) rotate(1deg); }
             30% { transform: translate(3px, 2px) rotate(0deg); }
@@ -100,54 +94,24 @@
             70% { transform: translate(3px, 1px) rotate(-1deg); }
             80% { transform: translate(-1px, -1px) rotate(1deg); }
             90% { transform: translate(1px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
         }
 
         .popcorn-cart {
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
             margin: 20px auto;
         }
 
         .info {
-            margin-top: 30px;
+            margin-top: 20px;
+            margin-bottom: 30px;
             font-size: 1.2rem;
-            color: #333;
+            color: var(--cor-texto);
         }
 
         .info p {
             margin: 5px 0;
         }
-        
-        .map-section {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .map-section h3 {
-            font-size: 1.5rem;
-            color: var(--cor-vermelho);
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 0 var(--cor-azul);
-        }
-
-        .map-container {
-            border: 4px solid var(--cor-vermelho);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            height: 300px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
 
         .contact-button {
             background-color: var(--cor-amarelo);
@@ -159,7 +123,6 @@
             font-size: 1.2rem;
             font-weight: 700;
             display: inline-block;
-            margin-top: 20px;
             box-shadow: 4px 4px 0 var(--cor-azul);
             transition: all 0.3s ease;
         }
@@ -169,6 +132,120 @@
             box-shadow: 6px 6px 0 var(--cor-azul);
         }
 
+        /* --- SEÇÃO: CARDÁPIO --- */
+        .menu-section {
+            padding: 20px 0;
+        }
+
+        .container-cardapio {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .menu-section h3 {
+            font-size: 2.5rem;
+            color: var(--cor-vermelho);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0 var(--cor-azul);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            text-align: left; /* Alinha o texto dentro dos cards à esquerda */
+        }
+
+        .menu-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid var(--cor-amarelo);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-item h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: var(--cor-vermelho);
+        }
+
+        .menu-item p {
+            margin: 0 0 15px 0;
+            color: var(--cor-texto);
+            font-size: 1rem;
+            min-height: 40px; /* Garante alinhamento */
+        }
+
+        .menu-item span {
+            display: inline-block;
+            background-color: var(--cor-vermelho);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+
+        /* --- SEÇÃO DO MAPA --- */
+        .map-section {
+            padding-bottom: 40px;
+        }
+        
+        .map-section .container {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .map-section h3 {
+            font-size: 2.5rem;
+            color: var(--cor-vermelho);
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 0 var(--cor-azul);
+        }
+
+        .map-section p {
+            color: var(--cor-texto);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            border: 4px solid var(--cor-vermelho);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 350px;
+            width: 100%;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- RODAPÉ --- */
+        .site-footer {
+            background-color: var(--cor-vermelho);
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        .site-footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsividade */
         @media (max-width: 600px) {
             .slogan {
                 font-size: 2.5rem;
@@ -182,12 +259,15 @@
             .contact-button {
                 font-size: 1rem;
             }
+            .menu-section h3, .map-section h3 {
+                font-size: 2rem;
+            }
         }
     </style>
-</head>
+    </head>
 <body>
 
-    <div class="container">
+    <header class="container">
         <h1 class="logo">🍿</h1>
         <h2 class="slogan">Você disse pipoca?</h2>
         
@@ -198,14 +278,61 @@
             <p>Os sabores mais crocantes e deliciosos da cidade.</p>
         </div>
         
-        <a href="https://wa.me/seu-numero-aqui" class="contact-button" target="_blank">Faça seu pedido!</a>
+        <a href="https://wa.me/5511999998888?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20pipoca!" class="contact-button" target="_blank">
+            Faça seu pedido!
+        </a>
+    </header>
 
-        <div class="map-section">
-            <h3>Onde nos encontrar:</h3>
-            <div class="map-container">
-                <iframe src="https://maps.google.com/?q=2C2F%2BMP+-+Esplanada+Santa+Helena,+Taubat%C3%A9+-+SP,+12053,+Brasil&ftid=0x94ccf822e0818a49:0x57d1b8866b71f2da&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <main>
+        <section id="cardapio" class="menu-section">
+            <div class="container-cardapio">
+                <h3>Nosso Cardápio Crocante</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Pipoca Salgada Clássica</h4>
+                        <p>A tradicional que todo mundo ama, com a quantidade certa de sal.</p>
+                        <span>R$ 5,00</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Pipoca Doce Caramelizada</h4>
+                        <p>Crocante e com uma camada perfeita de caramelo caseiro.</p>
+                        <span>R$ 7,00</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Pipoca com Bacon</h4>
+                        <p>Pedaços de bacon frito para uma explosão de sabor.</p>
+                        <span>R$ 8,00</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Pipoca com Chocolate</h4>
+                        <p>Pipoca coberta com um delicioso chocolate derretido.</p>
+                        <span>R$ 8,00</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <section id="localizacao" class="map-section">
+            <div class="container">
+                <h3>Onde nos encontrar</h3>
+                <p>Estamos sempre em movimento! Veja nossa localização hoje:</p>
+                <div class="map-container">
+                    <iframe 
+                        src="http://googleusercontent.com/maps.google.com/3" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <p>© 2025 Pipoquinha da Esquina. Todos os direitos reservados.</p>
+        <p>Feito com ❤️ e muito milho!</p>
+    </footer>
+
 </body>
 </html>
