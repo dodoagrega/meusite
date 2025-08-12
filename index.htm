@@ -1,186 +1,471 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DodoAgrega - Vida Saudável</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas de Taubaté, com nossa famosa versão gourmet com bacon e a doce raiz!">
+  <meta name="keywords" content="pipoca, pipoca gourmet, pipoca salgada, pipoca doce, Taubaté, Pipoquinha da Esquina">
+  <meta name="author" content="Pipoquinha da Esquina">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pipoquinha da Esquina - A melhor pipoca de Taubaté!">
+  <meta property="og:description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas de Taubaté, com nossa famosa versão gourmet com bacon e a doce raiz!">
+  <meta property="og:image" content="https://seusite.com/img/personagens.png">
+  <meta property="og:url" content="https://seusite.com">
+  <meta property="og:type" content="website">
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pipoquinha da Esquina - A melhor pipoca de Taubaté!">
+  <meta name="twitter:description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas de Taubaté, com nossa famosa versão gourmet com bacon e a doce raiz!">
+  <meta name="twitter:image" content="https://seusite.com/img/personagens.png">
+  <link rel="canonical" href="https://seusite.com">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍿</text></svg>">
+  <title>Pipoquinha da Esquina - A melhor pipoca de Taubaté!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        .hero-image {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-        }
-    </style>
-    <!-- Estilos para o balão de fala do DodoAgrega -->
   <style>
-    .bloco-mensagem {
+    :root {
+      --cor-vermelho: #C62828; /* Vermelho mais escuro para melhor contraste */
+      --cor-amarelo: #FFD700;
+      --cor-azul: #007ACC;
+      --cor-fundo: #FFF8E1;
+      --cor-texto: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-vermelho);
+      margin: 0;
+      text-align: center;
+      font-display: swap;
+    }
+
+    .main-nav {
+      background-color: var(--cor-vermelho);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin: 20px auto;
-      max-width: 600px;
-      padding: 10px;
+      justify-content: center;
+      gap: 20px;
     }
 
-    .dodo-avatar {
-      width: 80px;
-      height: auto;
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
     }
 
-    .balão-fala {
-      position: relative;
-      background: #fff6d6;
-      border: 2px solid #ffd500;
+    .main-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px 40px;
       border-radius: 20px;
-      padding: 15px 20px;
-      color: #444;
-      font-size: 1.2em;
-      line-height: 1.5;
-      font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border: 5px solid var(--cor-vermelho);
+      max-width: 800px;
+      width: 90%;
+      margin: 40px auto;
+      position: relative;
+      animation: bounceIn 1s ease-out;
     }
 
-    .balão-fala::after {
-      content: "";
-      position: absolute;
-      top: 20px;
-      left: -15px;
-      width: 0;
-      height: 0;
-      border-top: 15px solid transparent;
-      border-right: 15px solid #ffd500;
-      border-bottom: 15px solid transparent;
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
+      20% { transform: scale3d(1.1, 1.1, 1.1); }
+      40% { transform: scale3d(0.9, 0.9, 0.9); }
+      60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+      80% { transform: scale3d(0.97, 0.97, 0.97); }
+      100% { opacity: 1; transform: scale3d(1, 1, 1); }
+    }
+
+    .logo {
+      font-size: 80px;
+      line-height: 1;
+      color: var(--cor-amarelo);
+      text-shadow: 4px 4px 0 var(--cor-vermelho), 6px 6px 0 var(--cor-azul);
+      margin-bottom: 10px;
+      transform: rotate(-5deg);
+    }
+
+    .slogan {
+      font-size: 3.5rem;
+      color: var(--cor-vermelho);
+      margin: 0;
+      line-height: 1.2;
+      text-shadow: 2px 2px 0 var(--cor-azul);
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .slogan:hover {
+      animation: shake 0.5s infinite;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(1px, -2px) rotate(-1deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+    }
+
+    .popcorn-cart {
+      width: 100%;
+      max-width: 350px;
+      margin: 20px auto;
+    }
+
+    .info {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: var(--cor-texto);
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .contact-button {
+      background-color: var(--cor-amarelo);
+      color: var(--cor-vermelho);
+      padding: 12px 25px;
+      border: 3px solid var(--cor-vermelho);
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: inline-block;
+      box-shadow: 4px 4px 0 var(--cor-azul);
+      transition: all 0.3s ease;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 6px 6px 0 var(--cor-azul);
+    }
+
+    .menu-section {
+      padding: 20px 0;
+    }
+
+    .container-cardapio {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .menu-section h3 {
+      font-size: 2.5rem;
+      color: var(--cor-vermelho);
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 0 var(--cor-azul);
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      text-align: left;
+    }
+
+    .menu-item {
+      background-color: white;
+      padding: 25px;
+      border-radius: 15px;
+      border: 3px solid var(--cor-amarelo);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    .menu-item h4 {
+      margin: 0 0 10px 0;
+      font-size: 1.4rem;
+      color: var(--cor-vermelho);
+    }
+
+    .menu-item p {
+      margin: 0 0 15px 0;
+      color: var(--cor-texto);
+      font-size: 1rem;
+      flex-grow: 1;
+    }
+
+    .menu-item span {
+      display: inline-block;
+      background-color: var(--cor-vermelho);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .map-section {
+      padding-bottom: 40px;
+    }
+
+    .map-section .container {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .map-section h3 {
+      font-size: 2.5rem;
+      color: var(--cor-vermelho);
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 0 var(--cor-azul);
+    }
+
+    .map-section p {
+      color: var(--cor-texto);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .map-container {
+      border: 4px solid var(--cor-vermelho);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      height: 350px;
+      width: 100%;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .site-footer {
+      background-color: var(--cor-vermelho);
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    .site-footer p {
+      margin: 5px 0;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--cor-amarelo);
+      color: var(--cor-vermelho);
+      border: 2px solid var(--cor-vermelho);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-top.visible {
+      display: block;
+    }
+
+    /* Melhorias mobile */
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+        margin: 20px auto;
+        border-width: 3px;
+        box-shadow: none;
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-item {
+        padding: 20px;
+      }
+
+      .menu-items {
+        gap: 15px;
+      }
+
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-width: 2px;
+      }
+
+      .logo {
+        font-size: 48px;
+      }
+
+      .slogan {
+        font-size: 2rem;
+        text-shadow: 1px 1px 0 var(--cor-azul);
+      }
+
+      .info {
+        font-size: 1rem;
+      }
+
+      .map-container {
+        height: 250px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm py-4">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-800">
-                <span class="text-indigo-600">Dodo</span>Agrega
-            </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#inicio" class="text-gray-800 hover:text-indigo-600 transition">Início</a>
-                <a href="#universo" class="text-gray-800 hover:text-indigo-600 transition">Universo</a>
-                <a href="#transformacao" class="text-gray-800 hover:text-indigo-600 transition">Transformação</a>
-                <a href="#redes" class="text-gray-800 hover:text-indigo-600 transition">Redes</a>
-            </div>
-        </div>
-    </nav>
+<body>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#localizacao">Localização</a></li>
+    </ul>
+  </nav>
 
-    <!-- Hero Section -->
-    <header id="inicio" class="hero-image flex items-center justify-center text-center text-white">
-        <div class="px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Transforme seu corpo e mente</h1>
-            <p class="text-xl md:text-2xl mb-8">Junte-se a mim na jornada para uma vida mais saudável e feliz</p>
-            <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition">
-                <a href="comecar.htm" class="botao">Comece agora</a>
-            </button>
-        </div>
-    </header>
+  <header class="container">
+    <h1 class="logo">🍿</h1>
+    <p class="slogan">Você disse pipoca?</p>
+ <img src="img/personagens.png" 
+       alt="Jubileu do Pica-Pau dizendo 'Você disse pipoca?'" 
+       class="popcorn-cart">
+    <div class="info">
+      <p><strong>A Pipoca Dodoagrega, Quente na Manteiga!</strong></p>
+      <p>A pipoca tradicional de Taubaté.</p>
+    </div>
+    <div class="contact-buttons">
+      <a href="https://whatsapp.com/channel/0029Va905sN6WaKuszqVhh3P" 
+         class="contact-button" 
+         target="_blank" 
+         aria-label="Siga o canal da Pipoquinha da Esquina no WhatsApp">
+        Siga nosso canal no WhatsApp
+      </a>
+      <a href="https://www.instagram.com/dodoagrega/reels/" 
+         class="contact-button" 
+         target="_blank" 
+         aria-label="Siga a Pipoquinha da Esquina no Instagram">
+        Siga nosso Instagram
+      </a>
+      <a href="https://youtube.com/@tiododoagrega" 
+         class="contact-button" 
+         target="_blank" 
+         aria-label="Siga a Pipoquinha da Esquina no YouTube">
+        Siga nosso Canal no YouTube
+      </a>
+    </div>
+  </header>
 
-    <!-- Universo DodoAgrega -->
-    <section id="universo" class="bg-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Conheça o Universo DodoAgrega</h2>
-            <div class="flex flex-wrap justify-center gap-8">
-                <div class="w-60">
-                    <img src="/img/dodoagrega.png" alt="DodoAgrega" class="rounded-full mb-4">
-                    <h3 class="text-xl font-semibold">DodoAgrega</h3>
-                    <p class="text-gray-600">O super tio das ideias boas!</p>
-                </div>
-                <div class="w-60">
-                    <img src="/img/guizinho.png" alt="Guizinho" class="rounded-full mb-4">
-                    <h3 class="text-xl font-semibold">Guizinho</h3>
-                    <p class="text-gray-600">O sobrinho que topa tudo!</p>
-                </div>
-                <div class="w-60">
-                    <img src="/img/queque.png" alt="Quequé" class="rounded-full mb-4">
-                    <h3 class="text-xl font-semibold">Quequé</h3>
-                    <p class="text-gray-600">A que sempre quer mais!</p>
-                </div>
-            </div>
+  <main>
+    <section id="cardapio" class="menu-section">
+      <div class="container-cardapio">
+        <h2>Nosso Cardápio Crocante</h2>
+        <div class="menu-items">
+          <div class="menu-item">
+            <h3>Pipoca Salgada Tradicional</h3>
+            <p>A nossa especial! Feita com manteiga de cinema, pedacinhos de bacon e finalizada com queijo parmesão frito.</p>
+            <span>R$ 10,00</span>
+          </div>
+          <div class="menu-item">
+            <h3>Pipoca Doce Raiz</h3>
+            <p>A famosa pipoca vermelhinha de infância! Caramelizada com açúcar na medida certa.</p>
+            <span>R$ 8,00</span>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Transformação -->
-    <section id="transformacao" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Minha Transformação</h2>
-            <div class="max-w-4xl mx-auto">
-                <img src="/img/personagens.png" alt="personagens" class="rounded-lg shadow-lg">
-                <p class="text-lg text-gray-600 mt-6">
-                    Quando comecei minha transformação, nunca imaginei que chegaria onde estou hoje. Foi um caminho desafiador, mas cada gota de suor valeu a pena. Se eu consegui, você também pode!
-                </p>
-            </div>
+    <section id="localizacao" class="map-section">
+      <div class="container">
+        <h2>Onde nos encontrar</h2>
+        <p>Estamos sempre em movimento! Veja nossa localização hoje:</p>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.017874494369!2d-45.5652692!3d-23.5675261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ccf8b3e3b40c4f%3A0x7b9e5c8dcb678aad!2sAv.%20Ameletto%20Marino%2C%2021d%20-%20Esplanada%20Santa%20Helena%2C%20Taubat%C3%A9%20-%20SP%2C%2012053-843!5e0!3m2!1spt-BR!2sbr!4v1690388447251!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização da Pipoquinha da Esquina em Taubaté">
+          </iframe>
         </div>
+      </div>
     </section>
+  </main>
 
+  <footer class="site-footer">
+    <p>© 2025 Pipoquinha da Esquina. Todos os direitos reservados.</p>
+    <p>Feito com ❤️ e muito capricho!</p>
+  </footer>
 
-<!-- Mensagem Final -->
-<section id="mensagem-dodoagrega" class="bloco-mensagem">
-  <img src="img/dodoagrega.png" alt="DodoAgrega" class="dodo-avatar">
-  <div class="balão-fala">
-    <p id="frase-dia" class="mensagem-estilo">
-      Carregando mensagem do dia...
-    </p>
-  </div>
-</section>
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const frases = [
-      "Domingo é dia de sonhar e descansar! – DodoAgrega",
-      "Segunda é dia de recomeçar com alegria! – DodoAgrega",
-      "Terça é dia de fazer diferente! – DodoAgrega",
-      "Quarta é metade do caminho: você consegue! – DodoAgrega",
-      "Quinta é quase sexta, mas foco no agora! – DodoAgrega",
-      "Sexta é dia de celebrar o que você construiu! – DodoAgrega",
-      "Sábado é tempo de brincar e renovar! – DodoAgrega"
-    ];
-
-    try {
-      const agora = new Date();
-
-      // Ajuste simples para o fuso de São Paulo (UTC-3)
-      const utc = agora.getTime() + (agora.getTimezoneOffset() * 60000);
-      const brasilia = new Date(utc - (3 * 60 * 60 * 1000));
-      const hoje = brasilia.getDay();
-
-      document.getElementById("frase-dia").innerText = frases[hoje];
-    } catch (e) {
-      document.getElementById("frase-dia").innerText = "Não foi possível carregar a mensagem do dia.";
-      console.error("Erro ao definir a frase do dia:", e);
-    }
-  });
-</script>
-
-    <!-- Redes Sociais -->
-    <section id="redes" class="py-16 text-center">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Me siga nas redes sociais</h2>
-        <div class="flex justify-center space-x-8">
-            <a href="https://www.instagram.com/dodoagrega/reels/" class="text-gray-700 text-4xl hover:text-pink-500" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://youtube.com/@tiododoagrega?si=BU4qhrfhHWHrT1Uv" class="text-gray-700 text-4xl hover:text-red-600" target="_blank">
-                <i class="fab fa-youtube"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center">
-        <p class="text-gray-400">&copy; 2025 DodoAgrega. Todos os direitos reservados.</p>
-    </footer>
+  <script>
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
