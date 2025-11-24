@@ -1,371 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="A Pipoquinha da Esquina oferece as pipocas mais crocantes e deliciosas da cidade, com nossa famosa versão gourmet com bacon e a doce raiz!">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍿</text></svg>">
-  <title>Pipoquinha da Esquina - A melhor pipoca da cidade!</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Pipoquinha da Esquina — Dodoagrega</title>
+  <meta name="description" content="Pipoquinha da Esquina — pipoca artesanal, quente na manteiga. Taubaté." />
+  <link rel="canonical" href="https://dodoagrega.com.br" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pipoquinha da Esquina — Dodoagrega" />
+  <meta property="og:description" content="Pipoquinha da Esquina — pipoca artesanal, quente na manteiga. Taubaté." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dodoagrega.com.br" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Favicon (SVG inline as data URI) -->
+  <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect rx="16" width="100" height="100" fill="%23FFD54F"/><g transform="translate(14,12) scale(0.72)"><path d="M44 8c6 0 11 5 11 11 0 1-.2 2-.6 2.8 3.1 1.1 5.6 3 7.3 5.4-1.6 6.6-7 11.3-13.8 11.3-1.6 0-3.2-.3-4.6-.9-1.4.6-3 .9-4.6.9-6.8 0-12.2-4.7-13.8-11.3C17.6 36 20 34 23.1 32.9c-.4-.9-.6-1.8-.6-2.8 0-6 5-11 11-11 1.8 0 3.5.4 5 .9 1.5-.6 3.2-.9 5-.9z" fill="%23C62828"/></g></svg>' />
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --cor-vermelho: #E03C31;
-      --cor-amarelo: #FFD700;
-      --cor-azul: #007ACC;
-      --cor-fundo: #FFF8E1;
-      --cor-texto: #333;
+    :root{
+      --bg:#ffffff;
+      --muted:#f6f5f3;
+      --accent:#C62828; /* vermelho principal */
+      --accent-2:#FFD54F; /* amarelo popcorn */
+      --ink:#1f2933;
+      --radius:14px;
+      --maxw:980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--muted),#fff 40%);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      font-family: 'Fredoka', sans-serif;
-      background-color: var(--cor-fundo);
-      color: var(--cor-vermelho);
-      margin: 0;
-      text-align: center;
+    /* page layout */
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;display:grid;gap:20px}
+    header.site{
+      display:flex;align-items:center;gap:18px;padding:18px;border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,0.9),#fff);
+      box-shadow:0 6px 20px rgba(16,24,40,0.06);
+      border:1px solid rgba(0,0,0,0.04);
     }
 
-    .container {
-      background-color: white;
-      padding: 30px 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      border: 5px solid var(--cor-vermelho);
-      max-width: 800px;
-      width: 90%;
-      margin: 40px auto;
-      position: relative;
-      animation: bounceIn 1s ease-out;
+    /* minimal logo (inline SVG) */
+    .logo{
+      width:86px;height:86px;flex:0 0 86px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-2),#fff);
+      box-shadow: 0 6px 0 rgba(198,40,40,0.08);
+    }
+    .brand{display:flex;flex-direction:column;gap:2px}
+    .brand .name{font-weight:700;font-size:1.25rem;color:var(--accent)}
+    .brand .tag{font-size:0.88rem;color: #54606a}
+
+    /* actions (CTA) */
+    .actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;font-weight:600;text-decoration:none;
+      border:0;cursor:pointer;
+    }
+    .btn--primary{background:var(--accent);color:white;box-shadow:0 8px 0 rgba(0,0,0,0.06)}
+    .btn--ghost{background:transparent;border:1px solid rgba(16,24,40,0.06);color:var(--ink)}
+
+    /* hero */
+    .hero{
+      background:linear-gradient(90deg, rgba(255,213,79,0.06), rgba(198,40,40,0.02));
+      border-radius:var(--radius);padding:20px;display:flex;gap:20px;align-items:center;
+      border:1px solid rgba(0,0,0,0.03);
+    }
+    .hero .left{flex:1;text-align:left}
+    .hero h1{margin:0;font-size:1.6rem;color:var(--accent);letter-spacing:-0.02em}
+    .hero p{margin:8px 0;color:#44515a}
+    .hero .price-cta{display:flex;gap:10px;align-items:center;margin-top:12px}
+
+    /* illustration placeholder - you can swap with an SVG or PNG */
+    .illu{width:160px;height:120px;border-radius:12px;background:linear-gradient(180deg,var(--accent-2),#fff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(16,24,40,0.06)}
+    .illu img{max-width:92%;height:auto;border-radius:8px}
+
+    /* cardápio cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .card{background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:8px}
+    .card h3{margin:0;color:var(--accent);font-size:1.05rem}
+    .card p{margin:0;color:#4b5563;font-size:0.95rem}
+    .price{margin-left:auto;font-weight:700;color:var(--ink)}
+
+    /* localização/mapa */
+    .map-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.04)}
+    .map{
+      width:100%;height:300px;border:0;display:block
     }
 
-    @keyframes bounceIn {
-      0% { opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
-      20% { transform: scale3d(1.1, 1.1, 1.1); }
-      40% { transform: scale3d(0.9, 0.9, 0.9); }
-      60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
-      80% { transform: scale3d(0.97, 0.97, 0.97); }
-      100% { opacity: 1; transform: scale3d(1, 1, 1); }
+    footer.site{margin-top:6px;padding:18px;border-radius:10px;background:#fff;border:1px solid rgba(0,0,0,0.03);text-align:center;color:#6b7280;font-size:0.9rem}
+
+    /* small helpers */
+    .row{display:flex;gap:10px;align-items:center}
+    .pill{background:rgba(198,40,40,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;font-size:0.85rem}
+
+    /* responsive */
+    @media (max-width:720px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .actions{margin-left:0}
     }
 
-    .logo {
-      font-size: 80px;
-      line-height: 1;
-      color: var(--cor-amarelo);
-      text-shadow: 4px 4px 0 var(--cor-vermelho), 6px 6px 0 var(--cor-azul);
-      margin-bottom: 10px;
-      transform: rotate(-5deg);
-    }
-
-    .slogan {
-      font-size: 3.5rem;
-      color: var(--cor-vermelho);
-      margin: 0;
-      line-height: 1.2;
-      text-shadow: 2px 2px 0 var(--cor-azul);
-      cursor: pointer;
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
-
-    .slogan:hover {
-      animation: shake 0.5s infinite;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translate(1px, -2px) rotate(-1deg); }
-      10% { transform: translate(-1px, -2px) rotate(-1deg); }
-      20% { transform: translate(-3px, 0px) rotate(1deg); }
-      30% { transform: translate(3px, 2px) rotate(0deg); }
-      40% { transform: translate(1px, -1px) rotate(1deg); }
-      50% { transform: translate(-1px, 2px) rotate(-1deg); }
-      60% { transform: translate(-3px, 1px) rotate(0deg); }
-      70% { transform: translate(3px, 1px) rotate(-1deg); }
-      80% { transform: translate(-1px, -1px) rotate(1deg); }
-      90% { transform: translate(1px, 2px) rotate(0deg); }
-    }
-
-    .popcorn-cart {
-      width: 100%;
-      max-width: 350px;
-      margin: 20px auto;
-    }
-
-    .info {
-      margin-top: 20px;
-      margin-bottom: 30px;
-      font-size: 1.2rem;
-      color: var(--cor-texto);
-    }
-
-    .info p {
-      margin: 5px 0;
-    }
-
-    .contact-button {
-      background-color: var(--cor-amarelo);
-      color: var(--cor-vermelho);
-      padding: 12px 25px;
-      border: 3px solid var(--cor-vermelho);
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 700;
-      display: inline-block;
-      box-shadow: 4px 4px 0 var(--cor-azul);
-      transition: all 0.3s ease;
-    }
-
-    .contact-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 6px 6px 0 var(--cor-azul);
-    }
-
-    .menu-section {
-      padding: 20px 0;
-    }
-
-    .container-cardapio {
-      max-width: 800px;
-      margin: 0 auto;
-      width: 90%;
-    }
-
-    .menu-section h3 {
-      font-size: 2.5rem;
-      color: var(--cor-vermelho);
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 0 var(--cor-azul);
-    }
-
-    .menu-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      text-align: left;
-    }
-
-    .menu-item {
-      background-color: white;
-      padding: 25px;
-      border-radius: 15px;
-      border: 3px solid var(--cor-amarelo);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .menu-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
-
-    .menu-item h4 {
-      margin: 0 0 10px 0;
-      font-size: 1.4rem;
-      color: var(--cor-vermelho);
-    }
-
-    .menu-item p {
-      margin: 0 0 15px 0;
-      color: var(--cor-texto);
-      font-size: 1rem;
-      flex-grow: 1;
-    }
-
-    .menu-item span {
-      display: inline-block;
-      background-color: var(--cor-vermelho);
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-
-    .map-section {
-      padding-bottom: 40px;
-    }
-
-    .map-section .container {
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-
-    .map-section h3 {
-      font-size: 2.5rem;
-      color: var(--cor-vermelho);
-      margin-bottom: 10px;
-      text-shadow: 1px 1px 0 var(--cor-azul);
-    }
-
-    .map-section p {
-      color: var(--cor-texto);
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-
-    .map-container {
-      border: 4px solid var(--cor-vermelho);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      height: 350px;
-      width: 100%;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .site-footer {
-      background-color: var(--cor-vermelho);
-      color: white;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
-
-    .site-footer p {
-      margin: 5px 0;
-    }
-
-    /* Melhorias mobile */
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-        border-width: 3px;
-        box-shadow: none;
-      }
-
-      .menu-item {
-        padding: 20px;
-      }
-
-      .menu-items {
-        gap: 15px;
-      }
-
-      .contact-button {
-        font-size: 1rem;
-        padding: 10px 20px;
-        border-width: 2px;
-      }
-
-      .logo {
-        font-size: 48px;
-      }
-
-      .slogan {
-        font-size: 2rem;
-        text-shadow: 1px 1px 0 var(--cor-azul);
-      }
-
-      .info {
-        font-size: 1rem;
-      }
-
-      .map-container {
-        height: 250px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
+    @media (prefers-reduced-motion:reduce){
+      *{transition:none!important}
     }
   </style>
 </head>
 <body>
+  <div class="wrap" role="document">
+    <header class="site" role="banner">
+      <!-- Inline minimal logo SVG (pipoca + letra D estilizada) -->
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="72" height="72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logotipo Dodoagrega">
+          <!-- background rounded -->
+          <rect x="0" y="0" width="100" height="100" rx="16" fill="#FFD54F"/>
+          <!-- stylized 'D' using popcorn-like shapes -->
+          <g transform="translate(14,12) scale(0.72)">
+            <path d="M44 8c6 0 11 5 11 11 0 1-.2 2-.6 2.8 3.1 1.1 5.6 3 7.3 5.4-1.6 6.6-7 11.3-13.8 11.3-1.6 0-3.2-.3-4.6-.9-1.4.6-3 .9-4.6.9-6.8 0-12.2-4.7-13.8-11.3C17.6 36 20 34 23.1 32.9c-.4-.9-.6-1.8-.6-2.8 0-6 5-11 11-11 1.8 0 3.5.4 5 .9 1.5-.6 3.2-.9 5-.9z" fill="#C62828"/>
+            <!-- small highlight -->
+            <circle cx="34" cy="14" r="3.2" fill="#fff9e6" opacity="0.8"/>
+          </g>
+        </svg>
+      </div>
 
-<header class="container">
-  <h1 class="logo">🍿</h1>
-  <h2 class="slogan">Você disse pipoca?</h2>
+      <div class="brand" role="heading" aria-level="1">
+        <div class="name">Pipoquinha da Esquina</div>
+        <div class="tag">Quente na manteiga — Taubaté</div>
+      </div>
 
-  <img src="img/personagens.png" 
-       alt="Jubileu do Pica-Pau dizendo 'Você disse pipoca?'" 
-       class="popcorn-cart">
+      <div class="actions" role="navigation" aria-label="Ações rápidas">
+        <a class="btn btn--primary" href="https://whatsapp.com/channel/0029Va905sN6WaKuszqVhh3P" target="_blank" rel="noopener" aria-label="Canal no WhatsApp">WhatsApp</a>
+        <a class="btn btn--ghost" href="#cardapio" aria-label="Ver nosso cardápio">Cardápio</a>
+      </div>
+    </header>
 
-  <div class="info">
-    <p><strong>A Pipoca Dodoagrega, Quente na Manteiga !</strong></p>
-    <p>A pipoca tradicional da cidade.</p>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="left">
+        <h1 id="hero-title">A pipoca que vira lembrança.</h1>
+        <p>Receita artesanal, manteiga de cinema, e nossa versão gourmet com bacon. Passe hoje e experimente!</p>
+
+        <div class="price-cta row" aria-hidden="false">
+          <span class="pill">R$ 10 — Salgada</span>
+          <span class="pill">R$ 8 — Doce</span>
+          <a href="https://www.instagram.com/dodoagrega/" class="btn" style="background:transparent;margin-left:8px;text-decoration:underline" target="_blank" rel="noopener">Ver no Instagram</a>
+        </div>
+      </div>
+
+      <div class="illu" aria-hidden="true">
+        <!-- ilustração temporária: troque "img/personagens.png" por versão oficial vectorizada -->
+        <img src="img/personagens.png" alt="Ilustração Jubileu (use sua arte oficial aqui)" />
+      </div>
+    </section>
+
+    <!-- Cardápio -->
+    <section id="cardapio" aria-labelledby="menu-title">
+      <h2 id="menu-title" style="margin:0 0 12px 0;color:#374151">Cardápio</h2>
+      <div class="grid" role="list">
+        <article class="card" role="listitem">
+          <div style="display:flex;align-items:center;gap:10px">
+            <h3>Pipoca Salgada Tradicional</h3>
+            <div class="price">R$ 10,00</div>
+          </div>
+          <p>Feita com manteiga especial, pedacinhos de bacon e finalizada com queijo parmesão ralado.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div style="display:flex;align-items:center;gap:10px">
+            <h3>Pipoca Doce Raiz</h3>
+            <div class="price">R$ 8,00</div>
+          </div>
+          <p>Caramelizada na medida certa — a pipoca da infância que todo mundo ama.</p>
+        </article>
+
+        <!-- Exemplo: adicionar item sem imagem rápido -->
+        <article class="card" role="listitem">
+          <div style="display:flex;align-items:center;gap:10px">
+            <h3>Pipoca Gourmet (bacon)</h3>
+            <div class="price">R$ 12,00</div>
+          </div>
+          <p>Versão premium com bacon crocante e toque especial de manteiga.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Localização -->
+    <section aria-labelledby="where-title" style="margin-top:8px">
+      <h2 id="where-title" style="margin:0 0 8px 0;color:#374151">Onde nos encontrar hoje</h2>
+      <p style="margin:0 0 8px 0;color:#6b7280">Estamos em movimento — verifique nosso Instagram ou canal do WhatsApp para a localização em tempo real.</p>
+
+      <div class="map-wrap" aria-hidden="false">
+        <!-- Mapa embed Google — substitua por coordenadas atualizadas quando desejar -->
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.017874494369!2d-45.5652692!3d-23.5675261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ccf8b3e3b40c4f%3A0x7b9e5c8dcb678aad!2sAv.%20Ameletto%20Marino%2C%2021d%20-%20Esplanada%20Santa%20Helena%2C%20Taubat%C3%A9%20-%20SP%2C%2012053-843!5e0!3m2!1spt-BR!2sbr!4v1690388447251!5m2!1spt-BR!2sbr" title="Localização atual da Pipoquinha da Esquina" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <footer class="site" role="contentinfo">
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center">
+        <div style="font-weight:700;color:var(--accent)">Pipoquinha da Esquina — Dodoagrega</div>
+        <div style="font-size:0.9rem;color:#6b7280">Siga: <a href="https://www.instagram.com/dodoagrega/" target="_blank" rel="noopener">@dodoagrega</a> • Canal WhatsApp</div>
+        <div style="font-size:0.82rem;color:#9aa3ac">© 2025 Pipoquinha da Esquina — Todos os direitos reservados</div>
+      </div>
+    </footer>
   </div>
 
- <a href="https://whatsapp.com/channel/0029Va905sN6WaKuszqVhh3P" 
-   class="contact-button" 
-   target="_blank" 
-   aria-label="Seguir canal no WhatsApp">
-   Siga nosso canal no WhatsApp
-  
-   <a href="https://www.instagram.com/dodoagrega/reels/"
-   class="contact-button" 
-   target="_blank" 
-   aria-label="Seguir no Instagram ">
-   Siga nosso Instagram 
-  
-   <a href="https://youtube.com/@tiododoagrega?"
-   class="contact-button" 
-   target="_blank" 
-   aria-label="Seguir no YouTube ">
-   Siga nosso Canal no YouTube
-  
- 
-        </div>
-</a>
-
-</header>
-
-  <main>
-    <section id="cardapio" class="menu-section">
-      <div class="container-cardapio">
-        <h3>Nosso Cardápio Crocante</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <h4>Pipoca Salgada tradicional </h4>
-            <p>A nossa especial! Feita com manteiga de cinema, pedacinhos de bacon e finalizada com queijo parmesão frito.</p>
-            <span>R$ 10,00</span>
-          </div>
-          <div class="menu-item">
-            <h4>Pipoca Doce Raiz</h4>
-            <p>A famosa pipoca vermelhinha de infância! Caramelizada com açúcar na medida certa.</p>
-            <span>R$ 8,00</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="localizacao" class="map-section">
-      <div class="container">
-        <h3>Onde nos encontrar</h3>
-        <p>Estamos sempre em movimento! Veja nossa localização hoje:</p>
-        <div class="map-container">
-       <iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.017874494369!2d-45.5652692!3d-23.5675261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ccf8b3e3b40c4f%3A0x7b9e5c8dcb678aad!2sAv.%20Ameletto%20Marino%2C%2021d%20-%20Esplanada%20Santa%20Helena%2C%20Taubat%C3%A9%20-%20SP%2C%2012053-843!5e0!3m2!1spt-BR!2sbr!4v1690388447251!5m2!1spt-BR!2sbr" 
-  width="100%" 
-  height="450" 
-  style="border:0;" 
-  allowfullscreen="" 
-  loading="lazy" 
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-        </div>
-      </div>
-    </section>
-      
-  </main>
-
-    
-  <footer class="site-footer">
-    <p>© 2025 PIPOCA DODOAGREGA. Todos os direitos reservados.</p>
-    <p>Feito com ❤️ e muito CAPRICHO!</p>
-  </footer>
-
+  <!-- Pequeno script para smooth scroll no botão cardapio -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1 && href.startsWith('#')){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
 </body>
 </html>
