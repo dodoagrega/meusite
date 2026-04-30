@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Dodoagrega Resumo Vídeos</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
   --red:#d50000;
-  --yellow:#ffcc00;
-  --dark:#070707;
-  --gray:#141414;
-  --white:#ffffff;
+  --yellow:#ffc400;
+  --dark:#050505;
+  --card:#111111;
+  --text:#ffffff;
+  --gray:#cfcfcf;
 }
 
 *{
@@ -32,36 +34,41 @@ html{
 }
 
 body{
-  background:#000;
-  color:#fff;
+  background:
+  radial-gradient(circle at top,#2a0000,#000 60%);
+  color:var(--text);
   font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
 }
 
-/* ========================= */
+/* ===================== */
 /* NAVBAR */
-/* ========================= */
+/* ===================== */
 
 .navbar{
   width:100%;
-  background:#000;
-  border-bottom:2px solid #1f1f1f;
   position:sticky;
   top:0;
   z-index:999;
+  background:rgba(0,0,0,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:2px solid #1b1b1b;
 }
 
-.nav-content{
+.nav-container{
   width:95%;
-  max-width:1300px;
+  max-width:1400px;
   margin:auto;
+
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:15px 0;
+  justify-content:space-between;
+
+  padding:18px 0;
 }
 
 .logo{
-  font-size:38px;
+  font-size:2.2rem;
   font-weight:900;
   color:#fff;
 }
@@ -70,132 +77,149 @@ body{
   color:var(--yellow);
 }
 
-.nav-menu{
+.nav-links{
   display:flex;
-  gap:30px;
+  gap:28px;
 }
 
-.nav-menu a{
+.nav-links a{
   color:#fff;
   text-decoration:none;
   font-weight:700;
   transition:.3s;
 }
 
-.nav-menu a:hover{
+.nav-links a:hover{
   color:var(--yellow);
 }
 
 .youtube-btn{
   background:var(--red);
   color:#fff;
-  padding:12px 22px;
+  padding:12px 20px;
   border-radius:10px;
   text-decoration:none;
   font-weight:800;
+  transition:.3s;
 }
 
-/* ========================= */
+.youtube-btn:hover{
+  transform:scale(1.05);
+}
+
+/* ===================== */
 /* HERO */
-/* ========================= */
+/* ===================== */
 
 .hero{
-  background:
-  linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-  url('img/bg.jpg');
-
-  background-size:cover;
-  background-position:center;
-
-  padding:70px 0;
-  overflow:hidden;
-}
-
-.hero-content{
   width:95%;
-  max-width:1300px;
+  max-width:1400px;
   margin:auto;
 
   display:grid;
-  grid-template-columns:1fr 500px;
+  grid-template-columns:1.1fr .9fr;
   align-items:center;
   gap:40px;
+
+  padding:70px 0;
 }
 
-.hero-text h1{
+.hero h1{
   font-family:'Anton',sans-serif;
   font-size:6rem;
   line-height:.95;
   text-transform:uppercase;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
-.hero-text h1 span{
+.hero h1 span{
   color:var(--yellow);
 }
 
-.hero-text p{
-  font-size:1.2rem;
-  color:#ddd;
-  line-height:1.7;
+.hero p{
+  color:var(--gray);
+  font-size:1.15rem;
+  line-height:1.8;
   max-width:650px;
   margin-bottom:30px;
 }
 
-.hero-icons{
+.hero-features{
   display:flex;
-  gap:30px;
   flex-wrap:wrap;
-  margin-bottom:30px;
+  gap:25px;
+  margin-bottom:35px;
 }
 
-.icon-box{
-  max-width:180px;
+.feature{
+  background:#111;
+  border:1px solid #252525;
+  border-radius:14px;
+  padding:18px;
+  min-width:180px;
 }
 
-.icon-box h3{
+.feature h3{
   color:var(--yellow);
   margin-bottom:8px;
 }
 
-.social-buttons{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
+.feature p{
+  margin:0;
+  font-size:.95rem;
+  line-height:1.5;
 }
 
-.social-buttons a{
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.hero-buttons a{
   text-decoration:none;
   color:#fff;
-  padding:14px 22px;
-  border-radius:10px;
+  padding:15px 22px;
+  border-radius:12px;
   font-weight:800;
+  transition:.3s;
 }
 
-.youtube{
+.btn-youtube{
   background:#d50000;
 }
 
-.instagram{
-  background:#e1306c;
+.btn-instagram{
+  background:#d62976;
 }
 
-.whatsapp{
-  background:#25d366;
+.btn-whatsapp{
+  background:#1faa59;
+}
+
+.hero-buttons a:hover{
+  transform:translateY(-5px);
+}
+
+.hero-image{
+  position:relative;
 }
 
 .hero-image img{
   width:100%;
+  max-width:500px;
   display:block;
+  margin:auto;
+  filter:drop-shadow(0 0 30px rgba(255,0,0,.25));
 }
 
-/* ========================= */
+/* ===================== */
 /* SECTION */
-/* ========================= */
+/* ===================== */
 
 .section{
   width:95%;
-  max-width:1300px;
+  max-width:1400px;
   margin:50px auto;
 }
 
@@ -203,213 +227,261 @@ body{
   display:inline-block;
   background:var(--yellow);
   color:#000;
-  padding:10px 25px;
+  padding:12px 24px;
+  border-radius:10px;
   font-weight:900;
-  font-size:1.4rem;
+  font-size:1.2rem;
   margin-bottom:25px;
-  border-radius:8px;
 }
 
-/* ========================= */
-/* FEATURED VIDEO */
-/* ========================= */
+/* ===================== */
+/* FEATURED */
+/* ===================== */
 
 .featured{
   display:grid;
   grid-template-columns:1.2fr .8fr;
-  gap:30px;
-  background:#0f0f0f;
-  padding:25px;
+  gap:25px;
+
+  background:#0d0d0d;
+  border:2px solid #1d1d1d;
   border-radius:20px;
-  border:1px solid #222;
+  padding:25px;
 }
 
 .featured iframe{
   width:100%;
   height:420px;
   border:none;
-  border-radius:15px;
+  border-radius:16px;
 }
 
-.featured-info{
+.featured-content{
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 
-.featured-info h2{
+.featured-tag{
+  background:var(--red);
+  width:fit-content;
+  padding:7px 15px;
+  border-radius:30px;
+  font-size:.8rem;
+  font-weight:800;
+  margin-bottom:15px;
+}
+
+.featured-content h2{
   font-size:3rem;
   line-height:1;
   margin-bottom:20px;
   font-family:'Anton',sans-serif;
 }
 
-.featured-info p{
-  color:#ccc;
-  line-height:1.7;
-  margin-bottom:30px;
+.featured-content p{
+  color:var(--gray);
+  line-height:1.8;
+  margin-bottom:25px;
 }
 
 .watch-btn{
+  width:fit-content;
+  text-decoration:none;
   background:var(--yellow);
   color:#000;
-  text-decoration:none;
-  padding:16px 28px;
-  border-radius:10px;
-  width:fit-content;
+  padding:16px 26px;
+  border-radius:12px;
   font-weight:900;
 }
 
-/* ========================= */
-/* VIDEO GRID */
-/* ========================= */
+/* ===================== */
+/* STICKER GRID */
+/* ===================== */
 
-.video-grid{
+.sticker-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
 }
 
-.video-card{
-  background:#111;
-  border-radius:15px;
+.sticker-card{
+  background:var(--card);
+  border:2px solid #222;
+  border-radius:20px;
   overflow:hidden;
-  border:1px solid #222;
-  transition:.3s;
+  transition:.35s;
+  position:relative;
 }
 
-.video-card:hover{
-  transform:translateY(-8px);
+.sticker-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  border-color:var(--yellow);
 }
 
-.video-card img{
+.sticker-card iframe{
   width:100%;
-  height:150px;
-  object-fit:cover;
+  height:260px;
+  border:none;
 }
 
-.video-card-content{
-  padding:15px;
+.sticker-content{
+  padding:18px;
 }
 
-.video-card h3{
+.sticker-tag{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  padding:6px 14px;
+  border-radius:30px;
+  font-size:.75rem;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.sticker-content h3{
   font-size:1rem;
-  line-height:1.4;
-  margin-bottom:10px;
+  line-height:1.5;
+  margin-bottom:12px;
 }
 
-.video-card p{
-  color:#999;
+.sticker-content p{
+  color:#aaa;
   font-size:.9rem;
+  line-height:1.6;
 }
 
-/* ========================= */
+/* ===================== */
 /* CATEGORY */
-/* ========================= */
+/* ===================== */
 
-.categories{
+.category-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
   gap:15px;
 }
 
 .category{
-  padding:20px;
+  padding:18px;
   border-radius:12px;
   text-align:center;
-  font-weight:900;
+  font-weight:800;
   font-size:1rem;
 }
 
-.red{background:#8b0000;}
-.gold{background:#9a7300;}
-.blue{background:#004a9f;}
-.purple{background:#5a189a;}
-.orange{background:#a14a00;}
-.green{background:#0c7c38;}
+.red{
+  background:#7b0000;
+}
 
-/* ========================= */
+.gold{
+  background:#8b6a00;
+}
+
+.blue{
+  background:#004b91;
+}
+
+.purple{
+  background:#5522aa;
+}
+
+.green{
+  background:#11773c;
+}
+
+.orange{
+  background:#9c4d00;
+}
+
+/* ===================== */
 /* CTA */
-/* ========================= */
+/* ===================== */
 
 .cta{
-  background:#0d0d0d;
+  background:#0f0f0f;
   border:2px solid #1f1f1f;
-  border-radius:20px;
+  border-radius:22px;
   padding:40px;
+
   display:grid;
   grid-template-columns:1fr auto;
-  align-items:center;
   gap:20px;
+  align-items:center;
 }
 
 .cta h2{
-  font-size:2.5rem;
-  margin-bottom:10px;
+  font-size:3rem;
+  line-height:1;
+  margin-bottom:15px;
   font-family:'Anton',sans-serif;
 }
 
 .cta p{
   color:#ccc;
-  line-height:1.7;
+  line-height:1.8;
 }
 
 .cta a{
-  background:#25d366;
+  background:#1faa59;
   color:#fff;
-  padding:18px 28px;
   text-decoration:none;
+  padding:18px 28px;
   border-radius:12px;
   font-weight:900;
 }
 
-/* ========================= */
+/* ===================== */
 /* FOOTER */
-/* ========================= */
+/* ===================== */
 
 footer{
-  margin-top:60px;
-  background:#050505;
+  margin-top:70px;
+  background:#030303;
   border-top:1px solid #1f1f1f;
-  padding:30px;
   text-align:center;
-  color:#888;
+  padding:35px 20px;
+  color:#777;
 }
 
-/* ========================= */
+/* ===================== */
 /* MOBILE */
-/* ========================= */
+/* ===================== */
 
-@media(max-width:950px){
+@media(max-width:1100px){
 
-  .hero-content{
+  .hero{
     grid-template-columns:1fr;
     text-align:center;
   }
 
-  .hero-text p{
+  .hero p{
     margin:auto auto 30px;
   }
 
-  .hero-icons{
+  .hero-features{
     justify-content:center;
   }
 
-  .social-buttons{
+  .hero-buttons{
     justify-content:center;
   }
+
+}
+
+@media(max-width:900px){
 
   .featured{
     grid-template-columns:1fr;
   }
 
   .featured iframe{
-    height:250px;
+    height:300px;
   }
 
-  .featured-info{
-    text-align:center;
+  .featured-content{
     align-items:center;
+    text-align:center;
   }
 
   .cta{
@@ -421,28 +493,53 @@ footer{
 
 @media(max-width:700px){
 
-  .nav-content{
+  .nav-container{
     flex-direction:column;
     gap:20px;
   }
 
-  .nav-menu{
+  .nav-links{
     flex-wrap:wrap;
     justify-content:center;
     gap:15px;
   }
 
-  .hero-text h1{
-    font-size:3.4rem;
+  .hero{
+    padding:40px 0;
   }
 
-  .featured-info h2{
+  .hero h1{
+    font-size:3.6rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  .feature{
+    width:100%;
+  }
+
+  .featured-content h2{
     font-size:2rem;
+  }
+
+  .featured iframe{
+    height:240px;
+  }
+
+  .sticker-card iframe{
+    height:220px;
+  }
+
+  .cta h2{
+    font-size:2.2rem;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -451,24 +548,23 @@ footer{
 
 <header class="navbar">
 
-  <div class="nav-content">
+  <div class="nav-container">
 
     <div class="logo">
       D<span>+</span>
     </div>
 
-    <nav class="nav-menu">
-      <a href="#">HOME</a>
-      <a href="#">VÍDEOS</a>
+    <nav class="nav-links">
+      <a href="#">INÍCIO</a>
+      <a href="#">RESUMOS</a>
       <a href="#">CATEGORIAS</a>
       <a href="#">SOBRE</a>
-      <a href="#">CONTATO</a>
     </nav>
 
     <a
-      class="youtube-btn"
       href="https://youtube.com/@tiododoagrega"
-      target="_blank">
+      target="_blank"
+      class="youtube-btn">
       CANAL NO YOUTUBE
     </a>
 
@@ -480,80 +576,80 @@ footer{
 
 <section class="hero">
 
-  <div class="hero-content">
+  <div class="hero-text">
 
-    <div class="hero-text">
+    <h1>
+      TODOS OS DIAS
+      <span>NOVOS</span>
+      RESUMOS DAS
+      MAIORES
+      NOTÍCIAS
+      DA INTERNET
+    </h1>
 
-      <h1>
-        TODOS OS DIAS
-        <span>NOVOS RESUMOS</span>
-        DAS MAIORES
-        NOTÍCIAS
-        DA INTERNET!
-      </h1>
+    <p>
+      Política, economia, tecnologia, curiosidades,
+      futebol e assuntos virais resumidos de forma rápida,
+      dinâmica e direta ao ponto.
+    </p>
 
-      <p>
-        Resumos rápidos dos assuntos mais comentados da internet.
-        Política, economia, tecnologia, curiosidades e vídeos virais.
-      </p>
+    <div class="hero-features">
 
-      <div class="hero-icons">
-
-        <div class="icon-box">
-          <h3>⚡ RÁPIDO</h3>
-          <p>Entenda tudo em minutos</p>
-        </div>
-
-        <div class="icon-box">
-          <h3>🔥 ATUAL</h3>
-          <p>Assuntos que estão bombando</p>
-        </div>
-
-        <div class="icon-box">
-          <h3>🎯 DIRETO AO PONTO</h3>
-          <p>Sem enrolação</p>
-        </div>
-
+      <div class="feature">
+        <h3>⚡ RÁPIDO</h3>
+        <p>Entenda tudo em poucos minutos.</p>
       </div>
 
-      <div class="social-buttons">
+      <div class="feature">
+        <h3>🔥 ATUAL</h3>
+        <p>Assuntos que estão bombando.</p>
+      </div>
 
-        <a
-          class="youtube"
-          href="https://youtube.com/@tiododoagrega"
-          target="_blank">
-          YOUTUBE
-        </a>
-
-        <a
-          class="instagram"
-          href="https://instagram.com/dodoagrega"
-          target="_blank">
-          INSTAGRAM
-        </a>
-
-        <a
-          class="whatsapp"
-          href="https://whatsapp.com/channel/0029Va905sN6WaKuszqVhh3P"
-          target="_blank">
-          WHATSAPP
-        </a>
-
+      <div class="feature">
+        <h3>🎯 DIRETO</h3>
+        <p>Sem enrolação.</p>
       </div>
 
     </div>
 
-    <div class="hero-image">
+    <div class="hero-buttons">
 
-      <img src="img/personagens.png" alt="Dodoagrega">
+      <a
+        href="https://youtube.com/@tiododoagrega"
+        target="_blank"
+        class="btn-youtube">
+        YOUTUBE
+      </a>
+
+      <a
+        href="https://instagram.com/dodoagrega"
+        target="_blank"
+        class="btn-instagram">
+        INSTAGRAM
+      </a>
+
+      <a
+        href="https://whatsapp.com/channel/0029Va905sN6WaKuszqVhh3P"
+        target="_blank"
+        class="btn-whatsapp">
+        WHATSAPP
+      </a>
 
     </div>
 
   </div>
 
+  <div class="hero-image">
+
+    <img
+      src="img/personagens.png"
+      alt="Dodoagrega">
+
+  </div>
+
 </section>
 
-<!-- FEATURED -->
+<!-- VÍDEO DESTAQUE -->
 
 <section class="section">
 
@@ -568,14 +664,18 @@ footer{
       allowfullscreen>
     </iframe>
 
-    <div class="featured-info">
+    <div class="featured-content">
+
+      <div class="featured-tag">
+        POLÍTICA
+      </div>
 
       <h2>
         Senado barra indicado ao STF
       </h2>
 
       <p>
-        Entenda rapidamente os bastidores da decisão
+        Entenda rapidamente os bastidores da votação
         histórica e os impactos políticos do episódio.
       </p>
 
@@ -583,7 +683,9 @@ footer{
         href="https://youtube.com/shorts/-G2L5wRoRwE"
         target="_blank"
         class="watch-btn">
+
         ASSISTIR AGORA
+
       </a>
 
     </div>
@@ -592,46 +694,122 @@ footer{
 
 </section>
 
-<!-- ÚLTIMOS -->
+<!-- GRID DE VÍDEOS -->
 
 <section class="section">
 
   <div class="section-title">
-    🔥 ÚLTIMOS RESUMOS
+    🔥 NOVOS RESUMOS
   </div>
 
-  <div class="video-grid">
+  <div class="sticker-grid">
 
-    <div class="video-card">
-      <img src="img/thumb1.jpg">
-      <div class="video-card-content">
-        <h3>Trump anuncia novas tarifas contra China</h3>
-        <p>12 mil visualizações</p>
+    <!-- CARD 1 -->
+
+    <div class="sticker-card">
+
+      <iframe
+        src="https://www.youtube.com/embed/-G2L5wRoRwE"
+        allowfullscreen>
+      </iframe>
+
+      <div class="sticker-content">
+
+        <span class="sticker-tag">
+          POLÍTICA
+        </span>
+
+        <h3>
+          Senado barra indicado ao STF pela primeira vez em 132 anos
+        </h3>
+
+        <p>
+          Resumo rápido da votação e repercussão política.
+        </p>
+
       </div>
+
     </div>
 
-    <div class="video-card">
-      <img src="img/thumb2.jpg">
-      <div class="video-card-content">
-        <h3>Dólar dispara e mercado reage</h3>
-        <p>9 mil visualizações</p>
+    <!-- CARD 2 -->
+
+    <div class="sticker-card">
+
+      <iframe
+        src="https://www.youtube.com/embed/-G2L5wRoRwE"
+        allowfullscreen>
+      </iframe>
+
+      <div class="sticker-content">
+
+        <span class="sticker-tag">
+          ECONOMIA
+        </span>
+
+        <h3>
+          Dólar dispara e mercado reage com tensão
+        </h3>
+
+        <p>
+          Veja os impactos econômicos e o que mudou.
+        </p>
+
       </div>
+
     </div>
 
-    <div class="video-card">
-      <img src="img/thumb3.jpg">
-      <div class="video-card-content">
-        <h3>TikTok pode ser proibido no Brasil?</h3>
-        <p>15 mil visualizações</p>
+    <!-- CARD 3 -->
+
+    <div class="sticker-card">
+
+      <iframe
+        src="https://www.youtube.com/embed/-G2L5wRoRwE"
+        allowfullscreen>
+      </iframe>
+
+      <div class="sticker-content">
+
+        <span class="sticker-tag">
+          TECNOLOGIA
+        </span>
+
+        <h3>
+          TikTok pode enfrentar novas restrições
+        </h3>
+
+        <p>
+          Entenda o debate que movimenta as redes.
+        </p>
+
       </div>
+
     </div>
 
-    <div class="video-card">
-      <img src="img/thumb4.jpg">
-      <div class="video-card-content">
-        <h3>Flamengo campeão! Veja os melhores momentos</h3>
-        <p>20 mil visualizações</p>
+    <!-- CARD 4 -->
+
+    <div class="sticker-card">
+
+      <iframe
+        src="https://www.youtube.com/embed/-G2L5wRoRwE"
+        allowfullscreen>
+      </iframe>
+
+      <div class="sticker-content">
+
+        <span class="sticker-tag">
+          ESPORTES
+        </span>
+
+        <h3>
+          Flamengo campeão! Veja os melhores momentos
+        </h3>
+
+        <p>
+          O resumo da partida e da comemoração.
+        </p>
+
       </div>
+
     </div>
 
   </div>
@@ -646,7 +824,7 @@ footer{
     📂 CATEGORIAS
   </div>
 
-  <div class="categories">
+  <div class="category-grid">
 
     <div class="category red">
       POLÍTICA
@@ -685,12 +863,12 @@ footer{
     <div>
 
       <h2>
-        NÃO FIQUE POR FORA!
+        NÃO FIQUE POR FORA
       </h2>
 
       <p>
         Entre no canal do WhatsApp e receba
-        os resumos mais importantes todos os dias.
+        os novos resumos todos os dias.
       </p>
 
     </div>
