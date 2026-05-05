@@ -740,50 +740,39 @@ const videos = [
 /* GERAR VÍDEOS */
 /* ========================= */
 
-const container =
-document.getElementById("videos-container");
+const container = document.getElementById("videos-container");
 
-videos.forEach(video => {
+// Adicionamos o .reverse() para que o último vídeo do array seja o primeiro da lista no site
+videos.reverse().forEach(video => {
 
   container.innerHTML += `
-
     <div class="featured">
-
       <iframe
         src="https://www.youtube.com/embed/${video.youtubeId}"
         allowfullscreen>
       </iframe>
 
       <div class="featured-content">
-
         <div class="featured-tag">
           ${video.categoria}
         </div>
-
         <h2>
           ${video.titulo}
         </h2>
-
         <p>
           ${video.descricao}
         </p>
-
         <a
           href="https://youtube.com/shorts/${video.youtubeId}"
           target="_blank"
           class="watch-btn">
-
           ASSISTIR AGORA
-
         </a>
-
       </div>
-
     </div>
-
   `;
-
 });
+
 
 </script>
 
