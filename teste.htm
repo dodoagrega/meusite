@@ -203,7 +203,7 @@ vídeos curtos">
 
 </section>
 
-<script>
+<<script>
 
 /* ========================= */
 /* LISTA DE VÍDEOS */
@@ -230,20 +230,17 @@ const videos = [
   {
     categoria: "ESPORTE",
     titulo: "Melhor ter e não precisar: O peso de Neymar",
-    descricao: "Entre a febre do novo álbum e a ansiedade pela Copa, analisamos por que ter o craque em campo é a segurança que o Brasil precisa.",
+    descricao: "Entre a febre do novo álbum e a ansiedade pela Copa.",
     youtubeId: "fbOGdV9eaF0",
     uploadDate: "2026-05-03"
-  },
-
-  {
-    categoria: "IA",
-    titulo: "Elon Musk acusa Sam Altman de traição",
-    descricao: "Cento e cinquenta bilhões de dólares e uma amizade que virou guerra.",
-    youtubeId: "GswTKtnMV2Q",
-    uploadDate: "2026-05-02"
   }
 
 ];
+
+/* ========================= */
+/* SLUG */
+/* ========================= */
+
 function gerarSlug(titulo){
   return titulo
     .toLowerCase()
@@ -253,67 +250,63 @@ function gerarSlug(titulo){
     .replace(/(^-|-$)/g, "");
 }
 
-/* ========================= */
-/* GERAR VÍDEOS */
-/* ========================= */
-
 const container = document.getElementById("videos-container");
 
-// Adicionamos o .reverse() para que o último vídeo do array seja o primeiro da lista no site
-videos.reverse().forEach(video => {
+/* ========================= */
+/* 1. VÍDEO PRINCIPAL (iframe) */
+/* ========================= */
 
-  const slug = gerarSlug(video.titulo);
+const destaque = videos[0];
 
-  // 🔥 SCHEMA (SEO FORTE)
-  const schema = `
-  {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "${video.titulo}",
-    "description": "${video.descricao}",
-    "thumbnailUrl": "https://img.youtube.com/vi/${video.youtubeId}/0.jpg",
-    "uploadDate": "${video.uploadDate}",
-    "embedUrl": "https://www.youtube.com/embed/${video.youtubeId}"
-  }
-  `;
+container.innerHTML += `
+  <div class="featured">
+    <iframe
+      src="https://www.youtube.com/embed/${destaque.youtubeId}"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
 
-  const script = document.createElement("script");
-  script.type = "application/ld+json";
-  script.text = schema;
-  document.head.appendChild(script);
+    <div class="featured-content">
+      <div class="featured-tag">${destaque.categoria}</div>
+      <h2>${destaque.titulo}</h2>
+      <p>${destaque.descricao}</p>
 
-  container.innerHTML += `
-    <article class="featured">
-      <iframe
-        src="https://www.youtube.com/embed/${video.youtubeId}"
+      <a href="/video.htm?slug=${gerarSlug(destaque.titulo)}" class="watch-btn">
+        VER DETALHES
+      </a>
+    </div>
+  </div>
+`;
+
+/* ========================= */
+/* 2. LISTA LEVE (SEM IFRAME) */
+/* ========================= */
+
+container.innerHTML += `<div class="video-list"></div>`;
+
+const list = document.querySelector(".video-list");
+
+videos.slice(1).forEach(video => {
+
+  list.innerHTML += `
+    <div class="video-item">
+      <img
+        src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg"
+        alt="${video.titulo}"
         loading="lazy"
-        allowfullscreen>
-      </iframe>
+      >
 
-      <div class="featured-content">
-        <div class="featured-tag">
-          ${video.categoria}
-        </div>
+      <div>
+        <h3>${video.titulo}</h3>
+        <p>${video.descricao}</p>
 
-        <h2>
-          ${video.titulo}
-        </h2>
-
-        <p>
-          ${video.descricao}
-        </p>
-
-        <a
-          href="/video.htm?slug=${slug}"
-          class="watch-btn">
-          VER DETALHES
+        <a href="/video.htm?slug=${gerarSlug(video.titulo)}">
+          Ver vídeo →
         </a>
-
       </div>
-    </article>
+    </div>
   `;
 });
-
 
 </script>
 
