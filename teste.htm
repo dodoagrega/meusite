@@ -1,3 +1,4 @@
+//Meu site index 
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -203,7 +204,7 @@ vídeos curtos">
 
 </section>
 
-<<script>
+<script>
 
 /* ========================= */
 /* LISTA DE VÍDEOS */
@@ -253,10 +254,18 @@ function gerarSlug(titulo){
 const container = document.getElementById("videos-container");
 
 /* ========================= */
-/* 1. VÍDEO PRINCIPAL (iframe) */
+/* 🔥 ORDENAR POR DATA */
 /* ========================= */
 
-const destaque = videos[0];
+const videosOrdenados = [...videos].sort((a, b) => {
+  return new Date(b.uploadDate) - new Date(a.uploadDate);
+});
+
+/* ========================= */
+/* 1. VÍDEO PRINCIPAL */
+/* ========================= */
+
+const destaque = videosOrdenados[0];
 
 container.innerHTML += `
   <div class="featured">
@@ -279,19 +288,19 @@ container.innerHTML += `
 `;
 
 /* ========================= */
-/* 2. LISTA LEVE (SEM IFRAME) */
+/* 2. LISTA LEVE */
 /* ========================= */
 
 container.innerHTML += `<div class="video-list"></div>`;
 
 const list = document.querySelector(".video-list");
 
-videos.slice(1).forEach(video => {
+videosOrdenados.slice(1).forEach(video => {
 
   list.innerHTML += `
     <div class="video-item">
       <img
-        src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg"
+        src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg"
         alt="${video.titulo}"
         loading="lazy"
       >
