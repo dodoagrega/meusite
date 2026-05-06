@@ -695,46 +695,45 @@ const videos = [
 
   {
     categoria: "POLÍTICA",
-
     titulo: "Senado barra indicado ao STF",
-
-    descricao:
-    "Entenda rapidamente os bastidores da votação histórica e os impactos políticos do episódio.",
-
-    youtubeId: "-G2L5wRoRwE"
+    descricao: "Entenda rapidamente os bastidores da votação histórica e os impactos políticos do episódio.",
+    youtubeId: "-G2L5wRoRwE",
+    uploadDate: "2026-05-05"
   },
 
   {
     categoria: "ESPORTE",
-
-    titulo:
-    "A história do Neymar não pode ser esquecida",
-
-    descricao:
-    "Entre dribles, lesões e críticas, Neymar marcou uma geração na Seleção Brasileira.",
-
-    youtubeId: "pPn-E-yu3Sg"
+    titulo: "A história do Neymar não pode ser esquecida",
+    descricao: "Entre dribles, lesões e críticas, Neymar marcou uma geração na Seleção Brasileira.",
+    youtubeId: "pPn-E-yu3Sg",
+    uploadDate: "2026-05-04"
   },
-  
-{
-  categoria: "ESPORTE",
 
-  titulo:
-  "Melhor ter e não precisar: O peso de Neymar",
+  {
+    categoria: "ESPORTE",
+    titulo: "Melhor ter e não precisar: O peso de Neymar",
+    descricao: "Entre a febre do novo álbum e a ansiedade pela Copa, analisamos por que ter o craque em campo é a segurança que o Brasil precisa.",
+    youtubeId: "fbOGdV9eaF0",
+    uploadDate: "2026-05-03"
+  },
 
-  descricao:
-  "Entre a febre do novo álbum e a ansiedade pela Copa, analisamos por que ter o craque em campo é a segurança que o Brasil precisa nos momentos decisivos.",
-
-  youtubeId: "fbOGdV9eaF0"
-},
-{
-  "categoria": "IA",
-  "titulo": "Elon Musk acusa Sam Altman de traição",
-  "descricao": "Cento e cinquenta bilhões de dólares e uma amizade que virou guerra. Musk alega que a OpenAI trocou a ética pelo lucro ao se tornar subsidiária da Microsoft.",
-  "youtubeId": "GswTKtnMV2Q"
-}
+  {
+    categoria: "IA",
+    titulo: "Elon Musk acusa Sam Altman de traição",
+    descricao: "Cento e cinquenta bilhões de dólares e uma amizade que virou guerra.",
+    youtubeId: "GswTKtnMV2Q",
+    uploadDate: "2026-05-02"
+  }
 
 ];
+function gerarSlug(titulo){
+  return titulo
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 /* ========================= */
 /* GERAR VÍDEOS */
@@ -745,10 +744,31 @@ const container = document.getElementById("videos-container");
 // Adicionamos o .reverse() para que o último vídeo do array seja o primeiro da lista no site
 videos.reverse().forEach(video => {
 
+  const slug = gerarSlug(video.titulo);
+
+  // 🔥 SCHEMA (SEO FORTE)
+  const schema = `
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "${video.titulo}",
+    "description": "${video.descricao}",
+    "thumbnailUrl": "https://img.youtube.com/vi/${video.youtubeId}/0.jpg",
+    "uploadDate": "${video.uploadDate}",
+    "embedUrl": "https://www.youtube.com/embed/${video.youtubeId}"
+  }
+  `;
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.text = schema;
+  document.head.appendChild(script);
+
   container.innerHTML += `
-    <div class="featured">
+    <article class="featured">
       <iframe
         src="https://www.youtube.com/embed/${video.youtubeId}"
+        loading="lazy"
         allowfullscreen>
       </iframe>
 
@@ -756,20 +776,23 @@ videos.reverse().forEach(video => {
         <div class="featured-tag">
           ${video.categoria}
         </div>
+
         <h2>
           ${video.titulo}
         </h2>
+
         <p>
           ${video.descricao}
         </p>
+
         <a
-          href="https://youtube.com/shorts/${video.youtubeId}"
-          target="_blank"
+          href="/video.htm?slug=${slug}"
           class="watch-btn">
-          ASSISTIR AGORA
+          VER DETALHES
         </a>
+
       </div>
-    </div>
+    </article>
   `;
 });
 
