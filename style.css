@@ -233,6 +233,10 @@ body{
 .btn-whatsapp{
   background:#18a850;
 }
+.btn-center{
+  text-align:center;
+  margin:30px 0;
+}
 
 /* ========================= */
 /* IMAGEM */
