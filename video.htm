@@ -1,1 +1,158 @@
-teste
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carregando vídeo...</title>
+
+<meta name="description" content="">
+
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script>
+
+/* ========================= */
+/* BASE DE VÍDEOS (MESMA DO INDEX) */
+/* ========================= */
+
+const videos = [
+
+  {
+    categoria: "POLÍTICA",
+    titulo: "Senado barra indicado ao STF",
+    descricao: "Entenda rapidamente os bastidores da votação histórica e os impactos políticos do episódio.",
+    youtubeId: "-G2L5wRoRwE",
+    uploadDate: "2026-05-05"
+  },
+
+  {
+    categoria: "ESPORTE",
+    titulo: "A história do Neymar não pode ser esquecida",
+    descricao: "Entre dribles, lesões e críticas, Neymar marcou uma geração na Seleção Brasileira.",
+    youtubeId: "pPn-E-yu3Sg",
+    uploadDate: "2026-05-04"
+  },
+
+  {
+    categoria: "ESPORTE",
+    titulo: "Melhor ter e não precisar: O peso de Neymar",
+    descricao: "Entre a febre do novo álbum e a ansiedade pela Copa, analisamos por que ter o craque em campo é a segurança que o Brasil precisa.",
+    youtubeId: "fbOGdV9eaF0",
+    uploadDate: "2026-05-03"
+  },
+
+  {
+    categoria: "IA",
+    titulo: "Elon Musk acusa Sam Altman de traição",
+    descricao: "Cento e cinquenta bilhões de dólares e uma amizade que virou guerra.",
+    youtubeId: "GswTKtnMV2Q",
+    uploadDate: "2026-05-02"
+  }
+
+];
+
+/* ========================= */
+/* GERAR SLUG */
+/* ========================= */
+
+function gerarSlug(titulo){
+  return titulo
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+/* ========================= */
+/* PEGAR SLUG DA URL */
+/* ========================= */
+
+const params = new URLSearchParams(window.location.search);
+const slug = params.get("slug");
+
+/* ========================= */
+/* ENCONTRAR VÍDEO */
+/* ========================= */
+
+const video = videos.find(v => gerarSlug(v.titulo) === slug);
+
+/* ========================= */
+/* SE NÃO ENCONTRAR */
+/* ========================= */
+
+if(!video){
+  document.getElementById("app").innerHTML = "<h1>Vídeo não encontrado</h1>";
+} else {
+
+  /* ========================= */
+  /* ATUALIZAR SEO DINÂMICO */
+  /* ========================= */
+
+  document.title = video.titulo;
+
+  document.querySelector('meta[name="description"]').setAttribute(
+    "content",
+    video.descricao
+  );
+
+  /* ========================= */
+  /* SCHEMA */
+  /* ========================= */
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": video.titulo,
+    "description": video.descricao,
+    "thumbnailUrl": `https://img.youtube.com/vi/${video.youtubeId}/0.jpg`,
+    "uploadDate": video.uploadDate,
+    "embedUrl": `https://www.youtube.com/embed/${video.youtubeId}`
+  };
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.text = JSON.stringify(schema);
+  document.head.appendChild(script);
+
+  /* ========================= */
+  /* RENDERIZAR PÁGINA */
+  /* ========================= */
+
+  document.getElementById("app").innerHTML = `
+    <div style="max-width:900px;margin:auto;padding:30px;font-family:sans-serif">
+
+      <h1>${video.titulo}</h1>
+
+      <p style="color:#555;margin-bottom:20px">
+        ${video.descricao}
+      </p>
+
+      <iframe
+        width="100%"
+        height="500"
+        src="https://www.youtube.com/embed/${video.youtubeId}"
+        allowfullscreen>
+      </iframe>
+
+      <br><br>
+
+      <a href="/" style="text-decoration:none;font-weight:bold">
+        ← Voltar para o início
+      </a>
+
+    </div>
+  `;
+}
+
+</script>
+
+</body>
+</html>
