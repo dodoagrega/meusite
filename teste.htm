@@ -744,10 +744,31 @@ const container = document.getElementById("videos-container");
 // Adicionamos o .reverse() para que o último vídeo do array seja o primeiro da lista no site
 videos.reverse().forEach(video => {
 
+  const slug = gerarSlug(video.titulo);
+
+  // 🔥 SCHEMA (SEO FORTE)
+  const schema = `
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "${video.titulo}",
+    "description": "${video.descricao}",
+    "thumbnailUrl": "https://img.youtube.com/vi/${video.youtubeId}/0.jpg",
+    "uploadDate": "${video.uploadDate}",
+    "embedUrl": "https://www.youtube.com/embed/${video.youtubeId}"
+  }
+  `;
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.text = schema;
+  document.head.appendChild(script);
+
   container.innerHTML += `
-    <div class="featured">
+    <article class="featured">
       <iframe
         src="https://www.youtube.com/embed/${video.youtubeId}"
+        loading="lazy"
         allowfullscreen>
       </iframe>
 
@@ -755,20 +776,23 @@ videos.reverse().forEach(video => {
         <div class="featured-tag">
           ${video.categoria}
         </div>
+
         <h2>
           ${video.titulo}
         </h2>
+
         <p>
           ${video.descricao}
         </p>
+
         <a
-          href="https://youtube.com/shorts/${video.youtubeId}"
-          target="_blank"
+          href="/video.html?slug=${slug}"
           class="watch-btn">
-          ASSISTIR AGORA
+          VER DETALHES
         </a>
+
       </div>
-    </div>
+    </article>
   `;
 });
 
