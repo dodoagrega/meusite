@@ -303,7 +303,7 @@ container.innerHTML += `
       <h2>${destaque.titulo}</h2>
       <p>${destaque.descricao}</p>
 
-      <a href="/video.htm?slug=${gerarSlug(destaque.titulo)}" class="watch-btn">
+      <a href="/video.html?slug=${gerarSlug(destaque.titulo)}" class="watch-btn">
         VER DETALHES
       </a>
     </div>
@@ -332,7 +332,7 @@ videosOrdenados.slice(1).forEach(video => {
         <h3>${video.titulo}</h3>
         <p>${video.descricao}</p>
 
-        <a href="/video.htm?slug=${gerarSlug(video.titulo)}">
+        <a href="/video.html?slug=${gerarSlug(video.titulo)}">
           Ver vídeo →
         </a>
       </div>
